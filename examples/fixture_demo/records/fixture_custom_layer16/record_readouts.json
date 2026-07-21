@@ -1,0 +1,1572 @@
+{
+  "meta": {
+    "attention_map": "attention_raw_patchgrid_image_aspect.png",
+    "attention_map_display_mode": "patch_grid_image_aspect",
+    "attention_map_patch_blocks_independent": true,
+    "attention_map_token_interpolation": false,
+    "bbox_original_xyxy": [
+      [
+        320.0,
+        85.0,
+        560.0,
+        300.0
+      ]
+    ],
+    "bbox_percent_xyxy": [
+      [
+        50.0,
+        20.0,
+        87.5,
+        70.58823529411765
+      ]
+    ],
+    "fixture": true,
+    "image_copy": "../../images/fixture_input.png",
+    "image_size": [
+      640,
+      425
+    ],
+    "lens_n_prompts": 50,
+    "lens_path": "weights/huatuo_jimage_lens_layer16_n50.pt",
+    "lens_sha256": "702c9a99d54e19d3b759e9238edcabc7696f7e07246c018a39c0035cb783fc5f",
+    "lens_source_layers": [
+      16
+    ],
+    "logical_patch_grid": [
+      24,
+      24
+    ],
+    "prompt": "Fixture prompt: identify the highlighted visual evidence.",
+    "q_type": "custom",
+    "record_id": "fixture_custom_layer16",
+    "sample_id": "fixture_sample_001",
+    "schema": "jvlens_record_meta_v1",
+    "source_layer": 16,
+    "status": "PASS",
+    "target_layer": 27,
+    "top_k_patches": 10,
+    "top_k_tokens": 10
+  },
+  "top10_patches": [
+    {
+      "fixture": true,
+      "image_patch_xyxy": [
+        346.6666666666667,
+        123.95833333333333,
+        373.3333333333333,
+        141.66666666666666
+      ],
+      "jlens_top": [
+        {
+          "rank": 1,
+          "score": 1.0,
+          "text": "fixture_jlens_181_1",
+          "token_id": 4077
+        },
+        {
+          "rank": 2,
+          "score": 0.5,
+          "text": "fixture_jlens_181_2",
+          "token_id": 4078
+        },
+        {
+          "rank": 3,
+          "score": 0.333333,
+          "text": "fixture_jlens_181_3",
+          "token_id": 4079
+        },
+        {
+          "rank": 4,
+          "score": 0.25,
+          "text": "fixture_jlens_181_4",
+          "token_id": 4080
+        },
+        {
+          "rank": 5,
+          "score": 0.2,
+          "text": "fixture_jlens_181_5",
+          "token_id": 4081
+        },
+        {
+          "rank": 6,
+          "score": 0.166667,
+          "text": "fixture_jlens_181_6",
+          "token_id": 4082
+        },
+        {
+          "rank": 7,
+          "score": 0.142857,
+          "text": "fixture_jlens_181_7",
+          "token_id": 4083
+        },
+        {
+          "rank": 8,
+          "score": 0.125,
+          "text": "fixture_jlens_181_8",
+          "token_id": 4084
+        },
+        {
+          "rank": 9,
+          "score": 0.111111,
+          "text": "fixture_jlens_181_9",
+          "token_id": 4085
+        },
+        {
+          "rank": 10,
+          "score": 0.1,
+          "text": "fixture_jlens_181_10",
+          "token_id": 4086
+        }
+      ],
+      "lens_sha256": "702c9a99d54e19d3b759e9238edcabc7696f7e07246c018a39c0035cb783fc5f",
+      "logit_lens_top": [
+        {
+          "rank": 1,
+          "score": 1.0,
+          "text": "fixture_logit_181_1",
+          "token_id": 4077
+        },
+        {
+          "rank": 2,
+          "score": 0.5,
+          "text": "fixture_logit_181_2",
+          "token_id": 4078
+        },
+        {
+          "rank": 3,
+          "score": 0.333333,
+          "text": "fixture_logit_181_3",
+          "token_id": 4079
+        },
+        {
+          "rank": 4,
+          "score": 0.25,
+          "text": "fixture_logit_181_4",
+          "token_id": 4080
+        },
+        {
+          "rank": 5,
+          "score": 0.2,
+          "text": "fixture_logit_181_5",
+          "token_id": 4081
+        },
+        {
+          "rank": 6,
+          "score": 0.166667,
+          "text": "fixture_logit_181_6",
+          "token_id": 4082
+        },
+        {
+          "rank": 7,
+          "score": 0.142857,
+          "text": "fixture_logit_181_7",
+          "token_id": 4083
+        },
+        {
+          "rank": 8,
+          "score": 0.125,
+          "text": "fixture_logit_181_8",
+          "token_id": 4084
+        },
+        {
+          "rank": 9,
+          "score": 0.111111,
+          "text": "fixture_logit_181_9",
+          "token_id": 4085
+        },
+        {
+          "rank": 10,
+          "score": 0.1,
+          "text": "fixture_logit_181_10",
+          "token_id": 4086
+        }
+      ],
+      "normalized_attention": 1.0,
+      "normalized_rank_desc": 1,
+      "patch_col": 13,
+      "patch_id": 181,
+      "patch_row": 7,
+      "prompt": "Fixture prompt: identify the highlighted visual evidence.",
+      "q_type": "custom",
+      "rank": 1,
+      "raw_attention": 3.378371477127075,
+      "raw_rank_desc": 1,
+      "record_id": "fixture_custom_layer16",
+      "sample_id": "fixture_sample_001",
+      "source_layer": 16,
+      "target_layer": 27,
+      "token_grid": [
+        24,
+        24
+      ]
+    },
+    {
+      "fixture": true,
+      "image_patch_xyxy": [
+        506.6666666666667,
+        212.5,
+        533.3333333333334,
+        230.20833333333334
+      ],
+      "jlens_top": [
+        {
+          "rank": 1,
+          "score": 1.0,
+          "text": "fixture_jlens_307_1",
+          "token_id": 6219
+        },
+        {
+          "rank": 2,
+          "score": 0.5,
+          "text": "fixture_jlens_307_2",
+          "token_id": 6220
+        },
+        {
+          "rank": 3,
+          "score": 0.333333,
+          "text": "fixture_jlens_307_3",
+          "token_id": 6221
+        },
+        {
+          "rank": 4,
+          "score": 0.25,
+          "text": "fixture_jlens_307_4",
+          "token_id": 6222
+        },
+        {
+          "rank": 5,
+          "score": 0.2,
+          "text": "fixture_jlens_307_5",
+          "token_id": 6223
+        },
+        {
+          "rank": 6,
+          "score": 0.166667,
+          "text": "fixture_jlens_307_6",
+          "token_id": 6224
+        },
+        {
+          "rank": 7,
+          "score": 0.142857,
+          "text": "fixture_jlens_307_7",
+          "token_id": 6225
+        },
+        {
+          "rank": 8,
+          "score": 0.125,
+          "text": "fixture_jlens_307_8",
+          "token_id": 6226
+        },
+        {
+          "rank": 9,
+          "score": 0.111111,
+          "text": "fixture_jlens_307_9",
+          "token_id": 6227
+        },
+        {
+          "rank": 10,
+          "score": 0.1,
+          "text": "fixture_jlens_307_10",
+          "token_id": 6228
+        }
+      ],
+      "lens_sha256": "702c9a99d54e19d3b759e9238edcabc7696f7e07246c018a39c0035cb783fc5f",
+      "logit_lens_top": [
+        {
+          "rank": 1,
+          "score": 1.0,
+          "text": "fixture_logit_307_1",
+          "token_id": 6219
+        },
+        {
+          "rank": 2,
+          "score": 0.5,
+          "text": "fixture_logit_307_2",
+          "token_id": 6220
+        },
+        {
+          "rank": 3,
+          "score": 0.333333,
+          "text": "fixture_logit_307_3",
+          "token_id": 6221
+        },
+        {
+          "rank": 4,
+          "score": 0.25,
+          "text": "fixture_logit_307_4",
+          "token_id": 6222
+        },
+        {
+          "rank": 5,
+          "score": 0.2,
+          "text": "fixture_logit_307_5",
+          "token_id": 6223
+        },
+        {
+          "rank": 6,
+          "score": 0.166667,
+          "text": "fixture_logit_307_6",
+          "token_id": 6224
+        },
+        {
+          "rank": 7,
+          "score": 0.142857,
+          "text": "fixture_logit_307_7",
+          "token_id": 6225
+        },
+        {
+          "rank": 8,
+          "score": 0.125,
+          "text": "fixture_logit_307_8",
+          "token_id": 6226
+        },
+        {
+          "rank": 9,
+          "score": 0.111111,
+          "text": "fixture_logit_307_9",
+          "token_id": 6227
+        },
+        {
+          "rank": 10,
+          "score": 0.1,
+          "text": "fixture_logit_307_10",
+          "token_id": 6228
+        }
+      ],
+      "normalized_attention": 0.9685661196708679,
+      "normalized_rank_desc": 2,
+      "patch_col": 19,
+      "patch_id": 307,
+      "patch_row": 12,
+      "prompt": "Fixture prompt: identify the highlighted visual evidence.",
+      "q_type": "custom",
+      "rank": 2,
+      "raw_attention": 3.272503137588501,
+      "raw_rank_desc": 2,
+      "record_id": "fixture_custom_layer16",
+      "sample_id": "fixture_sample_001",
+      "source_layer": 16,
+      "target_layer": 27,
+      "token_grid": [
+        24,
+        24
+      ]
+    },
+    {
+      "fixture": true,
+      "image_patch_xyxy": [
+        106.66666666666667,
+        318.75,
+        133.33333333333334,
+        336.4583333333333
+      ],
+      "jlens_top": [
+        {
+          "rank": 1,
+          "score": 1.0,
+          "text": "fixture_jlens_436_1",
+          "token_id": 8412
+        },
+        {
+          "rank": 2,
+          "score": 0.5,
+          "text": "fixture_jlens_436_2",
+          "token_id": 8413
+        },
+        {
+          "rank": 3,
+          "score": 0.333333,
+          "text": "fixture_jlens_436_3",
+          "token_id": 8414
+        },
+        {
+          "rank": 4,
+          "score": 0.25,
+          "text": "fixture_jlens_436_4",
+          "token_id": 8415
+        },
+        {
+          "rank": 5,
+          "score": 0.2,
+          "text": "fixture_jlens_436_5",
+          "token_id": 8416
+        },
+        {
+          "rank": 6,
+          "score": 0.166667,
+          "text": "fixture_jlens_436_6",
+          "token_id": 8417
+        },
+        {
+          "rank": 7,
+          "score": 0.142857,
+          "text": "fixture_jlens_436_7",
+          "token_id": 8418
+        },
+        {
+          "rank": 8,
+          "score": 0.125,
+          "text": "fixture_jlens_436_8",
+          "token_id": 8419
+        },
+        {
+          "rank": 9,
+          "score": 0.111111,
+          "text": "fixture_jlens_436_9",
+          "token_id": 8420
+        },
+        {
+          "rank": 10,
+          "score": 0.1,
+          "text": "fixture_jlens_436_10",
+          "token_id": 8421
+        }
+      ],
+      "lens_sha256": "702c9a99d54e19d3b759e9238edcabc7696f7e07246c018a39c0035cb783fc5f",
+      "logit_lens_top": [
+        {
+          "rank": 1,
+          "score": 1.0,
+          "text": "fixture_logit_436_1",
+          "token_id": 8412
+        },
+        {
+          "rank": 2,
+          "score": 0.5,
+          "text": "fixture_logit_436_2",
+          "token_id": 8413
+        },
+        {
+          "rank": 3,
+          "score": 0.333333,
+          "text": "fixture_logit_436_3",
+          "token_id": 8414
+        },
+        {
+          "rank": 4,
+          "score": 0.25,
+          "text": "fixture_logit_436_4",
+          "token_id": 8415
+        },
+        {
+          "rank": 5,
+          "score": 0.2,
+          "text": "fixture_logit_436_5",
+          "token_id": 8416
+        },
+        {
+          "rank": 6,
+          "score": 0.166667,
+          "text": "fixture_logit_436_6",
+          "token_id": 8417
+        },
+        {
+          "rank": 7,
+          "score": 0.142857,
+          "text": "fixture_logit_436_7",
+          "token_id": 8418
+        },
+        {
+          "rank": 8,
+          "score": 0.125,
+          "text": "fixture_logit_436_8",
+          "token_id": 8419
+        },
+        {
+          "rank": 9,
+          "score": 0.111111,
+          "text": "fixture_logit_436_9",
+          "token_id": 8420
+        },
+        {
+          "rank": 10,
+          "score": 0.1,
+          "text": "fixture_logit_436_10",
+          "token_id": 8421
+        }
+      ],
+      "normalized_attention": 0.8192482590675354,
+      "normalized_rank_desc": 3,
+      "patch_col": 4,
+      "patch_id": 436,
+      "patch_row": 18,
+      "prompt": "Fixture prompt: identify the highlighted visual evidence.",
+      "q_type": "custom",
+      "rank": 3,
+      "raw_attention": 2.7696056365966797,
+      "raw_rank_desc": 3,
+      "record_id": "fixture_custom_layer16",
+      "sample_id": "fixture_sample_001",
+      "source_layer": 16,
+      "target_layer": 27,
+      "token_grid": [
+        24,
+        24
+      ]
+    },
+    {
+      "fixture": true,
+      "image_patch_xyxy": [
+        133.33333333333334,
+        70.83333333333333,
+        160.0,
+        88.54166666666667
+      ],
+      "jlens_top": [
+        {
+          "rank": 1,
+          "score": 1.0,
+          "text": "fixture_jlens_101_1",
+          "token_id": 2717
+        },
+        {
+          "rank": 2,
+          "score": 0.5,
+          "text": "fixture_jlens_101_2",
+          "token_id": 2718
+        },
+        {
+          "rank": 3,
+          "score": 0.333333,
+          "text": "fixture_jlens_101_3",
+          "token_id": 2719
+        },
+        {
+          "rank": 4,
+          "score": 0.25,
+          "text": "fixture_jlens_101_4",
+          "token_id": 2720
+        },
+        {
+          "rank": 5,
+          "score": 0.2,
+          "text": "fixture_jlens_101_5",
+          "token_id": 2721
+        },
+        {
+          "rank": 6,
+          "score": 0.166667,
+          "text": "fixture_jlens_101_6",
+          "token_id": 2722
+        },
+        {
+          "rank": 7,
+          "score": 0.142857,
+          "text": "fixture_jlens_101_7",
+          "token_id": 2723
+        },
+        {
+          "rank": 8,
+          "score": 0.125,
+          "text": "fixture_jlens_101_8",
+          "token_id": 2724
+        },
+        {
+          "rank": 9,
+          "score": 0.111111,
+          "text": "fixture_jlens_101_9",
+          "token_id": 2725
+        },
+        {
+          "rank": 10,
+          "score": 0.1,
+          "text": "fixture_jlens_101_10",
+          "token_id": 2726
+        }
+      ],
+      "lens_sha256": "702c9a99d54e19d3b759e9238edcabc7696f7e07246c018a39c0035cb783fc5f",
+      "logit_lens_top": [
+        {
+          "rank": 1,
+          "score": 1.0,
+          "text": "fixture_logit_101_1",
+          "token_id": 2717
+        },
+        {
+          "rank": 2,
+          "score": 0.5,
+          "text": "fixture_logit_101_2",
+          "token_id": 2718
+        },
+        {
+          "rank": 3,
+          "score": 0.333333,
+          "text": "fixture_logit_101_3",
+          "token_id": 2719
+        },
+        {
+          "rank": 4,
+          "score": 0.25,
+          "text": "fixture_logit_101_4",
+          "token_id": 2720
+        },
+        {
+          "rank": 5,
+          "score": 0.2,
+          "text": "fixture_logit_101_5",
+          "token_id": 2721
+        },
+        {
+          "rank": 6,
+          "score": 0.166667,
+          "text": "fixture_logit_101_6",
+          "token_id": 2722
+        },
+        {
+          "rank": 7,
+          "score": 0.142857,
+          "text": "fixture_logit_101_7",
+          "token_id": 2723
+        },
+        {
+          "rank": 8,
+          "score": 0.125,
+          "text": "fixture_logit_101_8",
+          "token_id": 2724
+        },
+        {
+          "rank": 9,
+          "score": 0.111111,
+          "text": "fixture_logit_101_9",
+          "token_id": 2725
+        },
+        {
+          "rank": 10,
+          "score": 0.1,
+          "text": "fixture_logit_101_10",
+          "token_id": 2726
+        }
+      ],
+      "normalized_attention": 0.6453342437744141,
+      "normalized_rank_desc": 4,
+      "patch_col": 5,
+      "patch_id": 101,
+      "patch_row": 4,
+      "prompt": "Fixture prompt: identify the highlighted visual evidence.",
+      "q_type": "custom",
+      "rank": 4,
+      "raw_attention": 2.1838691234588623,
+      "raw_rank_desc": 4,
+      "record_id": "fixture_custom_layer16",
+      "sample_id": "fixture_sample_001",
+      "source_layer": 16,
+      "target_layer": 27,
+      "token_grid": [
+        24,
+        24
+      ]
+    },
+    {
+      "fixture": true,
+      "image_patch_xyxy": [
+        506.6666666666667,
+        230.20833333333334,
+        533.3333333333334,
+        247.91666666666666
+      ],
+      "jlens_top": [
+        {
+          "rank": 1,
+          "score": 1.0,
+          "text": "fixture_jlens_331_1",
+          "token_id": 6627
+        },
+        {
+          "rank": 2,
+          "score": 0.5,
+          "text": "fixture_jlens_331_2",
+          "token_id": 6628
+        },
+        {
+          "rank": 3,
+          "score": 0.333333,
+          "text": "fixture_jlens_331_3",
+          "token_id": 6629
+        },
+        {
+          "rank": 4,
+          "score": 0.25,
+          "text": "fixture_jlens_331_4",
+          "token_id": 6630
+        },
+        {
+          "rank": 5,
+          "score": 0.2,
+          "text": "fixture_jlens_331_5",
+          "token_id": 6631
+        },
+        {
+          "rank": 6,
+          "score": 0.166667,
+          "text": "fixture_jlens_331_6",
+          "token_id": 6632
+        },
+        {
+          "rank": 7,
+          "score": 0.142857,
+          "text": "fixture_jlens_331_7",
+          "token_id": 6633
+        },
+        {
+          "rank": 8,
+          "score": 0.125,
+          "text": "fixture_jlens_331_8",
+          "token_id": 6634
+        },
+        {
+          "rank": 9,
+          "score": 0.111111,
+          "text": "fixture_jlens_331_9",
+          "token_id": 6635
+        },
+        {
+          "rank": 10,
+          "score": 0.1,
+          "text": "fixture_jlens_331_10",
+          "token_id": 6636
+        }
+      ],
+      "lens_sha256": "702c9a99d54e19d3b759e9238edcabc7696f7e07246c018a39c0035cb783fc5f",
+      "logit_lens_top": [
+        {
+          "rank": 1,
+          "score": 1.0,
+          "text": "fixture_logit_331_1",
+          "token_id": 6627
+        },
+        {
+          "rank": 2,
+          "score": 0.5,
+          "text": "fixture_logit_331_2",
+          "token_id": 6628
+        },
+        {
+          "rank": 3,
+          "score": 0.333333,
+          "text": "fixture_logit_331_3",
+          "token_id": 6629
+        },
+        {
+          "rank": 4,
+          "score": 0.25,
+          "text": "fixture_logit_331_4",
+          "token_id": 6630
+        },
+        {
+          "rank": 5,
+          "score": 0.2,
+          "text": "fixture_logit_331_5",
+          "token_id": 6631
+        },
+        {
+          "rank": 6,
+          "score": 0.166667,
+          "text": "fixture_logit_331_6",
+          "token_id": 6632
+        },
+        {
+          "rank": 7,
+          "score": 0.142857,
+          "text": "fixture_logit_331_7",
+          "token_id": 6633
+        },
+        {
+          "rank": 8,
+          "score": 0.125,
+          "text": "fixture_logit_331_8",
+          "token_id": 6634
+        },
+        {
+          "rank": 9,
+          "score": 0.111111,
+          "text": "fixture_logit_331_9",
+          "token_id": 6635
+        },
+        {
+          "rank": 10,
+          "score": 0.1,
+          "text": "fixture_logit_331_10",
+          "token_id": 6636
+        }
+      ],
+      "normalized_attention": 0.5734484791755676,
+      "normalized_rank_desc": 5,
+      "patch_col": 19,
+      "patch_id": 331,
+      "patch_row": 13,
+      "prompt": "Fixture prompt: identify the highlighted visual evidence.",
+      "q_type": "custom",
+      "rank": 5,
+      "raw_attention": 1.9417601823806763,
+      "raw_rank_desc": 5,
+      "record_id": "fixture_custom_layer16",
+      "sample_id": "fixture_sample_001",
+      "source_layer": 16,
+      "target_layer": 27,
+      "token_grid": [
+        24,
+        24
+      ]
+    },
+    {
+      "fixture": true,
+      "image_patch_xyxy": [
+        346.6666666666667,
+        141.66666666666666,
+        373.3333333333333,
+        159.375
+      ],
+      "jlens_top": [
+        {
+          "rank": 1,
+          "score": 1.0,
+          "text": "fixture_jlens_205_1",
+          "token_id": 4485
+        },
+        {
+          "rank": 2,
+          "score": 0.5,
+          "text": "fixture_jlens_205_2",
+          "token_id": 4486
+        },
+        {
+          "rank": 3,
+          "score": 0.333333,
+          "text": "fixture_jlens_205_3",
+          "token_id": 4487
+        },
+        {
+          "rank": 4,
+          "score": 0.25,
+          "text": "fixture_jlens_205_4",
+          "token_id": 4488
+        },
+        {
+          "rank": 5,
+          "score": 0.2,
+          "text": "fixture_jlens_205_5",
+          "token_id": 4489
+        },
+        {
+          "rank": 6,
+          "score": 0.166667,
+          "text": "fixture_jlens_205_6",
+          "token_id": 4490
+        },
+        {
+          "rank": 7,
+          "score": 0.142857,
+          "text": "fixture_jlens_205_7",
+          "token_id": 4491
+        },
+        {
+          "rank": 8,
+          "score": 0.125,
+          "text": "fixture_jlens_205_8",
+          "token_id": 4492
+        },
+        {
+          "rank": 9,
+          "score": 0.111111,
+          "text": "fixture_jlens_205_9",
+          "token_id": 4493
+        },
+        {
+          "rank": 10,
+          "score": 0.1,
+          "text": "fixture_jlens_205_10",
+          "token_id": 4494
+        }
+      ],
+      "lens_sha256": "702c9a99d54e19d3b759e9238edcabc7696f7e07246c018a39c0035cb783fc5f",
+      "logit_lens_top": [
+        {
+          "rank": 1,
+          "score": 1.0,
+          "text": "fixture_logit_205_1",
+          "token_id": 4485
+        },
+        {
+          "rank": 2,
+          "score": 0.5,
+          "text": "fixture_logit_205_2",
+          "token_id": 4486
+        },
+        {
+          "rank": 3,
+          "score": 0.333333,
+          "text": "fixture_logit_205_3",
+          "token_id": 4487
+        },
+        {
+          "rank": 4,
+          "score": 0.25,
+          "text": "fixture_logit_205_4",
+          "token_id": 4488
+        },
+        {
+          "rank": 5,
+          "score": 0.2,
+          "text": "fixture_logit_205_5",
+          "token_id": 4489
+        },
+        {
+          "rank": 6,
+          "score": 0.166667,
+          "text": "fixture_logit_205_6",
+          "token_id": 4490
+        },
+        {
+          "rank": 7,
+          "score": 0.142857,
+          "text": "fixture_logit_205_7",
+          "token_id": 4491
+        },
+        {
+          "rank": 8,
+          "score": 0.125,
+          "text": "fixture_logit_205_8",
+          "token_id": 4492
+        },
+        {
+          "rank": 9,
+          "score": 0.111111,
+          "text": "fixture_logit_205_9",
+          "token_id": 4493
+        },
+        {
+          "rank": 10,
+          "score": 0.1,
+          "text": "fixture_logit_205_10",
+          "token_id": 4494
+        }
+      ],
+      "normalized_attention": 0.5340937972068787,
+      "normalized_rank_desc": 6,
+      "patch_col": 13,
+      "patch_id": 205,
+      "patch_row": 8,
+      "prompt": "Fixture prompt: identify the highlighted visual evidence.",
+      "q_type": "custom",
+      "rank": 6,
+      "raw_attention": 1.8092149496078491,
+      "raw_rank_desc": 6,
+      "record_id": "fixture_custom_layer16",
+      "sample_id": "fixture_sample_001",
+      "source_layer": 16,
+      "target_layer": 27,
+      "token_grid": [
+        24,
+        24
+      ]
+    },
+    {
+      "fixture": true,
+      "image_patch_xyxy": [
+        533.3333333333334,
+        212.5,
+        560.0,
+        230.20833333333334
+      ],
+      "jlens_top": [
+        {
+          "rank": 1,
+          "score": 1.0,
+          "text": "fixture_jlens_308_1",
+          "token_id": 6236
+        },
+        {
+          "rank": 2,
+          "score": 0.5,
+          "text": "fixture_jlens_308_2",
+          "token_id": 6237
+        },
+        {
+          "rank": 3,
+          "score": 0.333333,
+          "text": "fixture_jlens_308_3",
+          "token_id": 6238
+        },
+        {
+          "rank": 4,
+          "score": 0.25,
+          "text": "fixture_jlens_308_4",
+          "token_id": 6239
+        },
+        {
+          "rank": 5,
+          "score": 0.2,
+          "text": "fixture_jlens_308_5",
+          "token_id": 6240
+        },
+        {
+          "rank": 6,
+          "score": 0.166667,
+          "text": "fixture_jlens_308_6",
+          "token_id": 6241
+        },
+        {
+          "rank": 7,
+          "score": 0.142857,
+          "text": "fixture_jlens_308_7",
+          "token_id": 6242
+        },
+        {
+          "rank": 8,
+          "score": 0.125,
+          "text": "fixture_jlens_308_8",
+          "token_id": 6243
+        },
+        {
+          "rank": 9,
+          "score": 0.111111,
+          "text": "fixture_jlens_308_9",
+          "token_id": 6244
+        },
+        {
+          "rank": 10,
+          "score": 0.1,
+          "text": "fixture_jlens_308_10",
+          "token_id": 6245
+        }
+      ],
+      "lens_sha256": "702c9a99d54e19d3b759e9238edcabc7696f7e07246c018a39c0035cb783fc5f",
+      "logit_lens_top": [
+        {
+          "rank": 1,
+          "score": 1.0,
+          "text": "fixture_logit_308_1",
+          "token_id": 6236
+        },
+        {
+          "rank": 2,
+          "score": 0.5,
+          "text": "fixture_logit_308_2",
+          "token_id": 6237
+        },
+        {
+          "rank": 3,
+          "score": 0.333333,
+          "text": "fixture_logit_308_3",
+          "token_id": 6238
+        },
+        {
+          "rank": 4,
+          "score": 0.25,
+          "text": "fixture_logit_308_4",
+          "token_id": 6239
+        },
+        {
+          "rank": 5,
+          "score": 0.2,
+          "text": "fixture_logit_308_5",
+          "token_id": 6240
+        },
+        {
+          "rank": 6,
+          "score": 0.166667,
+          "text": "fixture_logit_308_6",
+          "token_id": 6241
+        },
+        {
+          "rank": 7,
+          "score": 0.142857,
+          "text": "fixture_logit_308_7",
+          "token_id": 6242
+        },
+        {
+          "rank": 8,
+          "score": 0.125,
+          "text": "fixture_logit_308_8",
+          "token_id": 6243
+        },
+        {
+          "rank": 9,
+          "score": 0.111111,
+          "text": "fixture_logit_308_9",
+          "token_id": 6244
+        },
+        {
+          "rank": 10,
+          "score": 0.1,
+          "text": "fixture_logit_308_10",
+          "token_id": 6245
+        }
+      ],
+      "normalized_attention": 0.48492419719696045,
+      "normalized_rank_desc": 7,
+      "patch_col": 20,
+      "patch_id": 308,
+      "patch_row": 12,
+      "prompt": "Fixture prompt: identify the highlighted visual evidence.",
+      "q_type": "custom",
+      "rank": 7,
+      "raw_attention": 1.6436134576797485,
+      "raw_rank_desc": 7,
+      "record_id": "fixture_custom_layer16",
+      "sample_id": "fixture_sample_001",
+      "source_layer": 16,
+      "target_layer": 27,
+      "token_grid": [
+        24,
+        24
+      ]
+    },
+    {
+      "fixture": true,
+      "image_patch_xyxy": [
+        106.66666666666667,
+        336.4583333333333,
+        133.33333333333334,
+        354.1666666666667
+      ],
+      "jlens_top": [
+        {
+          "rank": 1,
+          "score": 1.0,
+          "text": "fixture_jlens_460_1",
+          "token_id": 8820
+        },
+        {
+          "rank": 2,
+          "score": 0.5,
+          "text": "fixture_jlens_460_2",
+          "token_id": 8821
+        },
+        {
+          "rank": 3,
+          "score": 0.333333,
+          "text": "fixture_jlens_460_3",
+          "token_id": 8822
+        },
+        {
+          "rank": 4,
+          "score": 0.25,
+          "text": "fixture_jlens_460_4",
+          "token_id": 8823
+        },
+        {
+          "rank": 5,
+          "score": 0.2,
+          "text": "fixture_jlens_460_5",
+          "token_id": 8824
+        },
+        {
+          "rank": 6,
+          "score": 0.166667,
+          "text": "fixture_jlens_460_6",
+          "token_id": 8825
+        },
+        {
+          "rank": 7,
+          "score": 0.142857,
+          "text": "fixture_jlens_460_7",
+          "token_id": 8826
+        },
+        {
+          "rank": 8,
+          "score": 0.125,
+          "text": "fixture_jlens_460_8",
+          "token_id": 8827
+        },
+        {
+          "rank": 9,
+          "score": 0.111111,
+          "text": "fixture_jlens_460_9",
+          "token_id": 8828
+        },
+        {
+          "rank": 10,
+          "score": 0.1,
+          "text": "fixture_jlens_460_10",
+          "token_id": 8829
+        }
+      ],
+      "lens_sha256": "702c9a99d54e19d3b759e9238edcabc7696f7e07246c018a39c0035cb783fc5f",
+      "logit_lens_top": [
+        {
+          "rank": 1,
+          "score": 1.0,
+          "text": "fixture_logit_460_1",
+          "token_id": 8820
+        },
+        {
+          "rank": 2,
+          "score": 0.5,
+          "text": "fixture_logit_460_2",
+          "token_id": 8821
+        },
+        {
+          "rank": 3,
+          "score": 0.333333,
+          "text": "fixture_logit_460_3",
+          "token_id": 8822
+        },
+        {
+          "rank": 4,
+          "score": 0.25,
+          "text": "fixture_logit_460_4",
+          "token_id": 8823
+        },
+        {
+          "rank": 5,
+          "score": 0.2,
+          "text": "fixture_logit_460_5",
+          "token_id": 8824
+        },
+        {
+          "rank": 6,
+          "score": 0.166667,
+          "text": "fixture_logit_460_6",
+          "token_id": 8825
+        },
+        {
+          "rank": 7,
+          "score": 0.142857,
+          "text": "fixture_logit_460_7",
+          "token_id": 8826
+        },
+        {
+          "rank": 8,
+          "score": 0.125,
+          "text": "fixture_logit_460_8",
+          "token_id": 8827
+        },
+        {
+          "rank": 9,
+          "score": 0.111111,
+          "text": "fixture_logit_460_9",
+          "token_id": 8828
+        },
+        {
+          "rank": 10,
+          "score": 0.1,
+          "text": "fixture_logit_460_10",
+          "token_id": 8829
+        }
+      ],
+      "normalized_attention": 0.4756571054458618,
+      "normalized_rank_desc": 8,
+      "patch_col": 4,
+      "patch_id": 460,
+      "patch_row": 19,
+      "prompt": "Fixture prompt: identify the highlighted visual evidence.",
+      "q_type": "custom",
+      "rank": 8,
+      "raw_attention": 1.6124022006988525,
+      "raw_rank_desc": 8,
+      "record_id": "fixture_custom_layer16",
+      "sample_id": "fixture_sample_001",
+      "source_layer": 16,
+      "target_layer": 27,
+      "token_grid": [
+        24,
+        24
+      ]
+    },
+    {
+      "fixture": true,
+      "image_patch_xyxy": [
+        373.3333333333333,
+        123.95833333333333,
+        400.0,
+        141.66666666666666
+      ],
+      "jlens_top": [
+        {
+          "rank": 1,
+          "score": 1.0,
+          "text": "fixture_jlens_182_1",
+          "token_id": 4094
+        },
+        {
+          "rank": 2,
+          "score": 0.5,
+          "text": "fixture_jlens_182_2",
+          "token_id": 4095
+        },
+        {
+          "rank": 3,
+          "score": 0.333333,
+          "text": "fixture_jlens_182_3",
+          "token_id": 4096
+        },
+        {
+          "rank": 4,
+          "score": 0.25,
+          "text": "fixture_jlens_182_4",
+          "token_id": 4097
+        },
+        {
+          "rank": 5,
+          "score": 0.2,
+          "text": "fixture_jlens_182_5",
+          "token_id": 4098
+        },
+        {
+          "rank": 6,
+          "score": 0.166667,
+          "text": "fixture_jlens_182_6",
+          "token_id": 4099
+        },
+        {
+          "rank": 7,
+          "score": 0.142857,
+          "text": "fixture_jlens_182_7",
+          "token_id": 4100
+        },
+        {
+          "rank": 8,
+          "score": 0.125,
+          "text": "fixture_jlens_182_8",
+          "token_id": 4101
+        },
+        {
+          "rank": 9,
+          "score": 0.111111,
+          "text": "fixture_jlens_182_9",
+          "token_id": 4102
+        },
+        {
+          "rank": 10,
+          "score": 0.1,
+          "text": "fixture_jlens_182_10",
+          "token_id": 4103
+        }
+      ],
+      "lens_sha256": "702c9a99d54e19d3b759e9238edcabc7696f7e07246c018a39c0035cb783fc5f",
+      "logit_lens_top": [
+        {
+          "rank": 1,
+          "score": 1.0,
+          "text": "fixture_logit_182_1",
+          "token_id": 4094
+        },
+        {
+          "rank": 2,
+          "score": 0.5,
+          "text": "fixture_logit_182_2",
+          "token_id": 4095
+        },
+        {
+          "rank": 3,
+          "score": 0.333333,
+          "text": "fixture_logit_182_3",
+          "token_id": 4096
+        },
+        {
+          "rank": 4,
+          "score": 0.25,
+          "text": "fixture_logit_182_4",
+          "token_id": 4097
+        },
+        {
+          "rank": 5,
+          "score": 0.2,
+          "text": "fixture_logit_182_5",
+          "token_id": 4098
+        },
+        {
+          "rank": 6,
+          "score": 0.166667,
+          "text": "fixture_logit_182_6",
+          "token_id": 4099
+        },
+        {
+          "rank": 7,
+          "score": 0.142857,
+          "text": "fixture_logit_182_7",
+          "token_id": 4100
+        },
+        {
+          "rank": 8,
+          "score": 0.125,
+          "text": "fixture_logit_182_8",
+          "token_id": 4101
+        },
+        {
+          "rank": 9,
+          "score": 0.111111,
+          "text": "fixture_logit_182_9",
+          "token_id": 4102
+        },
+        {
+          "rank": 10,
+          "score": 0.1,
+          "text": "fixture_logit_182_10",
+          "token_id": 4103
+        }
+      ],
+      "normalized_attention": 0.43309667706489563,
+      "normalized_rank_desc": 9,
+      "patch_col": 14,
+      "patch_id": 182,
+      "patch_row": 7,
+      "prompt": "Fixture prompt: identify the highlighted visual evidence.",
+      "q_type": "custom",
+      "rank": 9,
+      "raw_attention": 1.4690601825714111,
+      "raw_rank_desc": 9,
+      "record_id": "fixture_custom_layer16",
+      "sample_id": "fixture_sample_001",
+      "source_layer": 16,
+      "target_layer": 27,
+      "token_grid": [
+        24,
+        24
+      ]
+    },
+    {
+      "fixture": true,
+      "image_patch_xyxy": [
+        133.33333333333334,
+        318.75,
+        160.0,
+        336.4583333333333
+      ],
+      "jlens_top": [
+        {
+          "rank": 1,
+          "score": 1.0,
+          "text": "fixture_jlens_437_1",
+          "token_id": 8429
+        },
+        {
+          "rank": 2,
+          "score": 0.5,
+          "text": "fixture_jlens_437_2",
+          "token_id": 8430
+        },
+        {
+          "rank": 3,
+          "score": 0.333333,
+          "text": "fixture_jlens_437_3",
+          "token_id": 8431
+        },
+        {
+          "rank": 4,
+          "score": 0.25,
+          "text": "fixture_jlens_437_4",
+          "token_id": 8432
+        },
+        {
+          "rank": 5,
+          "score": 0.2,
+          "text": "fixture_jlens_437_5",
+          "token_id": 8433
+        },
+        {
+          "rank": 6,
+          "score": 0.166667,
+          "text": "fixture_jlens_437_6",
+          "token_id": 8434
+        },
+        {
+          "rank": 7,
+          "score": 0.142857,
+          "text": "fixture_jlens_437_7",
+          "token_id": 8435
+        },
+        {
+          "rank": 8,
+          "score": 0.125,
+          "text": "fixture_jlens_437_8",
+          "token_id": 8436
+        },
+        {
+          "rank": 9,
+          "score": 0.111111,
+          "text": "fixture_jlens_437_9",
+          "token_id": 8437
+        },
+        {
+          "rank": 10,
+          "score": 0.1,
+          "text": "fixture_jlens_437_10",
+          "token_id": 8438
+        }
+      ],
+      "lens_sha256": "702c9a99d54e19d3b759e9238edcabc7696f7e07246c018a39c0035cb783fc5f",
+      "logit_lens_top": [
+        {
+          "rank": 1,
+          "score": 1.0,
+          "text": "fixture_logit_437_1",
+          "token_id": 8429
+        },
+        {
+          "rank": 2,
+          "score": 0.5,
+          "text": "fixture_logit_437_2",
+          "token_id": 8430
+        },
+        {
+          "rank": 3,
+          "score": 0.333333,
+          "text": "fixture_logit_437_3",
+          "token_id": 8431
+        },
+        {
+          "rank": 4,
+          "score": 0.25,
+          "text": "fixture_logit_437_4",
+          "token_id": 8432
+        },
+        {
+          "rank": 5,
+          "score": 0.2,
+          "text": "fixture_logit_437_5",
+          "token_id": 8433
+        },
+        {
+          "rank": 6,
+          "score": 0.166667,
+          "text": "fixture_logit_437_6",
+          "token_id": 8434
+        },
+        {
+          "rank": 7,
+          "score": 0.142857,
+          "text": "fixture_logit_437_7",
+          "token_id": 8435
+        },
+        {
+          "rank": 8,
+          "score": 0.125,
+          "text": "fixture_logit_437_8",
+          "token_id": 8436
+        },
+        {
+          "rank": 9,
+          "score": 0.111111,
+          "text": "fixture_logit_437_9",
+          "token_id": 8437
+        },
+        {
+          "rank": 10,
+          "score": 0.1,
+          "text": "fixture_logit_437_10",
+          "token_id": 8438
+        }
+      ],
+      "normalized_attention": 0.41870319843292236,
+      "normalized_rank_desc": 10,
+      "patch_col": 5,
+      "patch_id": 437,
+      "patch_row": 18,
+      "prompt": "Fixture prompt: identify the highlighted visual evidence.",
+      "q_type": "custom",
+      "rank": 10,
+      "raw_attention": 1.4205833673477173,
+      "raw_rank_desc": 10,
+      "record_id": "fixture_custom_layer16",
+      "sample_id": "fixture_sample_001",
+      "source_layer": 16,
+      "target_layer": 27,
+      "token_grid": [
+        24,
+        24
+      ]
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "attention_map_display_mode": "patch_grid_image_aspect",
+  "attention_map_image_aspect_pages": 1,
+  "attention_map_patch_blocks_independent": true,
+  "attention_map_patch_blocks_independent_pages": 1,
+  "attention_map_sidecar_contract_pages": 1,
+  "attention_map_token_interpolation": false,
+  "errors": [],
+  "fixture": true,
+  "html_record_pages": 1,
+  "logical_patch_grid": [
+    24,
+    24
+  ],
+  "mapping_rows": 10,
+  "patch_value_rows": 576,
+  "record_count": 1,
+  "run_root": "examples/fixture_demo",
+  "schema": "jvlens_validation_summary_v1",
+  "status": "PASS",
+  "top10_patch_ids_match_raw_sort": true,
+  "validated_at_utc": "2026-07-21T13:13:03Z",
+  "zip_entries": 17,
+  "zip_path": "examples/fixture_demo/static_share.zip",
+  "zip_prefixes": [
+    "fixture_demo"
+  ]
+}

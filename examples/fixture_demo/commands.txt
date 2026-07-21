@@ -1,0 +1,6 @@
+started_at_utc=2026-07-21T12:24:53Z
+python=python3
+command=python run_jvlens.py make-fixture-demo --out-dir examples/fixture_demo --lens-path weights/huatuo_jimage_lens_layer16_n50.pt --overwrite
+run_root=examples/fixture_demo
+mode=make-fixture-demo
+note=CPU-only fixture; no model/GPU/JLens lens loading.

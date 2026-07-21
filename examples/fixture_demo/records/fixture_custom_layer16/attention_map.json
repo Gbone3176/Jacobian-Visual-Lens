@@ -1,0 +1,136 @@
+{
+  "attention_map_alignment": "q_type_aligned",
+  "attention_map_canvas_size": [
+    640,
+    425
+  ],
+  "attention_map_colorbar": "viridis_0_1_per_map_minmax",
+  "attention_map_colormap": "viridis",
+  "attention_map_display_minmax_only": true,
+  "attention_map_display_mode": "patch_grid_image_aspect",
+  "attention_map_file": "attention_raw_patchgrid_image_aspect.png",
+  "attention_map_file_sha256": "f196618c58f77c16d35962041f1fd0512e10e4d3e76ecb62a23c568961a0ac8d",
+  "attention_map_image_size": [
+    640,
+    425
+  ],
+  "attention_map_interpolation": "none_explicit_patch_blocks",
+  "attention_map_patch_blocks_independent": true,
+  "attention_map_raw_path": "arrays/fixture_attention_raw.npy",
+  "attention_map_raw_shape": [
+    24,
+    24
+  ],
+  "attention_map_smoothing": false,
+  "attention_map_source": "fixture synthetic raw_attention array",
+  "attention_map_source_layer_index": 16,
+  "attention_map_source_q_type": "custom",
+  "attention_map_token_interpolation": false,
+  "attention_map_top10_matches_page_top10": true,
+  "attention_map_top10_patch_ids": [
+    181,
+    307,
+    436,
+    101,
+    331,
+    205,
+    308,
+    460,
+    182,
+    437
+  ],
+  "bbox_original_xyxy": [
+    [
+      320.0,
+      85.0,
+      560.0,
+      300.0
+    ]
+  ],
+  "bbox_percent_xyxy": [
+    [
+      50.0,
+      20.0,
+      87.5,
+      70.58823529411765
+    ]
+  ],
+  "bbox_source": "fixture input bbox",
+  "bbox_source_q_type": "custom",
+  "constant_or_invalid": false,
+  "fixture": true,
+  "logical_patch_grid": [
+    24,
+    24
+  ],
+  "page_top10_patch_ids": [
+    181,
+    307,
+    436,
+    101,
+    331,
+    205,
+    308,
+    460,
+    182,
+    437
+  ],
+  "patch_boundary_rule": "floor(i*size/24) with final boundary=size",
+  "patch_boundary_x": [
+    0,
+    26,
+    53,
+    80,
+    106,
+    133,
+    160,
+    186,
+    213,
+    240,
+    266,
+    293,
+    320,
+    346,
+    373,
+    400,
+    426,
+    453,
+    480,
+    506,
+    533,
+    560,
+    586,
+    613,
+    640
+  ],
+  "patch_boundary_y": [
+    0,
+    17,
+    35,
+    53,
+    70,
+    88,
+    106,
+    123,
+    141,
+    159,
+    177,
+    194,
+    212,
+    230,
+    247,
+    265,
+    283,
+    301,
+    318,
+    336,
+    354,
+    371,
+    389,
+    407,
+    425
+  ],
+  "schema": "jvlens_attention_map_v1",
+  "source_max": 3.378371477127075,
+  "source_min": 0.010405219160020351
+}

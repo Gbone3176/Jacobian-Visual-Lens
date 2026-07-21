@@ -1,0 +1,7 @@
+JVLens is not an official HuatuoGPT-Vision repository or release.
+
+HuatuoGPT-Vision model weights, tokenizer files, processor files, and support code are external upstream assets. Users are responsible for obtaining them lawfully and complying with the upstream license, model card, acceptable-use terms, and citation requirements.
+
+This staging package does not include HuatuoGPT-Vision model weights, tokenizer files, processor files, support code, local cache snapshots, private datasets, or real dataset images.
+
+This staging package includes the layer16 n50 fitted JLens matrix for review and release preparation. See weights/README.md for the matrix contract, checksum, and metadata notes.

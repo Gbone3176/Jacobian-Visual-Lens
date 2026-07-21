@@ -1,0 +1,31 @@
+{
+  "d_model": 3584,
+  "dim_batch": 4,
+  "dtype": "float16",
+  "failure_count": 0,
+  "lens_file": "huatuo_jimage_lens_layer16_n50.pt",
+  "lens_sha256": "702c9a99d54e19d3b759e9238edcabc7696f7e07246c018a39c0035cb783fc5f",
+  "matrix_shape": [
+    3584,
+    3584
+  ],
+  "max_samples": 50,
+  "max_target_tokens": 4,
+  "n_prompts": 50,
+  "orientation": "residual @ J.T",
+  "prefix_n": 50,
+  "public_packaging_note": "Local filesystem paths, model cache paths, corpus paths, checkpoints, and per-sample provenance are omitted from this public staging metadata.",
+  "row_start": 0,
+  "schema": "jvlens_public_lens_metadata_v1",
+  "sha256": "702c9a99d54e19d3b759e9238edcabc7696f7e07246c018a39c0035cb783fc5f",
+  "source_layer": 16,
+  "source_layers": [
+    16
+  ],
+  "source_metadata_schema": "huatuo_jlens_fit_result_v1",
+  "source_semantics": "decoder residual stream at image-token positions after multimodal embedding replacement",
+  "status": "PREFIX",
+  "success_count": 50,
+  "target_crop_strategy": "head_tail",
+  "target_layer": 27
+}

@@ -1,0 +1,17 @@
+model_path: /path/to/HuatuoGPT-Vision-7B
+support_repo: /path/to/HuatuoGPT-Vision
+corpus_path: /path/to/medical_vqa_fit.jsonl
+out_dir: runs/fit_layer16_n50
+row_start: 0
+max_samples: 50
+source_layers: [16]
+target_layer: 27
+dim_batch: 4
+target_crop_strategy: head_tail
+max_target_tokens: 4
+prefix_save_at: [1, 2, 4, 8, 16, 32, 50]
+top_k: 8
+device: cuda:0
+f1_default_rule: sec9_raw
+f1_optional_rules:
+  - medical_extended

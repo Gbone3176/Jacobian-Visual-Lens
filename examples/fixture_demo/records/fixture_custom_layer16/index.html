@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JVLens fixture_custom_layer16</title>
+<style>
+body { margin:22px; font:14px/1.45 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; color:#202124; }
+h1 { font-size:20px; margin:0 0 8px; }
+.prompt { max-width:1180px; padding:10px 12px; background:#f7f7f7; border:1px solid #e0e0e0; border-radius:8px; }
+.layout { display:grid; grid-template-columns:minmax(520px,1fr) minmax(520px,760px); gap:18px; align-items:start; margin-top:16px; }
+.stage,.attention-stage { position:relative; width:100%; max-width:1120px; border:1px solid #ddd; background:#fafafa; }
+.stage img,.attention-stage img { display:block; width:100%; height:auto; }
+.attention-map { margin-top:14px; max-width:1120px; border:1px solid #ddd; background:#fafafa; padding:12px; }
+.attention-map p { margin:0 0 10px; color:#666; font-size:12px; }
+.patch { position:absolute; border:2px solid #d71920; background:rgba(215,25,32,.16); color:#8a0000; font:700 12px/1 system-ui,sans-serif; box-sizing:border-box; padding:0; }
+.patch span { position:absolute; left:2px; top:2px; min-width:18px; padding:2px 4px; background:rgba(255,245,245,.96); border:1px solid rgba(180,0,0,.35); border-radius:4px; }
+.bbox { position:absolute; border:3px solid #00e5ff; box-shadow:0 0 0 2px rgba(0,0,0,.86); box-sizing:border-box; pointer-events:none; z-index:20; }
+.bbox span { position:absolute; left:0; top:0; transform:translate(-2px,-100%); background:rgba(0,0,0,.86); color:#fff; padding:2px 5px; border-radius:3px; font:700 11px/1 system-ui,sans-serif; }
+.attention-bbox { border-color:#ffea00; }
+.colorbar { height:12px; margin-top:8px; border:1px solid #ddd; background:linear-gradient(90deg,#440154 0%,#31688e 33%,#35b779 66%,#fde725 100%); }
+.colorbar-label { margin-top:4px; color:#666; font-size:12px; }
+table { width:100%; border-collapse:collapse; font-size:12px; }
+th,td { padding:5px 6px; border-bottom:1px solid #e8e8e8; vertical-align:top; text-align:left; }
+td:nth-child(6),td:nth-child(7) { max-width:260px; overflow-wrap:anywhere; }
+pre { overflow:auto; padding:12px; background:#f7f7f7; border:1px solid #eee; border-radius:8px; }
+@media (max-width: 980px) { body { margin:14px; } .layout { grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+<h1>JVLens single-image report: fixture_custom_layer16</h1>
+<div class="prompt"><b>prompt:</b> Fixture prompt: identify the highlighted visual evidence.<br>
+<b>q_type:</b> custom · <b>source_layer:</b> 16 · <b>fixture:</b> true</div>
+<main class="layout">
+  <section>
+    <div class="stage">
+      <img src="../../images/fixture_input.png" alt="input image">
+      <button class="patch" style="left:54.166667%;top:29.166667%;width:4.166667%;height:4.166667%" title="rank 1 patch 181"><span>1</span></button><button class="patch" style="left:79.166667%;top:50.000000%;width:4.166667%;height:4.166667%" title="rank 2 patch 307"><span>2</span></button><button class="patch" style="left:16.666667%;top:75.000000%;width:4.166667%;height:4.166667%" title="rank 3 patch 436"><span>3</span></button><button class="patch" style="left:20.833333%;top:16.666667%;width:4.166667%;height:4.166667%" title="rank 4 patch 101"><span>4</span></button><button class="patch" style="left:79.166667%;top:54.166667%;width:4.166667%;height:4.166667%" title="rank 5 patch 331"><span>5</span></button><button class="patch" style="left:54.166667%;top:33.333333%;width:4.166667%;height:4.166667%" title="rank 6 patch 205"><span>6</span></button><button class="patch" style="left:83.333333%;top:50.000000%;width:4.166667%;height:4.166667%" title="rank 7 patch 308"><span>7</span></button><button class="patch" style="left:16.666667%;top:79.166667%;width:4.166667%;height:4.166667%" title="rank 8 patch 460"><span>8</span></button><button class="patch" style="left:58.333333%;top:29.166667%;width:4.166667%;height:4.166667%" title="rank 9 patch 182"><span>9</span></button><button class="patch" style="left:20.833333%;top:75.000000%;width:4.166667%;height:4.166667%" title="rank 10 patch 437"><span>10</span></button>
+      <div class="bbox source-bbox" style="left:50.000000%;top:20.000000%;width:37.500000%;height:50.588235%"><span>B1</span></div>
+    </div>
+    <section class="attention-map">
+      <h2>VG raw attention and JVLens patch blocks</h2>
+      <p>q_type-aligned image-aspect 24x24 token grid, independent patch blocks, no interpolation, viridis per-map minmax. Fixture tokens are synthetic and marked in JSON.</p>
+      <div class="attention-stage">
+        <img src="attention_raw_patchgrid_image_aspect.png" alt="q_type-aligned image-aspect independent patch blocks">
+        <div class="bbox attention-bbox" style="left:50.000000%;top:20.000000%;width:37.500000%;height:50.588235%"><span>B1</span></div>
+      </div>
+      <div class="colorbar"></div>
+      <div class="colorbar-label">viridis 0..1 per-map minmax; 0=raw min, 1=raw max</div>
+    </section>
+  </section>
+  <section>
+    <table>
+      <thead><tr><th>rank</th><th>patch</th><th>row,col</th><th>raw</th><th>norm</th><th>JLens top tokens</th><th>logit-lens top tokens</th></tr></thead>
+      <tbody><tr><td>1</td><td>181</td><td>7,13</td><td>3.3783715</td><td>1</td><td>fixture_jlens_181_1, fixture_jlens_181_2, fixture_jlens_181_3, fixture_jlens_181_4, fixture_jlens_181_5, fixture_jlens_181_6, fixture_jlens_181_7, fixture_jlens_181_8, fixture_jlens_181_9, fixture_jlens_181_10</td><td>fixture_logit_181_1, fixture_logit_181_2, fixture_logit_181_3, fixture_logit_181_4, fixture_logit_181_5, fixture_logit_181_6, fixture_logit_181_7, fixture_logit_181_8, fixture_logit_181_9, fixture_logit_181_10</td></tr><tr><td>2</td><td>307</td><td>12,19</td><td>3.2725031</td><td>0.96856612</td><td>fixture_jlens_307_1, fixture_jlens_307_2, fixture_jlens_307_3, fixture_jlens_307_4, fixture_jlens_307_5, fixture_jlens_307_6, fixture_jlens_307_7, fixture_jlens_307_8, fixture_jlens_307_9, fixture_jlens_307_10</td><td>fixture_logit_307_1, fixture_logit_307_2, fixture_logit_307_3, fixture_logit_307_4, fixture_logit_307_5, fixture_logit_307_6, fixture_logit_307_7, fixture_logit_307_8, fixture_logit_307_9, fixture_logit_307_10</td></tr><tr><td>3</td><td>436</td><td>18,4</td><td>2.7696056</td><td>0.81924826</td><td>fixture_jlens_436_1, fixture_jlens_436_2, fixture_jlens_436_3, fixture_jlens_436_4, fixture_jlens_436_5, fixture_jlens_436_6, fixture_jlens_436_7, fixture_jlens_436_8, fixture_jlens_436_9, fixture_jlens_436_10</td><td>fixture_logit_436_1, fixture_logit_436_2, fixture_logit_436_3, fixture_logit_436_4, fixture_logit_436_5, fixture_logit_436_6, fixture_logit_436_7, fixture_logit_436_8, fixture_logit_436_9, fixture_logit_436_10</td></tr><tr><td>4</td><td>101</td><td>4,5</td><td>2.1838691</td><td>0.64533424</td><td>fixture_jlens_101_1, fixture_jlens_101_2, fixture_jlens_101_3, fixture_jlens_101_4, fixture_jlens_101_5, fixture_jlens_101_6, fixture_jlens_101_7, fixture_jlens_101_8, fixture_jlens_101_9, fixture_jlens_101_10</td><td>fixture_logit_101_1, fixture_logit_101_2, fixture_logit_101_3, fixture_logit_101_4, fixture_logit_101_5, fixture_logit_101_6, fixture_logit_101_7, fixture_logit_101_8, fixture_logit_101_9, fixture_logit_101_10</td></tr><tr><td>5</td><td>331</td><td>13,19</td><td>1.9417602</td><td>0.57344848</td><td>fixture_jlens_331_1, fixture_jlens_331_2, fixture_jlens_331_3, fixture_jlens_331_4, fixture_jlens_331_5, fixture_jlens_331_6, fixture_jlens_331_7, fixture_jlens_331_8, fixture_jlens_331_9, fixture_jlens_331_10</td><td>fixture_logit_331_1, fixture_logit_331_2, fixture_logit_331_3, fixture_logit_331_4, fixture_logit_331_5, fixture_logit_331_6, fixture_logit_331_7, fixture_logit_331_8, fixture_logit_331_9, fixture_logit_331_10</td></tr><tr><td>6</td><td>205</td><td>8,13</td><td>1.8092149</td><td>0.5340938</td><td>fixture_jlens_205_1, fixture_jlens_205_2, fixture_jlens_205_3, fixture_jlens_205_4, fixture_jlens_205_5, fixture_jlens_205_6, fixture_jlens_205_7, fixture_jlens_205_8, fixture_jlens_205_9, fixture_jlens_205_10</td><td>fixture_logit_205_1, fixture_logit_205_2, fixture_logit_205_3, fixture_logit_205_4, fixture_logit_205_5, fixture_logit_205_6, fixture_logit_205_7, fixture_logit_205_8, fixture_logit_205_9, fixture_logit_205_10</td></tr><tr><td>7</td><td>308</td><td>12,20</td><td>1.6436135</td><td>0.4849242</td><td>fixture_jlens_308_1, fixture_jlens_308_2, fixture_jlens_308_3, fixture_jlens_308_4, fixture_jlens_308_5, fixture_jlens_308_6, fixture_jlens_308_7, fixture_jlens_308_8, fixture_jlens_308_9, fixture_jlens_308_10</td><td>fixture_logit_308_1, fixture_logit_308_2, fixture_logit_308_3, fixture_logit_308_4, fixture_logit_308_5, fixture_logit_308_6, fixture_logit_308_7, fixture_logit_308_8, fixture_logit_308_9, fixture_logit_308_10</td></tr><tr><td>8</td><td>460</td><td>19,4</td><td>1.6124022</td><td>0.47565711</td><td>fixture_jlens_460_1, fixture_jlens_460_2, fixture_jlens_460_3, fixture_jlens_460_4, fixture_jlens_460_5, fixture_jlens_460_6, fixture_jlens_460_7, fixture_jlens_460_8, fixture_jlens_460_9, fixture_jlens_460_10</td><td>fixture_logit_460_1, fixture_logit_460_2, fixture_logit_460_3, fixture_logit_460_4, fixture_logit_460_5, fixture_logit_460_6, fixture_logit_460_7, fixture_logit_460_8, fixture_logit_460_9, fixture_logit_460_10</td></tr><tr><td>9</td><td>182</td><td>7,14</td><td>1.4690602</td><td>0.43309668</td><td>fixture_jlens_182_1, fixture_jlens_182_2, fixture_jlens_182_3, fixture_jlens_182_4, fixture_jlens_182_5, fixture_jlens_182_6, fixture_jlens_182_7, fixture_jlens_182_8, fixture_jlens_182_9, fixture_jlens_182_10</td><td>fixture_logit_182_1, fixture_logit_182_2, fixture_logit_182_3, fixture_logit_182_4, fixture_logit_182_5, fixture_logit_182_6, fixture_logit_182_7, fixture_logit_182_8, fixture_logit_182_9, fixture_logit_182_10</td></tr><tr><td>10</td><td>437</td><td>18,5</td><td>1.4205834</td><td>0.4187032</td><td>fixture_jlens_437_1, fixture_jlens_437_2, fixture_jlens_437_3, fixture_jlens_437_4, fixture_jlens_437_5, fixture_jlens_437_6, fixture_jlens_437_7, fixture_jlens_437_8, fixture_jlens_437_9, fixture_jlens_437_10</td><td>fixture_logit_437_1, fixture_logit_437_2, fixture_logit_437_3, fixture_logit_437_4, fixture_logit_437_5, fixture_logit_437_6, fixture_logit_437_7, fixture_logit_437_8, fixture_logit_437_9, fixture_logit_437_10</td></tr></tbody>
+    </table>
+  </section>
+</main>
+<details><summary>metadata</summary><pre>{
+  &quot;schema&quot;: &quot;jvlens_record_meta_v1&quot;,
+  &quot;status&quot;: &quot;PASS&quot;,
+  &quot;fixture&quot;: true,
+  &quot;record_id&quot;: &quot;fixture_custom_layer16&quot;,
+  &quot;sample_id&quot;: &quot;fixture_sample_001&quot;,
+  &quot;prompt&quot;: &quot;Fixture prompt: identify the highlighted visual evidence.&quot;,
+  &quot;q_type&quot;: &quot;custom&quot;,
+  &quot;source_layer&quot;: 16,
+  &quot;target_layer&quot;: 27,
+  &quot;lens_path&quot;: &quot;weights/huatuo_jimage_lens_layer16_n50.pt&quot;,
+  &quot;lens_sha256&quot;: &quot;702c9a99d54e19d3b759e9238edcabc7696f7e07246c018a39c0035cb783fc5f&quot;,
+  &quot;lens_source_layers&quot;: [
+    16
+  ],
+  &quot;lens_n_prompts&quot;: 50,
+  &quot;image_copy&quot;: &quot;../../images/fixture_input.png&quot;,
+  &quot;image_size&quot;: [
+    640,
+    425
+  ],
+  &quot;attention_map&quot;: &quot;attention_raw_patchgrid_image_aspect.png&quot;,
+  &quot;attention_map_display_mode&quot;: &quot;patch_grid_image_aspect&quot;,
+  &quot;attention_map_token_interpolation&quot;: false,
+  &quot;attention_map_patch_blocks_independent&quot;: true,
+  &quot;logical_patch_grid&quot;: [
+    24,
+    24
+  ],
+  &quot;top_k_patches&quot;: 10,
+  &quot;top_k_tokens&quot;: 10,
+  &quot;bbox_original_xyxy&quot;: [
+    [
+      320.0,
+      85.0,
+      560.0,
+      300.0
+    ]
+  ],
+  &quot;bbox_percent_xyxy&quot;: [
+    [
+      50.0,
+      20.0,
+      87.5,
+      70.58823529411765
+    ]
+  ]
+}</pre></details>
+</body>
+</html>

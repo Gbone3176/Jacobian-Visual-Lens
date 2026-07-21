@@ -1,0 +1,11 @@
+model_path: /path/to/HuatuoGPT-Vision-7B
+support_repo: /path/to/HuatuoGPT-Vision
+runtime_root: /path/to/runtime-adapters
+lens_path: /path/to/huatuo_jimage_lens_layer16_n50.pt
+source_layer: 16
+target_layer: 27
+top_k_patches: 10
+top_k_tokens: 10
+q_type: custom
+device: cuda:0
+allow_model_run_required: true

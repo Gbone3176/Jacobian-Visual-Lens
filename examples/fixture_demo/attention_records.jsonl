@@ -1,0 +1,1 @@
+{"fixture": true, "image_path": "examples/fixture_demo/images/fixture_input.png", "prompt": "Fixture prompt: identify the highlighted visual evidence.", "q_type": "custom", "raw_attention": {"path": "examples/fixture_demo/arrays/fixture_attention_raw.npy"}, "record_id": "fixture_custom_layer16", "sample_id": "fixture_sample_001", "source_layer": 16, "token_grid": [24, 24]}

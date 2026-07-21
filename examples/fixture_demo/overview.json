@@ -1,0 +1,36 @@
+{
+  "attention_map_display_mode": "patch_grid_image_aspect",
+  "attention_map_patch_blocks_independent": true,
+  "attention_map_token_interpolation": false,
+  "created_at_utc": "2026-07-21T12:24:53Z",
+  "fixture": true,
+  "lens_n_prompts": 50,
+  "lens_path": "weights/huatuo_jimage_lens_layer16_n50.pt",
+  "lens_sha256": "702c9a99d54e19d3b759e9238edcabc7696f7e07246c018a39c0035cb783fc5f",
+  "lens_source_layers": [
+    16
+  ],
+  "logical_patch_grid": [
+    24,
+    24
+  ],
+  "mapping_rows": 10,
+  "patch_value_rows": 576,
+  "record_count": 1,
+  "records": [
+    {
+      "prompt": "Fixture prompt: identify the highlighted visual evidence.",
+      "q_type": "custom",
+      "record_html": "records/fixture_custom_layer16/index.html",
+      "record_id": "fixture_custom_layer16",
+      "record_json": "records/fixture_custom_layer16/record_readouts.json",
+      "run_meta": "records/fixture_custom_layer16/run_meta.json"
+    }
+  ],
+  "run_root": "examples/fixture_demo",
+  "schema": "jvlens_overview_v1",
+  "source_layer": 16,
+  "started_at_utc": "2026-07-21T12:24:53Z",
+  "status": "PASS",
+  "target_layer": 27
+}
