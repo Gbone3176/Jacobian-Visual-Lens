@@ -9,25 +9,25 @@ This staging package is prepared for review. It contains source code, documentat
 
 ## Showcase Examples
 
-These review images are sanitized static overviews copied from validated layer16 VG/JLens alignment outputs. They embed only a small screenshot-style PNG per case, not standalone source images or datasets.
+These review images are sanitized static overviews copied from validated layer16 VG/JLens alignment outputs. They use attribute prompts and attribute attention maps, and embed only a small screenshot-style PNG per case, not standalone source images or datasets.
 
 ### COCO
 
 ![COCO natural image JVLens showcase](examples/showcase/coco_umbrella_layer16/overview.png)
 
-COCO natural image example using layer16, prefix_n50 JLens, a VG-style 24x24 attention map, and independent patch blocks with no interpolation.
+COCO natural image example using an attribute prompt, layer16, prefix_n50 JLens, a VG-style 24x24 attribute attention map, and independent patch blocks with no interpolation.
 
 ### Dermoscopy
 
 ![Dermoscopy JVLens showcase](examples/showcase/dermoscopy_skin_lesion_layer16/overview.png)
 
-Dermoscopy skin-lesion example using layer16, prefix_n50 JLens, a VG-style 24x24 attention map, and independent patch blocks with no interpolation.
+Dermoscopy skin-lesion example using an attribute prompt, layer16, prefix_n50 JLens, a VG-style 24x24 attribute attention map, and independent patch blocks with no interpolation.
 
 ### Colorectal-Endoscopy
 
 ![Colorectal-Endoscopy JVLens showcase](examples/showcase/colorectal_endoscopy_polyp_layer16/overview.png)
 
-Colorectal/endoscopy polyp example using layer16, prefix_n50 JLens, a VG-style 24x24 attention map, and independent patch blocks with no interpolation.
+Colorectal/endoscopy polyp example using an attribute prompt, layer16, prefix_n50 JLens, a VG-style 24x24 attribute attention map, and independent patch blocks with no interpolation.
 
 ## Status
 

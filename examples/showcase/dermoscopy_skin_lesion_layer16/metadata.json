@@ -10,16 +10,16 @@
   },
   "lens": "prefix_n50",
   "lens_sha256": "702c9a99d54e19d3b759e9238edcabc7696f7e07246c018a39c0035cb783fc5f",
-  "prompt": "Is a skin lesion shown in the picture? Answer the question using a single word or phrase.",
-  "q_type": "localization",
+  "prompt": "Does the skin lesion show uniform or varied coloration within its area? Answer the question using a single word or phrase.",
+  "q_type": "attribute",
   "raw_source_files_copied": false,
   "sample_id": "dermoscopy__row10253",
-  "sample_layer_id": "dermoscopy__row10253__localization__layer16",
+  "sample_layer_id": "dermoscopy__row10253__attribute__layer16",
   "sample_type": "Dermoscopy / skin lesion",
   "schema": "jvlens_showcase_sample_v1",
   "slug": "dermoscopy_skin_lesion_layer16",
   "source_layer": 16,
-  "source_provenance": "validated layer16 VG/JLens record from internal alignment run, sanitized for open-source review",
+  "source_provenance": "validated layer16 attribute VG/JLens record from internal alignment run, sanitized for open-source review",
   "target_layer": 27,
   "token_grid": [
     24,
@@ -28,255 +28,115 @@
   "top_patches": [
     {
       "jlens_top_texts": [
-        "skin",
-        "dermat",
-        "Derm",
-        "clinical",
-        "der",
-        "Skin",
-        "lymph",
-        "皮肤"
-      ],
-      "logit_lens_top_texts": [
-        "换句话",
-        "总而言之",
-        "($('#",
-        "锦标",
-        "ii",
-        "Turtle",
-        "下面是小",
-        "a"
-      ],
-      "normalized_attention": 0.549064576625824,
-      "patch_col": 21,
-      "patch_id": 405,
-      "patch_row": 16,
-      "rank": 1,
-      "raw_attention": 0.0035858154296875
-    },
-    {
-      "jlens_top_texts": [
-        "dermat",
         "痣",
-        "skin",
-        "photographs",
-        "测量",
-        "Derm",
-        "Skin",
-        "皮肤"
-      ],
-      "logit_lens_top_texts": [
-        "preparedStatement",
-        "锦标",
-        "总而言",
-        "无论是其",
-        "换句话",
-        "总而言之",
-        "perí",
-        "pó"
-      ],
-      "normalized_attention": 1.063923716545105,
-      "patch_col": 8,
-      "patch_id": 416,
-      "patch_row": 17,
-      "rank": 2,
-      "raw_attention": 0.0035552978515625
-    },
-    {
-      "jlens_top_texts": [
-        "centered",
-        "cent",
-        "central",
-        "中心",
-        "centrally",
-        "center",
-        "直径",
-        "centers"
-      ],
-      "logit_lens_top_texts": [
-        "换句话",
-        "akening",
-        "Além",
-        "总而言之",
-        "大小",
-        "tô",
-        "尺寸",
-        "Também"
-      ],
-      "normalized_attention": 6.718275547027588,
-      "patch_col": 20,
-      "patch_id": 428,
-      "patch_row": 17,
-      "rank": 3,
-      "raw_attention": 0.0026397705078125
-    },
-    {
-      "jlens_top_texts": [
-        "痣",
-        "中心",
         "dermat",
-        "centrally",
+        "skin",
         "melan",
-        "skin",
-        "central",
-        "中央"
+        "皮肤",
+        "Derm",
+        "皮肤病",
+        "色素"
       ],
       "logit_lens_top_texts": [
-        "扮演游戏",
-        "全力以",
-        "换句话",
-        "ystals",
-        "毫无疑",
-        "黑色",
-        "又被",
-        "-framework"
+        "锦标",
+        "或多",
+        "部副",
+        "Resets",
+        "坚实",
+        "总面积",
+        "吸引了",
+        "全力以"
       ],
-      "normalized_attention": 2.2253315448760986,
+      "normalized_attention": 9.23048210144043,
       "patch_col": 12,
-      "patch_id": 324,
+      "patch_id": 252,
+      "patch_row": 10,
+      "rank": 1,
+      "raw_attention": 0.0029754638671875
+    },
+    {
+      "jlens_top_texts": [
+        "痣",
+        "dermat",
+        "melan",
+        "redd",
+        "hist",
+        "棕色",
+        "skin",
+        "褐色"
+      ],
+      "logit_lens_top_texts": [
+        "部副",
+        "名列前",
+        "但不限",
+        "requencies",
+        "已经达到",
+        "嵴",
+        "家都知道",
+        "卟"
+      ],
+      "normalized_attention": 11.28501033782959,
+      "patch_col": 11,
+      "patch_id": 275,
+      "patch_row": 11,
+      "rank": 2,
+      "raw_attention": 0.00180816650390625
+    },
+    {
+      "jlens_top_texts": [
+        "痣",
+        "dermat",
+        "skin",
+        "皮肤",
+        "Derm",
+        "肤色",
+        "melan",
+        "皮肤病"
+      ],
+      "logit_lens_top_texts": [
+        "锦标",
+        "毫无疑",
+        "Resets",
+        "部副",
+        "全力以",
+        "iterated",
+        "“",
+        "吸引了"
+      ],
+      "normalized_attention": 14.821166038513184,
+      "patch_col": 13,
+      "patch_id": 253,
+      "patch_row": 10,
+      "rank": 3,
+      "raw_attention": 0.0016326904296875
+    },
+    {
+      "jlens_top_texts": [
+        "dermat",
+        "melan",
+        "Derm",
+        "痣",
+        "skin",
+        "皮肤",
+        "色素",
+        "肤色"
+      ],
+      "logit_lens_top_texts": [
+        "家都知道",
+        "巧克力",
+        "总而言之",
+        "全力以",
+        "(UINT",
+        "嵴",
+        "启示",
+        "iterated"
+      ],
+      "normalized_attention": 18.427934646606445,
+      "patch_col": 11,
+      "patch_id": 323,
       "patch_row": 13,
       "rank": 4,
-      "raw_attention": 0.002410888671875
-    },
-    {
-      "jlens_top_texts": [
-        "dermat",
-        "痣",
-        "skin",
-        "Derm",
-        "皮肤",
-        "皮肤病",
-        "近距离",
-        "Skin"
-      ],
-      "logit_lens_top_texts": [
-        "锦标",
-        "MODIFY",
-        "défini",
-        "\"[%",
-        "perí",
-        "renderItem",
-        "周围",
-        "ucc"
-      ],
-      "normalized_attention": 3.2244465351104736,
-      "patch_col": 0,
-      "patch_id": 504,
-      "patch_row": 21,
-      "rank": 5,
-      "raw_attention": 0.002410888671875
-    },
-    {
-      "jlens_top_texts": [
-        "dermat",
-        "skin",
-        "痣",
-        "皮肤",
-        "Derm",
-        "皮肤病",
-        "Skin",
-        "Skin"
-      ],
-      "logit_lens_top_texts": [
-        "总而言",
-        "下面是小",
-        "换句话",
-        "锦标",
-        "(\"<",
-        "外观",
-        "接受了",
-        "variably"
-      ],
-      "normalized_attention": 3.1907031536102295,
-      "patch_col": 18,
-      "patch_id": 306,
-      "patch_row": 12,
-      "rank": 6,
-      "raw_attention": 0.002105712890625
-    },
-    {
-      "jlens_top_texts": [
-        "photographs",
-        "photography",
-        "photos",
-        "photographic",
-        "photograph",
-        "照片",
-        "的照片",
-        "拍摄"
-      ],
-      "logit_lens_top_texts": [
-        "($('#",
-        "akening",
-        "\"[%",
-        "fick",
-        "Resets",
-        "unloaded",
-        "平面",
-        "天花板"
-      ],
-      "normalized_attention": 0.5150363445281982,
-      "patch_col": 23,
-      "patch_id": 455,
-      "patch_row": 18,
-      "rank": 7,
-      "raw_attention": 0.0020904541015625
-    },
-    {
-      "jlens_top_texts": [
-        "photographs",
-        "photography",
-        "photos",
-        "photograph",
-        "photographic",
-        "照片",
-        "Phot",
-        "phot"
-      ],
-      "logit_lens_top_texts": [
-        "总而言之",
-        "器材",
-        "人气",
-        "taken",
-        "akening",
-        "晃",
-        "脏",
-        "当事人"
-      ],
-      "normalized_attention": 0.2425370067358017,
-      "patch_col": 2,
-      "patch_id": 458,
-      "patch_row": 19,
-      "rank": 8,
-      "raw_attention": 0.001983642578125
-    },
-    {
-      "jlens_top_texts": [
-        "dermat",
-        "skin",
-        "痣",
-        "Derm",
-        "皮肤",
-        "benign",
-        "melan",
-        "der"
-      ],
-      "logit_lens_top_texts": [
-        "kel",
-        "ver",
-        "outil",
-        "总而言之",
-        "岛屿",
-        "chal",
-        "龄",
-        "锦标"
-      ],
-      "normalized_attention": 2.4285364151000977,
-      "patch_col": 15,
-      "patch_id": 495,
-      "patch_row": 20,
-      "rank": 9,
-      "raw_attention": 0.00168609619140625
+      "raw_attention": 0.0013885498046875
     },
     {
       "jlens_top_texts": [
@@ -299,12 +159,152 @@
         "合并",
         "平坦"
       ],
-      "normalized_attention": 3.0069377422332764,
+      "normalized_attention": 2.4335217475891113,
       "patch_col": 10,
       "patch_id": 322,
       "patch_row": 13,
+      "rank": 5,
+      "raw_attention": 0.0013275146484375
+    },
+    {
+      "jlens_top_texts": [
+        "minor",
+        "punct",
+        "shadows",
+        "mild",
+        "blurry",
+        "fine",
+        "scattered",
+        "faint"
+      ],
+      "logit_lens_top_texts": [
+        "chè",
+        "分散",
+        "()=>",
+        "哪裡",
+        "toISOString",
+        "Natürlich",
+        ".MouseAdapter",
+        "stanbul"
+      ],
+      "normalized_attention": 3.7964975833892822,
+      "patch_col": 15,
+      "patch_id": 375,
+      "patch_row": 15,
+      "rank": 6,
+      "raw_attention": 0.00128173828125
+    },
+    {
+      "jlens_top_texts": [
+        "dermat",
+        "Derm",
+        "skin",
+        "redd",
+        "痣",
+        "皮肤",
+        "melan",
+        "色素"
+      ],
+      "logit_lens_top_texts": [
+        "家都知道",
+        "部副",
+        "嵴",
+        "(DWORD",
+        "Resets",
+        "名列前",
+        "但不限",
+        "soever"
+      ],
+      "normalized_attention": 7.715497970581055,
+      "patch_col": 11,
+      "patch_id": 299,
+      "patch_row": 12,
+      "rank": 7,
+      "raw_attention": 0.00124359130859375
+    },
+    {
+      "jlens_top_texts": [
+        "特征",
+        "features",
+        "pathological",
+        "pathology",
+        "characteristics",
+        "dermat",
+        "hist",
+        "痣"
+      ],
+      "logit_lens_top_texts": [
+        "initComponents",
+        ").",
+        "uations",
+        "总而言之",
+        "amac",
+        "Hoffman",
+        "摇了",
+        "dial"
+      ],
+      "normalized_attention": 17.064281463623047,
+      "patch_col": 4,
+      "patch_id": 484,
+      "patch_row": 20,
+      "rank": 8,
+      "raw_attention": 0.001220703125
+    },
+    {
+      "jlens_top_texts": [
+        "痣",
+        "中心",
+        "dermat",
+        "centrally",
+        "melan",
+        "skin",
+        "central",
+        "中央"
+      ],
+      "logit_lens_top_texts": [
+        "扮演游戏",
+        "全力以",
+        "换句话",
+        "ystals",
+        "毫无疑",
+        "黑色",
+        "又被",
+        "-framework"
+      ],
+      "normalized_attention": 0.8837946653366089,
+      "patch_col": 12,
+      "patch_id": 324,
+      "patch_row": 13,
+      "rank": 9,
+      "raw_attention": 0.000957489013671875
+    },
+    {
+      "jlens_top_texts": [
+        "dermat",
+        "特征",
+        "黑白",
+        "features",
+        "Derm",
+        "skin",
+        "diagnostic",
+        "纹理"
+      ],
+      "logit_lens_top_texts": [
+        "Hoffman",
+        "\"?>",
+        "initComponents",
+        "貌",
+        "dial",
+        "继续保持",
+        "拨打",
+        "OfBirth"
+      ],
+      "normalized_attention": 12.716239929199219,
+      "patch_col": 11,
+      "patch_id": 539,
+      "patch_row": 22,
       "rank": 10,
-      "raw_attention": 0.00164031982421875
+      "raw_attention": 0.000946044921875
     }
   ]
 }

@@ -64,9 +64,11 @@ def main() -> int:
     showcase_index = json.loads(showcase_index_path.read_text(encoding="utf-8"))
     showcase_samples = showcase_index.get("samples", [])
     assert_ok(len(showcase_samples) == 3, "expected exactly three showcase samples")
+    assert_ok(showcase_index.get("attention_prompt_type") == "attribute", "showcase index must use attribute prompts")
     expected_showcase_types = {"COCO natural image", "Dermoscopy / skin lesion", "Colorectal-Endoscopy / polyp"}
     assert_ok({sample.get("sample_type") for sample in showcase_samples} == expected_showcase_types, "unexpected showcase sample types")
     for sample in showcase_samples:
+        assert_ok(sample.get("q_type") == "attribute", f"showcase index sample must be attribute: {sample.get('slug')}")
         overview_rel = sample["overview_png"]
         metadata_rel = sample["metadata_json"]
         assert_ok(overview_rel in readme, f"README does not reference {overview_rel}")
@@ -78,6 +80,8 @@ def main() -> int:
             assert_ok(image.size[0] >= 900 and image.size[1] >= 600, f"showcase image too small: {overview_rel}")
             assert_ok(image.format == "PNG", f"showcase image must be PNG: {overview_rel}")
         metadata = json.loads(metadata_path.read_text(encoding="utf-8"))
+        assert_ok(metadata.get("q_type") == "attribute", f"showcase metadata must be attribute: {metadata_rel}")
+        assert_ok("__attribute__layer16" in metadata.get("sample_layer_id", ""), f"showcase sample_layer_id must be attribute: {metadata_rel}")
         assert_ok(metadata.get("source_layer") == 16, f"showcase source layer mismatch: {metadata_rel}")
         assert_ok(metadata.get("target_layer") == 27, f"showcase target layer mismatch: {metadata_rel}")
         assert_ok(metadata.get("lens") == "prefix_n50", f"showcase lens mismatch: {metadata_rel}")

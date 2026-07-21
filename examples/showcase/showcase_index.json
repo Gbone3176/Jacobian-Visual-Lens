@@ -1,4 +1,5 @@
 {
+  "attention_prompt_type": "attribute",
   "lens": "prefix_n50",
   "lens_sha256": "702c9a99d54e19d3b759e9238edcabc7696f7e07246c018a39c0035cb783fc5f",
   "raw_source_files_copied": false,
@@ -10,10 +11,10 @@
         930
       ],
       "metadata_json": "examples/showcase/coco_umbrella_layer16/metadata.json",
-      "overview_bytes": 287196,
+      "overview_bytes": 282645,
       "overview_png": "examples/showcase/coco_umbrella_layer16/overview.png",
-      "prompt": "Can a umbrella be found in this image? Answer the question using a single word or phrase.",
-      "q_type": "localization",
+      "prompt": "What color is the umbrella? Answer the question using a single word or phrase.",
+      "q_type": "attribute",
       "sample_type": "COCO natural image",
       "slug": "coco_umbrella_layer16"
     },
@@ -23,10 +24,10 @@
         930
       ],
       "metadata_json": "examples/showcase/dermoscopy_skin_lesion_layer16/metadata.json",
-      "overview_bytes": 343080,
+      "overview_bytes": 338811,
       "overview_png": "examples/showcase/dermoscopy_skin_lesion_layer16/overview.png",
-      "prompt": "Is a skin lesion shown in the picture? Answer the question using a single word or phrase.",
-      "q_type": "localization",
+      "prompt": "Does the skin lesion show uniform or varied coloration within its area? Answer the question using a single word or phrase.",
+      "q_type": "attribute",
       "sample_type": "Dermoscopy / skin lesion",
       "slug": "dermoscopy_skin_lesion_layer16"
     },
@@ -36,10 +37,10 @@
         930
       ],
       "metadata_json": "examples/showcase/colorectal_endoscopy_polyp_layer16/metadata.json",
-      "overview_bytes": 249597,
+      "overview_bytes": 252518,
       "overview_png": "examples/showcase/colorectal_endoscopy_polyp_layer16/overview.png",
-      "prompt": "Can a polyp be found in this image? Answer the question using a single word or phrase.",
-      "q_type": "localization",
+      "prompt": "What is the shape of the polyp? Answer the question using a single word or phrase.",
+      "q_type": "attribute",
       "sample_type": "Colorectal-Endoscopy / polyp",
       "slug": "colorectal_endoscopy_polyp_layer16"
     }
