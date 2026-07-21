@@ -59,16 +59,22 @@ def main() -> int:
     assert_ok("--out-dir" in fit_source and "required=True" in fit_source, "fit script must require explicit --out-dir")
 
     readme = (ROOT / "README.md").read_text(encoding="utf-8")
+    assert_ok("normalized_attention" in readme or "normalized attention" in readme, "README must describe normalized attention showcase maps")
     showcase_index_path = ROOT / "examples/showcase/showcase_index.json"
     assert_ok(showcase_index_path.is_file(), "missing showcase index")
     showcase_index = json.loads(showcase_index_path.read_text(encoding="utf-8"))
     showcase_samples = showcase_index.get("samples", [])
     assert_ok(len(showcase_samples) == 3, "expected exactly three showcase samples")
     assert_ok(showcase_index.get("attention_prompt_type") == "attribute", "showcase index must use attribute prompts")
+    assert_ok(showcase_index.get("attention_value_source") == "normalized_attention", "showcase index must use normalized_attention")
+    assert_ok(showcase_index.get("heatmap_value_source") == "normalized_attention", "showcase heatmap must use normalized_attention")
+    assert_ok(showcase_index.get("colorbar_value_source") == "normalized_attention", "showcase colorbar must use normalized_attention")
     expected_showcase_types = {"COCO natural image", "Dermoscopy / skin lesion", "Colorectal-Endoscopy / polyp"}
     assert_ok({sample.get("sample_type") for sample in showcase_samples} == expected_showcase_types, "unexpected showcase sample types")
     for sample in showcase_samples:
         assert_ok(sample.get("q_type") == "attribute", f"showcase index sample must be attribute: {sample.get('slug')}")
+        assert_ok(sample.get("attention_value_source") == "normalized_attention", f"showcase sample must use normalized attention: {sample.get('slug')}")
+        assert_ok(sample.get("heatmap_value_source") == "normalized_attention", f"showcase heatmap must use normalized attention: {sample.get('slug')}")
         overview_rel = sample["overview_png"]
         metadata_rel = sample["metadata_json"]
         assert_ok(overview_rel in readme, f"README does not reference {overview_rel}")
@@ -82,11 +88,16 @@ def main() -> int:
         metadata = json.loads(metadata_path.read_text(encoding="utf-8"))
         assert_ok(metadata.get("q_type") == "attribute", f"showcase metadata must be attribute: {metadata_rel}")
         assert_ok("__attribute__layer16" in metadata.get("sample_layer_id", ""), f"showcase sample_layer_id must be attribute: {metadata_rel}")
+        assert_ok(metadata.get("attention_value_source") == "normalized_attention", f"showcase metadata must use normalized attention: {metadata_rel}")
+        assert_ok(metadata.get("heatmap_value_source") == "normalized_attention", f"showcase heatmap must use normalized attention: {metadata_rel}")
+        assert_ok(metadata.get("colorbar_value_source") == "normalized_attention", f"showcase colorbar must use normalized attention: {metadata_rel}")
         assert_ok(metadata.get("source_layer") == 16, f"showcase source layer mismatch: {metadata_rel}")
         assert_ok(metadata.get("target_layer") == 27, f"showcase target layer mismatch: {metadata_rel}")
         assert_ok(metadata.get("lens") == "prefix_n50", f"showcase lens mismatch: {metadata_rel}")
         assert_ok(metadata.get("raw_source_files_copied") is False, f"showcase should not copy raw source files: {metadata_rel}")
         assert_ok(len(metadata.get("top_patches", [])) == 10, f"showcase top patch count mismatch: {metadata_rel}")
+        for patch in metadata.get("top_patches", []):
+            assert_ok("raw_attention" in patch and "normalized_attention" in patch, f"showcase patch must keep raw and normalized values: {metadata_rel}")
 
     forbidden = [
         "/" + "cpfs01",

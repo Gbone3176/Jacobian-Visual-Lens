@@ -1,51 +1,70 @@
 {
   "attention_prompt_type": "attribute",
+  "attention_value_source": "normalized_attention",
+  "colorbar_value_source": "normalized_attention",
+  "heatmap_value_source": "normalized_attention",
   "lens": "prefix_n50",
   "lens_sha256": "702c9a99d54e19d3b759e9238edcabc7696f7e07246c018a39c0035cb783fc5f",
   "raw_source_files_copied": false,
   "sample_count": 3,
   "samples": [
     {
+      "attention_value_source": "normalized_attention",
+      "heatmap_display_max": 85.32469177246094,
+      "heatmap_display_min": 0.024102309718728065,
+      "heatmap_value_source": "normalized_attention",
       "image_size": [
         1500,
         930
       ],
       "metadata_json": "examples/showcase/coco_umbrella_layer16/metadata.json",
-      "overview_bytes": 282645,
+      "overview_bytes": 289309,
       "overview_png": "examples/showcase/coco_umbrella_layer16/overview.png",
       "prompt": "What color is the umbrella? Answer the question using a single word or phrase.",
       "q_type": "attribute",
       "sample_type": "COCO natural image",
-      "slug": "coco_umbrella_layer16"
+      "slug": "coco_umbrella_layer16",
+      "top_patch_rank_source": "raw_attention"
     },
     {
+      "attention_value_source": "normalized_attention",
+      "heatmap_display_max": 23.298357009887695,
+      "heatmap_display_min": 0.014789075590670109,
+      "heatmap_value_source": "normalized_attention",
       "image_size": [
         1500,
         930
       ],
       "metadata_json": "examples/showcase/dermoscopy_skin_lesion_layer16/metadata.json",
-      "overview_bytes": 338811,
+      "overview_bytes": 344270,
       "overview_png": "examples/showcase/dermoscopy_skin_lesion_layer16/overview.png",
       "prompt": "Does the skin lesion show uniform or varied coloration within its area? Answer the question using a single word or phrase.",
       "q_type": "attribute",
       "sample_type": "Dermoscopy / skin lesion",
-      "slug": "dermoscopy_skin_lesion_layer16"
+      "slug": "dermoscopy_skin_lesion_layer16",
+      "top_patch_rank_source": "raw_attention"
     },
     {
+      "attention_value_source": "normalized_attention",
+      "heatmap_display_max": 48.46585464477539,
+      "heatmap_display_min": 0.02912217751145363,
+      "heatmap_value_source": "normalized_attention",
       "image_size": [
         1500,
         930
       ],
       "metadata_json": "examples/showcase/colorectal_endoscopy_polyp_layer16/metadata.json",
-      "overview_bytes": 252518,
+      "overview_bytes": 253152,
       "overview_png": "examples/showcase/colorectal_endoscopy_polyp_layer16/overview.png",
       "prompt": "What is the shape of the polyp? Answer the question using a single word or phrase.",
       "q_type": "attribute",
       "sample_type": "Colorectal-Endoscopy / polyp",
-      "slug": "colorectal_endoscopy_polyp_layer16"
+      "slug": "colorectal_endoscopy_polyp_layer16",
+      "top_patch_rank_source": "raw_attention"
     }
   ],
   "schema": "jvlens_showcase_index_v1",
   "source_layer": 16,
-  "target_layer": 27
+  "target_layer": 27,
+  "top_patch_rank_source": "raw_attention"
 }

@@ -3,11 +3,17 @@
   "attention_map_display_mode": "patch_grid_image_aspect",
   "attention_map_patch_blocks_independent": true,
   "attention_map_token_interpolation": false,
+  "attention_value_source": "normalized_attention",
   "bbox_present": true,
+  "colorbar_value_source": "normalized_attention",
   "dataset_group": "Medical",
   "files": {
     "overview_png": "overview.png"
   },
+  "heatmap_display_max": 48.46585464477539,
+  "heatmap_display_min": 0.02912217751145363,
+  "heatmap_display_minmax_only": true,
+  "heatmap_value_source": "normalized_attention",
   "lens": "prefix_n50",
   "lens_sha256": "702c9a99d54e19d3b759e9238edcabc7696f7e07246c018a39c0035cb783fc5f",
   "prompt": "What is the shape of the polyp? Answer the question using a single word or phrase.",
@@ -25,6 +31,8 @@
     24,
     24
   ],
+  "top_patch_rank_source": "raw_attention",
+  "top_patch_selection": "existing attribute top10; rank source preserved from raw_attention/raw_rank_desc",
   "top_patches": [
     {
       "jlens_top_texts": [
@@ -48,11 +56,13 @@
         "状"
       ],
       "normalized_attention": 19.16047477722168,
+      "normalized_rank_desc": 13,
       "patch_col": 14,
       "patch_id": 398,
       "patch_row": 16,
       "rank": 1,
-      "raw_attention": 0.0030517578125
+      "raw_attention": 0.0030517578125,
+      "raw_rank_desc": 1
     },
     {
       "jlens_top_texts": [
@@ -76,11 +86,13 @@
         "quisites"
       ],
       "normalized_attention": 35.040618896484375,
+      "normalized_rank_desc": 4,
       "patch_col": 15,
       "patch_id": 399,
       "patch_row": 16,
       "rank": 2,
-      "raw_attention": 0.0017547607421875
+      "raw_attention": 0.0017547607421875,
+      "raw_rank_desc": 2
     },
     {
       "jlens_top_texts": [
@@ -104,11 +116,13 @@
         "localize"
       ],
       "normalized_attention": 12.093489646911621,
+      "normalized_rank_desc": 25,
       "patch_col": 14,
       "patch_id": 374,
       "patch_row": 15,
       "rank": 3,
-      "raw_attention": 0.00146484375
+      "raw_attention": 0.00146484375,
+      "raw_rank_desc": 3
     },
     {
       "jlens_top_texts": [
@@ -132,11 +146,13 @@
         "bufsize"
       ],
       "normalized_attention": 44.33618927001953,
+      "normalized_rank_desc": 2,
       "patch_col": 13,
       "patch_id": 397,
       "patch_row": 16,
       "rank": 4,
-      "raw_attention": 0.00113677978515625
+      "raw_attention": 0.00113677978515625,
+      "raw_rank_desc": 4
     },
     {
       "jlens_top_texts": [
@@ -160,11 +176,13 @@
         "Boost"
       ],
       "normalized_attention": 10.03300666809082,
+      "normalized_rank_desc": 36,
       "patch_col": 11,
       "patch_id": 443,
       "patch_row": 18,
       "rank": 5,
-      "raw_attention": 0.001129150390625
+      "raw_attention": 0.001129150390625,
+      "raw_rank_desc": 5
     },
     {
       "jlens_top_texts": [
@@ -188,11 +206,13 @@
         "FTER"
       ],
       "normalized_attention": 0.7313385009765625,
+      "normalized_rank_desc": 346,
       "patch_col": 22,
       "patch_id": 406,
       "patch_row": 16,
       "rank": 6,
-      "raw_attention": 0.00112152099609375
+      "raw_attention": 0.00112152099609375,
+      "raw_rank_desc": 6
     },
     {
       "jlens_top_texts": [
@@ -216,11 +236,13 @@
         "üss"
       ],
       "normalized_attention": 9.88752269744873,
+      "normalized_rank_desc": 37,
       "patch_col": 7,
       "patch_id": 319,
       "patch_row": 13,
       "rank": 7,
-      "raw_attention": 0.0010986328125
+      "raw_attention": 0.0010986328125,
+      "raw_rank_desc": 7
     },
     {
       "jlens_top_texts": [
@@ -244,11 +266,13 @@
         "升"
       ],
       "normalized_attention": 2.284348726272583,
+      "normalized_rank_desc": 199,
       "patch_col": 0,
       "patch_id": 456,
       "patch_row": 19,
       "rank": 8,
-      "raw_attention": 0.000949859619140625
+      "raw_attention": 0.000949859619140625,
+      "raw_rank_desc": 8
     },
     {
       "jlens_top_texts": [
@@ -272,11 +296,13 @@
         "(!(("
       ],
       "normalized_attention": 15.027915954589844,
+      "normalized_rank_desc": 19,
       "patch_col": 11,
       "patch_id": 395,
       "patch_row": 16,
       "rank": 9,
-      "raw_attention": 0.000946044921875
+      "raw_attention": 0.000946044921875,
+      "raw_rank_desc": 9
     },
     {
       "jlens_top_texts": [
@@ -300,11 +326,13 @@
         "()=>{"
       ],
       "normalized_attention": 48.46585464477539,
+      "normalized_rank_desc": 1,
       "patch_col": 11,
       "patch_id": 275,
       "patch_row": 11,
       "rank": 10,
-      "raw_attention": 0.000942230224609375
+      "raw_attention": 0.000942230224609375,
+      "raw_rank_desc": 10
     }
   ]
 }

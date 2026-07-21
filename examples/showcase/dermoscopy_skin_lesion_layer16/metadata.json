@@ -3,11 +3,17 @@
   "attention_map_display_mode": "patch_grid_image_aspect",
   "attention_map_patch_blocks_independent": true,
   "attention_map_token_interpolation": false,
+  "attention_value_source": "normalized_attention",
   "bbox_present": true,
+  "colorbar_value_source": "normalized_attention",
   "dataset_group": "Medical",
   "files": {
     "overview_png": "overview.png"
   },
+  "heatmap_display_max": 23.298357009887695,
+  "heatmap_display_min": 0.014789075590670109,
+  "heatmap_display_minmax_only": true,
+  "heatmap_value_source": "normalized_attention",
   "lens": "prefix_n50",
   "lens_sha256": "702c9a99d54e19d3b759e9238edcabc7696f7e07246c018a39c0035cb783fc5f",
   "prompt": "Does the skin lesion show uniform or varied coloration within its area? Answer the question using a single word or phrase.",
@@ -25,6 +31,8 @@
     24,
     24
   ],
+  "top_patch_rank_source": "raw_attention",
+  "top_patch_selection": "existing attribute top10; rank source preserved from raw_attention/raw_rank_desc",
   "top_patches": [
     {
       "jlens_top_texts": [
@@ -48,11 +56,13 @@
         "全力以"
       ],
       "normalized_attention": 9.23048210144043,
+      "normalized_rank_desc": 28,
       "patch_col": 12,
       "patch_id": 252,
       "patch_row": 10,
       "rank": 1,
-      "raw_attention": 0.0029754638671875
+      "raw_attention": 0.0029754638671875,
+      "raw_rank_desc": 1
     },
     {
       "jlens_top_texts": [
@@ -76,11 +86,13 @@
         "卟"
       ],
       "normalized_attention": 11.28501033782959,
+      "normalized_rank_desc": 12,
       "patch_col": 11,
       "patch_id": 275,
       "patch_row": 11,
       "rank": 2,
-      "raw_attention": 0.00180816650390625
+      "raw_attention": 0.00180816650390625,
+      "raw_rank_desc": 2
     },
     {
       "jlens_top_texts": [
@@ -104,11 +116,13 @@
         "吸引了"
       ],
       "normalized_attention": 14.821166038513184,
+      "normalized_rank_desc": 7,
       "patch_col": 13,
       "patch_id": 253,
       "patch_row": 10,
       "rank": 3,
-      "raw_attention": 0.0016326904296875
+      "raw_attention": 0.0016326904296875,
+      "raw_rank_desc": 3
     },
     {
       "jlens_top_texts": [
@@ -132,11 +146,13 @@
         "iterated"
       ],
       "normalized_attention": 18.427934646606445,
+      "normalized_rank_desc": 3,
       "patch_col": 11,
       "patch_id": 323,
       "patch_row": 13,
       "rank": 4,
-      "raw_attention": 0.0013885498046875
+      "raw_attention": 0.0013885498046875,
+      "raw_rank_desc": 4
     },
     {
       "jlens_top_texts": [
@@ -160,11 +176,13 @@
         "平坦"
       ],
       "normalized_attention": 2.4335217475891113,
+      "normalized_rank_desc": 135,
       "patch_col": 10,
       "patch_id": 322,
       "patch_row": 13,
       "rank": 5,
-      "raw_attention": 0.0013275146484375
+      "raw_attention": 0.0013275146484375,
+      "raw_rank_desc": 5
     },
     {
       "jlens_top_texts": [
@@ -188,11 +206,13 @@
         "stanbul"
       ],
       "normalized_attention": 3.7964975833892822,
+      "normalized_rank_desc": 81,
       "patch_col": 15,
       "patch_id": 375,
       "patch_row": 15,
       "rank": 6,
-      "raw_attention": 0.00128173828125
+      "raw_attention": 0.00128173828125,
+      "raw_rank_desc": 6
     },
     {
       "jlens_top_texts": [
@@ -216,11 +236,13 @@
         "soever"
       ],
       "normalized_attention": 7.715497970581055,
+      "normalized_rank_desc": 36,
       "patch_col": 11,
       "patch_id": 299,
       "patch_row": 12,
       "rank": 7,
-      "raw_attention": 0.00124359130859375
+      "raw_attention": 0.00124359130859375,
+      "raw_rank_desc": 7
     },
     {
       "jlens_top_texts": [
@@ -244,11 +266,13 @@
         "dial"
       ],
       "normalized_attention": 17.064281463623047,
+      "normalized_rank_desc": 6,
       "patch_col": 4,
       "patch_id": 484,
       "patch_row": 20,
       "rank": 8,
-      "raw_attention": 0.001220703125
+      "raw_attention": 0.001220703125,
+      "raw_rank_desc": 8
     },
     {
       "jlens_top_texts": [
@@ -272,11 +296,13 @@
         "-framework"
       ],
       "normalized_attention": 0.8837946653366089,
+      "normalized_rank_desc": 261,
       "patch_col": 12,
       "patch_id": 324,
       "patch_row": 13,
       "rank": 9,
-      "raw_attention": 0.000957489013671875
+      "raw_attention": 0.000957489013671875,
+      "raw_rank_desc": 9
     },
     {
       "jlens_top_texts": [
@@ -300,11 +326,13 @@
         "OfBirth"
       ],
       "normalized_attention": 12.716239929199219,
+      "normalized_rank_desc": 8,
       "patch_col": 11,
       "patch_id": 539,
       "patch_row": 22,
       "rank": 10,
-      "raw_attention": 0.000946044921875
+      "raw_attention": 0.000946044921875,
+      "raw_rank_desc": 10
     }
   ]
 }

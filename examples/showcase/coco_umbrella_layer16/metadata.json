@@ -3,11 +3,17 @@
   "attention_map_display_mode": "patch_grid_image_aspect",
   "attention_map_patch_blocks_independent": true,
   "attention_map_token_interpolation": false,
+  "attention_value_source": "normalized_attention",
   "bbox_present": true,
+  "colorbar_value_source": "normalized_attention",
   "dataset_group": "COCO",
   "files": {
     "overview_png": "overview.png"
   },
+  "heatmap_display_max": 85.32469177246094,
+  "heatmap_display_min": 0.024102309718728065,
+  "heatmap_display_minmax_only": true,
+  "heatmap_value_source": "normalized_attention",
   "lens": "prefix_n50",
   "lens_sha256": "702c9a99d54e19d3b759e9238edcabc7696f7e07246c018a39c0035cb783fc5f",
   "prompt": "What color is the umbrella? Answer the question using a single word or phrase.",
@@ -25,6 +31,8 @@
     24,
     24
   ],
+  "top_patch_rank_source": "raw_attention",
+  "top_patch_selection": "existing attribute top10; rank source preserved from raw_attention/raw_rank_desc",
   "top_patches": [
     {
       "jlens_top_texts": [
@@ -48,11 +56,13 @@
         "挤"
       ],
       "normalized_attention": 54.527427673339844,
+      "normalized_rank_desc": 5,
       "patch_col": 14,
       "patch_id": 230,
       "patch_row": 9,
       "rank": 1,
-      "raw_attention": 0.052001953125
+      "raw_attention": 0.052001953125,
+      "raw_rank_desc": 1
     },
     {
       "jlens_top_texts": [
@@ -76,11 +86,13 @@
         "咝"
       ],
       "normalized_attention": 69.28379821777344,
+      "normalized_rank_desc": 2,
       "patch_col": 14,
       "patch_id": 254,
       "patch_row": 10,
       "rank": 2,
-      "raw_attention": 0.01519775390625
+      "raw_attention": 0.01519775390625,
+      "raw_rank_desc": 2
     },
     {
       "jlens_top_texts": [
@@ -104,11 +116,13 @@
         "所提供之"
       ],
       "normalized_attention": 22.32512664794922,
+      "normalized_rank_desc": 15,
       "patch_col": 15,
       "patch_id": 183,
       "patch_row": 7,
       "rank": 3,
-      "raw_attention": 0.010986328125
+      "raw_attention": 0.010986328125,
+      "raw_rank_desc": 3
     },
     {
       "jlens_top_texts": [
@@ -132,11 +146,13 @@
         "'Neill"
       ],
       "normalized_attention": 64.85449981689453,
+      "normalized_rank_desc": 3,
       "patch_col": 11,
       "patch_id": 203,
       "patch_row": 8,
       "rank": 4,
-      "raw_attention": 0.00921630859375
+      "raw_attention": 0.00921630859375,
+      "raw_rank_desc": 4
     },
     {
       "jlens_top_texts": [
@@ -160,11 +176,13 @@
         "所提供之"
       ],
       "normalized_attention": 85.32469177246094,
+      "normalized_rank_desc": 1,
       "patch_col": 14,
       "patch_id": 206,
       "patch_row": 8,
       "rank": 5,
-      "raw_attention": 0.0084228515625
+      "raw_attention": 0.0084228515625,
+      "raw_rank_desc": 5
     },
     {
       "jlens_top_texts": [
@@ -188,11 +206,13 @@
         "dealloc"
       ],
       "normalized_attention": 28.3933162689209,
+      "normalized_rank_desc": 11,
       "patch_col": 13,
       "patch_id": 205,
       "patch_row": 8,
       "rank": 6,
-      "raw_attention": 0.0076904296875
+      "raw_attention": 0.0076904296875,
+      "raw_rank_desc": 6
     },
     {
       "jlens_top_texts": [
@@ -216,11 +236,13 @@
         "/lic"
       ],
       "normalized_attention": 22.255661010742188,
+      "normalized_rank_desc": 16,
       "patch_col": 16,
       "patch_id": 184,
       "patch_row": 7,
       "rank": 7,
-      "raw_attention": 0.006622314453125
+      "raw_attention": 0.006622314453125,
+      "raw_rank_desc": 7
     },
     {
       "jlens_top_texts": [
@@ -244,11 +266,13 @@
         "蒡"
       ],
       "normalized_attention": 4.58144474029541,
+      "normalized_rank_desc": 65,
       "patch_col": 14,
       "patch_id": 182,
       "patch_row": 7,
       "rank": 8,
-      "raw_attention": 0.00396728515625
+      "raw_attention": 0.00396728515625,
+      "raw_rank_desc": 8
     },
     {
       "jlens_top_texts": [
@@ -272,11 +296,13 @@
         "enim"
       ],
       "normalized_attention": 12.799579620361328,
+      "normalized_rank_desc": 26,
       "patch_col": 7,
       "patch_id": 319,
       "patch_row": 13,
       "rank": 9,
-      "raw_attention": 0.00390625
+      "raw_attention": 0.00390625,
+      "raw_rank_desc": 9
     },
     {
       "jlens_top_texts": [
@@ -300,11 +326,13 @@
         "Resets"
       ],
       "normalized_attention": 14.068456649780273,
+      "normalized_rank_desc": 22,
       "patch_col": 19,
       "patch_id": 259,
       "patch_row": 10,
       "rank": 10,
-      "raw_attention": 0.0038909912109375
+      "raw_attention": 0.0038909912109375,
+      "raw_rank_desc": 10
     }
   ]
 }
