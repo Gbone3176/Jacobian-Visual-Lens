@@ -9,6 +9,8 @@ import subprocess
 import sys
 from pathlib import Path
 
+from PIL import Image
+
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -55,6 +57,32 @@ def main() -> int:
         assert_ok(needle in f1_source, f"F1 source missing {needle!r}")
     fit_source = fit_script.read_text(encoding="utf-8")
     assert_ok("--out-dir" in fit_source and "required=True" in fit_source, "fit script must require explicit --out-dir")
+
+    readme = (ROOT / "README.md").read_text(encoding="utf-8")
+    showcase_index_path = ROOT / "examples/showcase/showcase_index.json"
+    assert_ok(showcase_index_path.is_file(), "missing showcase index")
+    showcase_index = json.loads(showcase_index_path.read_text(encoding="utf-8"))
+    showcase_samples = showcase_index.get("samples", [])
+    assert_ok(len(showcase_samples) == 3, "expected exactly three showcase samples")
+    expected_showcase_types = {"COCO natural image", "Dermoscopy / skin lesion", "Colorectal-Endoscopy / polyp"}
+    assert_ok({sample.get("sample_type") for sample in showcase_samples} == expected_showcase_types, "unexpected showcase sample types")
+    for sample in showcase_samples:
+        overview_rel = sample["overview_png"]
+        metadata_rel = sample["metadata_json"]
+        assert_ok(overview_rel in readme, f"README does not reference {overview_rel}")
+        overview_path = ROOT / overview_rel
+        metadata_path = ROOT / metadata_rel
+        assert_ok(overview_path.is_file(), f"missing showcase image {overview_rel}")
+        assert_ok(metadata_path.is_file(), f"missing showcase metadata {metadata_rel}")
+        with Image.open(overview_path) as image:
+            assert_ok(image.size[0] >= 900 and image.size[1] >= 600, f"showcase image too small: {overview_rel}")
+            assert_ok(image.format == "PNG", f"showcase image must be PNG: {overview_rel}")
+        metadata = json.loads(metadata_path.read_text(encoding="utf-8"))
+        assert_ok(metadata.get("source_layer") == 16, f"showcase source layer mismatch: {metadata_rel}")
+        assert_ok(metadata.get("target_layer") == 27, f"showcase target layer mismatch: {metadata_rel}")
+        assert_ok(metadata.get("lens") == "prefix_n50", f"showcase lens mismatch: {metadata_rel}")
+        assert_ok(metadata.get("raw_source_files_copied") is False, f"showcase should not copy raw source files: {metadata_rel}")
+        assert_ok(len(metadata.get("top_patches", [])) == 10, f"showcase top patch count mismatch: {metadata_rel}")
 
     forbidden = [
         "/" + "cpfs01",

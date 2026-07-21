@@ -1,0 +1,310 @@
+{
+  "attention_map_colormap": "viridis",
+  "attention_map_display_mode": "patch_grid_image_aspect",
+  "attention_map_patch_blocks_independent": true,
+  "attention_map_token_interpolation": false,
+  "bbox_present": true,
+  "dataset_group": "Medical",
+  "files": {
+    "overview_png": "overview.png"
+  },
+  "lens": "prefix_n50",
+  "lens_sha256": "702c9a99d54e19d3b759e9238edcabc7696f7e07246c018a39c0035cb783fc5f",
+  "prompt": "Can a polyp be found in this image? Answer the question using a single word or phrase.",
+  "q_type": "localization",
+  "raw_source_files_copied": false,
+  "sample_id": "endoscopy__row7914",
+  "sample_layer_id": "endoscopy__row7914__localization__layer16",
+  "sample_type": "Colorectal-Endoscopy / polyp",
+  "schema": "jvlens_showcase_sample_v1",
+  "slug": "colorectal_endoscopy_polyp_layer16",
+  "source_layer": 16,
+  "source_provenance": "validated layer16 VG/JLens record from internal alignment run, sanitized for open-source review",
+  "target_layer": 27,
+  "token_grid": [
+    24,
+    24
+  ],
+  "top_patches": [
+    {
+      "jlens_top_texts": [
+        "surgical",
+        "oral",
+        "superficial",
+        "visible",
+        "localized",
+        "clinical",
+        "oc",
+        "captured"
+      ],
+      "logit_lens_top_texts": [
+        "换句话",
+        "下面是小",
+        "ungeons",
+        "(\"<",
+        "锦标",
+        "akening",
+        "总而言之",
+        "FTER"
+      ],
+      "normalized_attention": 3.024855852127075,
+      "patch_col": 22,
+      "patch_id": 406,
+      "patch_row": 16,
+      "rank": 1,
+      "raw_attention": 0.004638671875
+    },
+    {
+      "jlens_top_texts": [
+        "abdominal",
+        "gastro",
+        "gastric",
+        "胃",
+        "gastrointestinal",
+        "stomach",
+        "colon",
+        "muc"
+      ],
+      "logit_lens_top_texts": [
+        "akening",
+        "锦标",
+        "Polo",
+        "滞",
+        "ym",
+        "Cv",
+        "换句话",
+        "bek"
+      ],
+      "normalized_attention": 2.7194905281066895,
+      "patch_col": 2,
+      "patch_id": 482,
+      "patch_row": 20,
+      "rank": 2,
+      "raw_attention": 0.0034027099609375
+    },
+    {
+      "jlens_top_texts": [
+        "muc",
+        "gastro",
+        "pathological",
+        "features",
+        "gastric",
+        "ulcer",
+        "ultr",
+        "oral"
+      ],
+      "logit_lens_top_texts": [
+        "换句话",
+        "外观",
+        "localize",
+        ").",
+        "锦标",
+        "obar",
+        "年下半年",
+        "résult"
+      ],
+      "normalized_attention": 7.684530258178711,
+      "patch_col": 23,
+      "patch_id": 431,
+      "patch_row": 17,
+      "rank": 3,
+      "raw_attention": 0.0029754638671875
+    },
+    {
+      "jlens_top_texts": [
+        "muc",
+        "specular",
+        "surface",
+        "superficial",
+        "moist",
+        "表面",
+        "surfaces",
+        "ulcer"
+      ],
+      "logit_lens_top_texts": [
+        "FTER",
+        "黏",
+        "总而言之",
+        "局部",
+        "形态",
+        "harmless",
+        "etchup",
+        "外表"
+      ],
+      "normalized_attention": 5.828396797180176,
+      "patch_col": 11,
+      "patch_id": 467,
+      "patch_row": 19,
+      "rank": 4,
+      "raw_attention": 0.00194549560546875
+    },
+    {
+      "jlens_top_texts": [
+        "photographs",
+        "photography",
+        "photograph",
+        "intra",
+        "photographic",
+        "photos",
+        "specular",
+        "拍摄"
+      ],
+      "logit_lens_top_texts": [
+        "($('#",
+        "换句话",
+        "akening",
+        "总而言之",
+        "锦标",
+        "晃",
+        "Caldwell",
+        ".\"),"
+      ],
+      "normalized_attention": 0.5170198082923889,
+      "patch_col": 17,
+      "patch_id": 497,
+      "patch_row": 20,
+      "rank": 5,
+      "raw_attention": 0.00185394287109375
+    },
+    {
+      "jlens_top_texts": [
+        "muc",
+        "dermat",
+        "gastro",
+        "skin",
+        "intra",
+        "superficial",
+        "ulcer",
+        "specular"
+      ],
+      "logit_lens_top_texts": [
+        "consect",
+        "有大量的",
+        "Redistribution",
+        "うこと",
+        "肪",
+        "Vul",
+        "边缘",
+        "一枚"
+      ],
+      "normalized_attention": 0.648646354675293,
+      "patch_col": 5,
+      "patch_id": 413,
+      "patch_row": 17,
+      "rank": 6,
+      "raw_attention": 0.0018310546875
+    },
+    {
+      "jlens_top_texts": [
+        "gastro",
+        "胃",
+        "gastric",
+        "gast",
+        "end",
+        "muc",
+        "gastrointestinal",
+        "colon"
+      ],
+      "logit_lens_top_texts": [
+        "独角兽",
+        "(',');",
+        "知名品牌",
+        "边缘",
+        "异",
+        "啫",
+        "ogy",
+        "升"
+      ],
+      "normalized_attention": 4.146688938140869,
+      "patch_col": 0,
+      "patch_id": 456,
+      "patch_row": 19,
+      "rank": 7,
+      "raw_attention": 0.0017242431640625
+    },
+    {
+      "jlens_top_texts": [
+        "ultr",
+        "ultrasound",
+        "mon",
+        "features",
+        "palp",
+        "ulcer",
+        "swollen",
+        "pale"
+      ],
+      "logit_lens_top_texts": [
+        "换句话",
+        "noinspection",
+        "résult",
+        "总而言之",
+        "shima",
+        ".).",
+        "?>",
+        "如果玩家"
+      ],
+      "normalized_attention": 2.3101279735565186,
+      "patch_col": 13,
+      "patch_id": 517,
+      "patch_row": 21,
+      "rank": 8,
+      "raw_attention": 0.00164794921875
+    },
+    {
+      "jlens_top_texts": [
+        "muc",
+        "features",
+        "gastro",
+        "pathological",
+        "cyst",
+        "ulcer",
+        "近距离",
+        "oral"
+      ],
+      "logit_lens_top_texts": [
+        "外观",
+        "换句话",
+        "localize",
+        ").",
+        "représ",
+        "urent",
+        "下面是小",
+        "dévelop"
+      ],
+      "normalized_attention": 9.543274879455566,
+      "patch_col": 23,
+      "patch_id": 407,
+      "patch_row": 16,
+      "rank": 9,
+      "raw_attention": 0.001556396484375
+    },
+    {
+      "jlens_top_texts": [
+        "近距离",
+        "close",
+        "clinical",
+        "features",
+        "superficial",
+        "anterior",
+        "protr",
+        "oral"
+      ],
+      "logit_lens_top_texts": [
+        "换句话",
+        ").",
+        "localize",
+        "下面是小",
+        "锦标",
+        "résult",
+        "preparedStatement",
+        "tô"
+      ],
+      "normalized_attention": 7.5893354415893555,
+      "patch_col": 10,
+      "patch_id": 490,
+      "patch_row": 20,
+      "rank": 10,
+      "raw_attention": 0.00141143798828125
+    }
+  ]
+}

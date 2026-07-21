@@ -1,0 +1,310 @@
+{
+  "attention_map_colormap": "viridis",
+  "attention_map_display_mode": "patch_grid_image_aspect",
+  "attention_map_patch_blocks_independent": true,
+  "attention_map_token_interpolation": false,
+  "bbox_present": true,
+  "dataset_group": "COCO",
+  "files": {
+    "overview_png": "overview.png"
+  },
+  "lens": "prefix_n50",
+  "lens_sha256": "702c9a99d54e19d3b759e9238edcabc7696f7e07246c018a39c0035cb783fc5f",
+  "prompt": "Can a umbrella be found in this image? Answer the question using a single word or phrase.",
+  "q_type": "localization",
+  "raw_source_files_copied": false,
+  "sample_id": "coco_000000219525__row0",
+  "sample_layer_id": "coco_000000219525__row0__localization__layer16",
+  "sample_type": "COCO natural image",
+  "schema": "jvlens_showcase_sample_v1",
+  "slug": "coco_umbrella_layer16",
+  "source_layer": 16,
+  "source_provenance": "validated layer16 VG/JLens record from internal alignment run, sanitized for open-source review",
+  "target_layer": 27,
+  "token_grid": [
+    24,
+    24
+  ],
+  "top_patches": [
+    {
+      "jlens_top_texts": [
+        "伞",
+        "rain",
+        "下雨",
+        "umbrella",
+        "Rain",
+        "rainy",
+        "shelter",
+        "canopy"
+      ],
+      "logit_lens_top_texts": [
+        "罩",
+        "委宣传",
+        "quivo",
+        "：\"+",
+        "挡",
+        "(___",
+        "Resets",
+        "猩"
+      ],
+      "normalized_attention": 10.029719352722168,
+      "patch_col": 12,
+      "patch_id": 252,
+      "patch_row": 10,
+      "rank": 1,
+      "raw_attention": 0.0076904296875
+    },
+    {
+      "jlens_top_texts": [
+        "rain",
+        "下雨",
+        "rainy",
+        "雨",
+        "伞",
+        "raining",
+        "waterproof",
+        "Rain"
+      ],
+      "logit_lens_top_texts": [
+        "委宣传",
+        "：\"+",
+        "罩",
+        "UNICODE",
+        "akening",
+        "笼罩",
+        "elsey",
+        "挡"
+      ],
+      "normalized_attention": 6.128366470336914,
+      "patch_col": 13,
+      "patch_id": 277,
+      "patch_row": 11,
+      "rank": 2,
+      "raw_attention": 0.005096435546875
+    },
+    {
+      "jlens_top_texts": [
+        "portable",
+        "handheld",
+        "devices",
+        "selfie",
+        "port",
+        "equipment",
+        "device",
+        "mobile"
+      ],
+      "logit_lens_top_texts": [
+        "！');",
+        "换句话",
+        "Resets",
+        "Clears",
+        "eget",
+        "锦标",
+        "chooser",
+        "殄"
+      ],
+      "normalized_attention": 19.78546714782715,
+      "patch_col": 8,
+      "patch_id": 488,
+      "patch_row": 20,
+      "rank": 3,
+      "raw_attention": 0.00494384765625
+    },
+    {
+      "jlens_top_texts": [
+        "sunglasses",
+        "selfie",
+        "outdoors",
+        "sunlight",
+        "vivid",
+        "selfies",
+        "outdoor",
+        "vibrant"
+      ],
+      "logit_lens_top_texts": [
+        "换句话",
+        ".FileWriter",
+        "性价",
+        "下面是小",
+        "modelBuilder",
+        "名列前",
+        "proport",
+        "-metadata"
+      ],
+      "normalized_attention": 1.4660147428512573,
+      "patch_col": 7,
+      "patch_id": 343,
+      "patch_row": 14,
+      "rank": 4,
+      "raw_attention": 0.004608154296875
+    },
+    {
+      "jlens_top_texts": [
+        "伞",
+        "下雨",
+        "umbrella",
+        "rain",
+        "umb",
+        "防晒",
+        "rainy",
+        "庇"
+      ],
+      "logit_lens_top_texts": [
+        "罩",
+        "委宣传",
+        "：\"+",
+        "(___",
+        "柄",
+        "UNICODE",
+        "...\");",
+        "蒡"
+      ],
+      "normalized_attention": 4.070437431335449,
+      "patch_col": 14,
+      "patch_id": 182,
+      "patch_row": 7,
+      "rank": 5,
+      "raw_attention": 0.0035247802734375
+    },
+    {
+      "jlens_top_texts": [
+        "伞",
+        "umb",
+        "umbrella",
+        "handheld",
+        "shield",
+        "shelter",
+        "shields",
+        "canopy"
+      ],
+      "logit_lens_top_texts": [
+        "委宣传",
+        "罩",
+        "Resets",
+        "'à",
+        "委组织",
+        ".\"),",
+        "(___",
+        "dél"
+      ],
+      "normalized_attention": 10.142539978027344,
+      "patch_col": 13,
+      "patch_id": 253,
+      "patch_row": 10,
+      "rank": 6,
+      "raw_attention": 0.0032501220703125
+    },
+    {
+      "jlens_top_texts": [
+        "selfie",
+        "portable",
+        "capturing",
+        "captures",
+        "captured",
+        "sunglasses",
+        "vivid",
+        "photography"
+      ],
+      "logit_lens_top_texts": [
+        "换句话",
+        "noinspection",
+        "akening",
+        "！');",
+        "名列前",
+        "自然而",
+        "shima",
+        "锦标"
+      ],
+      "normalized_attention": 6.23517370223999,
+      "patch_col": 7,
+      "patch_id": 487,
+      "patch_row": 20,
+      "rank": 7,
+      "raw_attention": 0.00323486328125
+    },
+    {
+      "jlens_top_texts": [
+        "vivid",
+        "vibrant",
+        "brightly",
+        "colors",
+        "colorful",
+        "bright",
+        "颜色",
+        "prominently"
+      ],
+      "logit_lens_top_texts": [
+        "！');",
+        "性价",
+        "款式",
+        "换句话",
+        "olic",
+        "akening",
+        "所提供之",
+        "enim"
+      ],
+      "normalized_attention": 9.749680519104004,
+      "patch_col": 7,
+      "patch_id": 319,
+      "patch_row": 13,
+      "rank": 8,
+      "raw_attention": 0.0029754638671875
+    },
+    {
+      "jlens_top_texts": [
+        "sunglasses",
+        "outdoors",
+        "outdoor",
+        "weather",
+        "waterproof",
+        "rain",
+        "sunny",
+        "selfie"
+      ],
+      "logit_lens_top_texts": [
+        "换句话",
+        "！');",
+        "akening",
+        "assertNotNull",
+        ".FileWriter",
+        "noinspection",
+        "蛎",
+        "-posts"
+      ],
+      "normalized_attention": 4.993378162384033,
+      "patch_col": 7,
+      "patch_id": 439,
+      "patch_row": 18,
+      "rank": 9,
+      "raw_attention": 0.0029144287109375
+    },
+    {
+      "jlens_top_texts": [
+        "upright",
+        "立",
+        "standing",
+        "tall",
+        "erect",
+        "手持",
+        "handheld",
+        "selfie"
+      ],
+      "logit_lens_top_texts": [
+        "护卫",
+        "stance",
+        "tection",
+        "无助",
+        "庇",
+        "Resets",
+        "[{'",
+        "Invalidate"
+      ],
+      "normalized_attention": 4.333265781402588,
+      "patch_col": 14,
+      "patch_id": 302,
+      "patch_row": 12,
+      "rank": 10,
+      "raw_attention": 0.002777099609375
+    }
+  ]
+}

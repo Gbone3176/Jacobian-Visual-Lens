@@ -1,0 +1,50 @@
+{
+  "lens": "prefix_n50",
+  "lens_sha256": "702c9a99d54e19d3b759e9238edcabc7696f7e07246c018a39c0035cb783fc5f",
+  "raw_source_files_copied": false,
+  "sample_count": 3,
+  "samples": [
+    {
+      "image_size": [
+        1500,
+        930
+      ],
+      "metadata_json": "examples/showcase/coco_umbrella_layer16/metadata.json",
+      "overview_bytes": 287196,
+      "overview_png": "examples/showcase/coco_umbrella_layer16/overview.png",
+      "prompt": "Can a umbrella be found in this image? Answer the question using a single word or phrase.",
+      "q_type": "localization",
+      "sample_type": "COCO natural image",
+      "slug": "coco_umbrella_layer16"
+    },
+    {
+      "image_size": [
+        1500,
+        930
+      ],
+      "metadata_json": "examples/showcase/dermoscopy_skin_lesion_layer16/metadata.json",
+      "overview_bytes": 343080,
+      "overview_png": "examples/showcase/dermoscopy_skin_lesion_layer16/overview.png",
+      "prompt": "Is a skin lesion shown in the picture? Answer the question using a single word or phrase.",
+      "q_type": "localization",
+      "sample_type": "Dermoscopy / skin lesion",
+      "slug": "dermoscopy_skin_lesion_layer16"
+    },
+    {
+      "image_size": [
+        1500,
+        930
+      ],
+      "metadata_json": "examples/showcase/colorectal_endoscopy_polyp_layer16/metadata.json",
+      "overview_bytes": 249597,
+      "overview_png": "examples/showcase/colorectal_endoscopy_polyp_layer16/overview.png",
+      "prompt": "Can a polyp be found in this image? Answer the question using a single word or phrase.",
+      "q_type": "localization",
+      "sample_type": "Colorectal-Endoscopy / polyp",
+      "slug": "colorectal_endoscopy_polyp_layer16"
+    }
+  ],
+  "schema": "jvlens_showcase_index_v1",
+  "source_layer": 16,
+  "target_layer": 27
+}

@@ -7,6 +7,28 @@ JVLens is a single-image visualization utility that joins two views in one stati
 
 This staging package is prepared for review. It contains source code, documentation, schemas, a synthetic fixture demo, and the layer16 n50 JLens fitted lens matrix. It does not include HuatuoGPT-Vision model weights, local cache paths, or real dataset images.
 
+## Showcase Examples
+
+These review images are sanitized static overviews copied from validated layer16 VG/JLens alignment outputs. They embed only a small screenshot-style PNG per case, not standalone source images or datasets.
+
+### COCO
+
+![COCO natural image JVLens showcase](examples/showcase/coco_umbrella_layer16/overview.png)
+
+COCO natural image example using layer16, prefix_n50 JLens, a VG-style 24x24 attention map, and independent patch blocks with no interpolation.
+
+### Dermoscopy
+
+![Dermoscopy JVLens showcase](examples/showcase/dermoscopy_skin_lesion_layer16/overview.png)
+
+Dermoscopy skin-lesion example using layer16, prefix_n50 JLens, a VG-style 24x24 attention map, and independent patch blocks with no interpolation.
+
+### Colorectal-Endoscopy
+
+![Colorectal-Endoscopy JVLens showcase](examples/showcase/colorectal_endoscopy_polyp_layer16/overview.png)
+
+Colorectal/endoscopy polyp example using layer16, prefix_n50 JLens, a VG-style 24x24 attention map, and independent patch blocks with no interpolation.
+
 ## Status
 
 This staging directory is prepared under the MIT License. Upstream HuatuoGPT-Vision model weights and support code remain external assets governed by their own licenses and model terms.
