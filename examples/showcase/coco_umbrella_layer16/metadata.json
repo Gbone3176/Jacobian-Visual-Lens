@@ -19,6 +19,8 @@
   "prompt": "What color is the umbrella? Answer the question using a single word or phrase.",
   "q_type": "attribute",
   "raw_source_files_copied": false,
+  "readout_available_top10_count": 4,
+  "readout_source": "012 static readouts when normalized-ranked patch was present in static readout set; unavailable entries are not fabricated",
   "sample_id": "coco_000000219525__row0",
   "sample_layer_id": "coco_000000219525__row0__attribute__layer16",
   "sample_type": "COCO natural image",
@@ -31,38 +33,39 @@
     24,
     24
   ],
-  "top_patch_rank_source": "raw_attention",
-  "top_patch_selection": "existing attribute top10; rank source preserved from raw_attention/raw_rank_desc",
+  "top_patch_rank_source": "normalized_attention",
+  "top_patch_selection": "top10 normalized_attention over all 576 patches; patch_id tie-break ascending",
   "top_patches": [
     {
       "jlens_top_texts": [
         "pink",
-        "颜色",
         "粉色",
         "Pink",
-        "鲜艳",
-        "colors",
         "Pink",
-        "Colors"
+        "颜色",
+        "purple",
+        "colors",
+        "紫"
       ],
       "logit_lens_top_texts": [
-        "-ves",
+        "!\");",
         "(___",
-        "另",
-        "bodyParser",
-        "zyst",
-        "完整",
+        "！');",
+        "-AA",
+        "-ves",
+        "/lic",
         "\"http",
-        "挤"
+        "所提供之"
       ],
-      "normalized_attention": 54.527427673339844,
-      "normalized_rank_desc": 5,
+      "normalized_attention": 85.32469177246094,
+      "normalized_rank_desc": 1,
       "patch_col": 14,
-      "patch_id": 230,
-      "patch_row": 9,
+      "patch_id": 206,
+      "patch_row": 8,
       "rank": 1,
-      "raw_attention": 0.052001953125,
-      "raw_rank_desc": 1
+      "raw_attention": 0.0084228515625,
+      "raw_rank_desc": 5,
+      "readout_available_from_static_012": true
     },
     {
       "jlens_top_texts": [
@@ -92,37 +95,8 @@
       "patch_row": 10,
       "rank": 2,
       "raw_attention": 0.01519775390625,
-      "raw_rank_desc": 2
-    },
-    {
-      "jlens_top_texts": [
-        "颜色",
-        "colors",
-        "色彩",
-        "colorful",
-        "的颜色",
-        "Colors",
-        "pink",
-        "colours"
-      ],
-      "logit_lens_top_texts": [
-        "(___",
-        "dealloc",
-        "Destructor",
-        "-framework",
-        "olics",
-        "伢",
-        "-Regular",
-        "所提供之"
-      ],
-      "normalized_attention": 22.32512664794922,
-      "normalized_rank_desc": 15,
-      "patch_col": 15,
-      "patch_id": 183,
-      "patch_row": 7,
-      "rank": 3,
-      "raw_attention": 0.010986328125,
-      "raw_rank_desc": 3
+      "raw_rank_desc": 2,
+      "readout_available_from_static_012": true
     },
     {
       "jlens_top_texts": [
@@ -150,189 +124,119 @@
       "patch_col": 11,
       "patch_id": 203,
       "patch_row": 8,
-      "rank": 4,
+      "rank": 3,
       "raw_attention": 0.00921630859375,
-      "raw_rank_desc": 4
+      "raw_rank_desc": 4,
+      "readout_available_from_static_012": true
+    },
+    {
+      "jlens_top_texts": [],
+      "logit_lens_top_texts": [],
+      "normalized_attention": 63.98026657104492,
+      "normalized_rank_desc": 4,
+      "patch_col": 15,
+      "patch_id": 231,
+      "patch_row": 9,
+      "rank": 4,
+      "raw_attention": 0.0020751953125,
+      "raw_rank_desc": 14,
+      "readout_available_from_static_012": false
     },
     {
       "jlens_top_texts": [
         "pink",
+        "颜色",
         "粉色",
         "Pink",
-        "Pink",
-        "颜色",
-        "purple",
+        "鲜艳",
         "colors",
-        "紫"
+        "Pink",
+        "Colors"
       ],
       "logit_lens_top_texts": [
-        "!\");",
-        "(___",
-        "！');",
-        "-AA",
         "-ves",
-        "/lic",
+        "(___",
+        "另",
+        "bodyParser",
+        "zyst",
+        "完整",
         "\"http",
-        "所提供之"
+        "挤"
       ],
-      "normalized_attention": 85.32469177246094,
-      "normalized_rank_desc": 1,
+      "normalized_attention": 54.527427673339844,
+      "normalized_rank_desc": 5,
       "patch_col": 14,
-      "patch_id": 206,
-      "patch_row": 8,
+      "patch_id": 230,
+      "patch_row": 9,
       "rank": 5,
-      "raw_attention": 0.0084228515625,
-      "raw_rank_desc": 5
+      "raw_attention": 0.052001953125,
+      "raw_rank_desc": 1,
+      "readout_available_from_static_012": true
     },
     {
-      "jlens_top_texts": [
-        "pink",
-        "粉色",
-        "Pink",
-        "Pink",
-        "pink",
-        "colors",
-        "颜色",
-        "purple"
-      ],
-      "logit_lens_top_texts": [
-        "(___",
-        "委组织",
-        "bis",
-        "-Regular",
-        "bufsize",
-        "-*-",
-        "委宣传",
-        "dealloc"
-      ],
-      "normalized_attention": 28.3933162689209,
-      "normalized_rank_desc": 11,
-      "patch_col": 13,
-      "patch_id": 205,
+      "jlens_top_texts": [],
+      "logit_lens_top_texts": [],
+      "normalized_attention": 37.319602966308594,
+      "normalized_rank_desc": 6,
+      "patch_col": 15,
+      "patch_id": 207,
       "patch_row": 8,
       "rank": 6,
-      "raw_attention": 0.0076904296875,
-      "raw_rank_desc": 6
+      "raw_attention": 0.00101470947265625,
+      "raw_rank_desc": 29,
+      "readout_available_from_static_012": false
     },
     {
-      "jlens_top_texts": [
-        "pink",
-        "颜色",
-        "colors",
-        "色彩",
-        "粉色",
-        "colorful",
-        "Colors",
-        "vibrant"
-      ],
-      "logit_lens_top_texts": [
-        "(___",
-        "-AA",
-        "antioxid",
-        "\"http",
-        "！');",
-        "!\");",
-        ".)",
-        "/lic"
-      ],
-      "normalized_attention": 22.255661010742188,
-      "normalized_rank_desc": 16,
-      "patch_col": 16,
-      "patch_id": 184,
-      "patch_row": 7,
+      "jlens_top_texts": [],
+      "logit_lens_top_texts": [],
+      "normalized_attention": 33.8853874206543,
+      "normalized_rank_desc": 7,
+      "patch_col": 17,
+      "patch_id": 569,
+      "patch_row": 23,
       "rank": 7,
-      "raw_attention": 0.006622314453125,
-      "raw_rank_desc": 7
+      "raw_attention": 0.00122833251953125,
+      "raw_rank_desc": 23,
+      "readout_available_from_static_012": false
     },
     {
-      "jlens_top_texts": [
-        "伞",
-        "下雨",
-        "umbrella",
-        "rain",
-        "umb",
-        "防晒",
-        "rainy",
-        "庇"
-      ],
-      "logit_lens_top_texts": [
-        "罩",
-        "委宣传",
-        "：\"+",
-        "(___",
-        "柄",
-        "UNICODE",
-        "...\");",
-        "蒡"
-      ],
-      "normalized_attention": 4.58144474029541,
-      "normalized_rank_desc": 65,
-      "patch_col": 14,
-      "patch_id": 182,
-      "patch_row": 7,
+      "jlens_top_texts": [],
+      "logit_lens_top_texts": [],
+      "normalized_attention": 33.53446578979492,
+      "normalized_rank_desc": 8,
+      "patch_col": 22,
+      "patch_id": 526,
+      "patch_row": 21,
       "rank": 8,
-      "raw_attention": 0.00396728515625,
-      "raw_rank_desc": 8
+      "raw_attention": 0.000659942626953125,
+      "raw_rank_desc": 42,
+      "readout_available_from_static_012": false
     },
     {
-      "jlens_top_texts": [
-        "vivid",
-        "vibrant",
-        "brightly",
-        "colors",
-        "colorful",
-        "bright",
-        "颜色",
-        "prominently"
-      ],
-      "logit_lens_top_texts": [
-        "！');",
-        "性价",
-        "款式",
-        "换句话",
-        "olic",
-        "akening",
-        "所提供之",
-        "enim"
-      ],
-      "normalized_attention": 12.799579620361328,
-      "normalized_rank_desc": 26,
-      "patch_col": 7,
-      "patch_id": 319,
-      "patch_row": 13,
+      "jlens_top_texts": [],
+      "logit_lens_top_texts": [],
+      "normalized_attention": 30.660247802734375,
+      "normalized_rank_desc": 9,
+      "patch_col": 5,
+      "patch_id": 485,
+      "patch_row": 20,
       "rank": 9,
-      "raw_attention": 0.00390625,
-      "raw_rank_desc": 9
+      "raw_attention": 0.000705718994140625,
+      "raw_rank_desc": 40,
+      "readout_available_from_static_012": false
     },
     {
-      "jlens_top_texts": [
-        "伞",
-        "umb",
-        "下雨",
-        "umbrella",
-        "rain",
-        "rainy",
-        "庇",
-        "shields"
-      ],
-      "logit_lens_top_texts": [
-        "委宣传",
-        "罩",
-        "idi",
-        "umbrella",
-        "笼罩",
-        "勠",
-        "委组织",
-        "Resets"
-      ],
-      "normalized_attention": 14.068456649780273,
-      "normalized_rank_desc": 22,
-      "patch_col": 19,
-      "patch_id": 259,
-      "patch_row": 10,
+      "jlens_top_texts": [],
+      "logit_lens_top_texts": [],
+      "normalized_attention": 29.687536239624023,
+      "normalized_rank_desc": 10,
+      "patch_col": 20,
+      "patch_id": 524,
+      "patch_row": 21,
       "rank": 10,
-      "raw_attention": 0.0038909912109375,
-      "raw_rank_desc": 10
+      "raw_attention": 0.000934600830078125,
+      "raw_rank_desc": 33,
+      "readout_available_from_static_012": false
     }
   ]
 }

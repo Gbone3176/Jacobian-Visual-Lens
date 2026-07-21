@@ -19,6 +19,8 @@
   "prompt": "Does the skin lesion show uniform or varied coloration within its area? Answer the question using a single word or phrase.",
   "q_type": "attribute",
   "raw_source_files_copied": false,
+  "readout_available_top10_count": 4,
+  "readout_source": "012 static readouts when normalized-ranked patch was present in static readout set; unavailable entries are not fabricated",
   "sample_id": "dermoscopy__row10253",
   "sample_layer_id": "dermoscopy__row10253__attribute__layer16",
   "sample_type": "Dermoscopy / skin lesion",
@@ -31,98 +33,34 @@
     24,
     24
   ],
-  "top_patch_rank_source": "raw_attention",
-  "top_patch_selection": "existing attribute top10; rank source preserved from raw_attention/raw_rank_desc",
+  "top_patch_rank_source": "normalized_attention",
+  "top_patch_selection": "top10 normalized_attention over all 576 patches; patch_id tie-break ascending",
   "top_patches": [
     {
-      "jlens_top_texts": [
-        "痣",
-        "dermat",
-        "skin",
-        "melan",
-        "皮肤",
-        "Derm",
-        "皮肤病",
-        "色素"
-      ],
-      "logit_lens_top_texts": [
-        "锦标",
-        "或多",
-        "部副",
-        "Resets",
-        "坚实",
-        "总面积",
-        "吸引了",
-        "全力以"
-      ],
-      "normalized_attention": 9.23048210144043,
-      "normalized_rank_desc": 28,
-      "patch_col": 12,
-      "patch_id": 252,
-      "patch_row": 10,
+      "jlens_top_texts": [],
+      "logit_lens_top_texts": [],
+      "normalized_attention": 23.298357009887695,
+      "normalized_rank_desc": 1,
+      "patch_col": 10,
+      "patch_id": 490,
+      "patch_row": 20,
       "rank": 1,
-      "raw_attention": 0.0029754638671875,
-      "raw_rank_desc": 1
+      "raw_attention": 0.0002613067626953125,
+      "raw_rank_desc": 88,
+      "readout_available_from_static_012": false
     },
     {
-      "jlens_top_texts": [
-        "痣",
-        "dermat",
-        "melan",
-        "redd",
-        "hist",
-        "棕色",
-        "skin",
-        "褐色"
-      ],
-      "logit_lens_top_texts": [
-        "部副",
-        "名列前",
-        "但不限",
-        "requencies",
-        "已经达到",
-        "嵴",
-        "家都知道",
-        "卟"
-      ],
-      "normalized_attention": 11.28501033782959,
-      "normalized_rank_desc": 12,
-      "patch_col": 11,
-      "patch_id": 275,
-      "patch_row": 11,
+      "jlens_top_texts": [],
+      "logit_lens_top_texts": [],
+      "normalized_attention": 19.549474716186523,
+      "normalized_rank_desc": 2,
+      "patch_col": 7,
+      "patch_id": 487,
+      "patch_row": 20,
       "rank": 2,
-      "raw_attention": 0.00180816650390625,
-      "raw_rank_desc": 2
-    },
-    {
-      "jlens_top_texts": [
-        "痣",
-        "dermat",
-        "skin",
-        "皮肤",
-        "Derm",
-        "肤色",
-        "melan",
-        "皮肤病"
-      ],
-      "logit_lens_top_texts": [
-        "锦标",
-        "毫无疑",
-        "Resets",
-        "部副",
-        "全力以",
-        "iterated",
-        "“",
-        "吸引了"
-      ],
-      "normalized_attention": 14.821166038513184,
-      "normalized_rank_desc": 7,
-      "patch_col": 13,
-      "patch_id": 253,
-      "patch_row": 10,
-      "rank": 3,
-      "raw_attention": 0.0016326904296875,
-      "raw_rank_desc": 3
+      "raw_attention": 0.0002880096435546875,
+      "raw_rank_desc": 81,
+      "readout_available_from_static_012": false
     },
     {
       "jlens_top_texts": [
@@ -150,99 +88,36 @@
       "patch_col": 11,
       "patch_id": 323,
       "patch_row": 13,
-      "rank": 4,
+      "rank": 3,
       "raw_attention": 0.0013885498046875,
-      "raw_rank_desc": 4
+      "raw_rank_desc": 4,
+      "readout_available_from_static_012": true
     },
     {
-      "jlens_top_texts": [
-        "痣",
-        "dermat",
-        "skin",
-        "melan",
-        "皮肤",
-        "Derm",
-        "色素",
-        "皮肤病"
-      ],
-      "logit_lens_top_texts": [
-        "毫无疑",
-        "痣",
-        "锦标",
-        "全力以",
-        "neas",
-        "TestingModule",
-        "合并",
-        "平坦"
-      ],
-      "normalized_attention": 2.4335217475891113,
-      "normalized_rank_desc": 135,
-      "patch_col": 10,
-      "patch_id": 322,
-      "patch_row": 13,
-      "rank": 5,
-      "raw_attention": 0.0013275146484375,
-      "raw_rank_desc": 5
+      "jlens_top_texts": [],
+      "logit_lens_top_texts": [],
+      "normalized_attention": 17.647878646850586,
+      "normalized_rank_desc": 4,
+      "patch_col": 5,
+      "patch_id": 461,
+      "patch_row": 19,
+      "rank": 4,
+      "raw_attention": 0.00042724609375,
+      "raw_rank_desc": 40,
+      "readout_available_from_static_012": false
     },
     {
-      "jlens_top_texts": [
-        "minor",
-        "punct",
-        "shadows",
-        "mild",
-        "blurry",
-        "fine",
-        "scattered",
-        "faint"
-      ],
-      "logit_lens_top_texts": [
-        "chè",
-        "分散",
-        "()=>",
-        "哪裡",
-        "toISOString",
-        "Natürlich",
-        ".MouseAdapter",
-        "stanbul"
-      ],
-      "normalized_attention": 3.7964975833892822,
-      "normalized_rank_desc": 81,
-      "patch_col": 15,
-      "patch_id": 375,
-      "patch_row": 15,
-      "rank": 6,
-      "raw_attention": 0.00128173828125,
-      "raw_rank_desc": 6
-    },
-    {
-      "jlens_top_texts": [
-        "dermat",
-        "Derm",
-        "skin",
-        "redd",
-        "痣",
-        "皮肤",
-        "melan",
-        "色素"
-      ],
-      "logit_lens_top_texts": [
-        "家都知道",
-        "部副",
-        "嵴",
-        "(DWORD",
-        "Resets",
-        "名列前",
-        "但不限",
-        "soever"
-      ],
-      "normalized_attention": 7.715497970581055,
-      "normalized_rank_desc": 36,
+      "jlens_top_texts": [],
+      "logit_lens_top_texts": [],
+      "normalized_attention": 17.08150291442871,
+      "normalized_rank_desc": 5,
       "patch_col": 11,
-      "patch_id": 299,
-      "patch_row": 12,
-      "rank": 7,
-      "raw_attention": 0.00124359130859375,
-      "raw_rank_desc": 7
+      "patch_id": 371,
+      "patch_row": 15,
+      "rank": 5,
+      "raw_attention": 0.00038909912109375,
+      "raw_rank_desc": 46,
+      "readout_available_from_static_012": false
     },
     {
       "jlens_top_texts": [
@@ -270,39 +145,41 @@
       "patch_col": 4,
       "patch_id": 484,
       "patch_row": 20,
-      "rank": 8,
+      "rank": 6,
       "raw_attention": 0.001220703125,
-      "raw_rank_desc": 8
+      "raw_rank_desc": 8,
+      "readout_available_from_static_012": true
     },
     {
       "jlens_top_texts": [
         "痣",
-        "中心",
         "dermat",
-        "centrally",
-        "melan",
         "skin",
-        "central",
-        "中央"
+        "皮肤",
+        "Derm",
+        "肤色",
+        "melan",
+        "皮肤病"
       ],
       "logit_lens_top_texts": [
-        "扮演游戏",
-        "全力以",
-        "换句话",
-        "ystals",
+        "锦标",
         "毫无疑",
-        "黑色",
-        "又被",
-        "-framework"
+        "Resets",
+        "部副",
+        "全力以",
+        "iterated",
+        "“",
+        "吸引了"
       ],
-      "normalized_attention": 0.8837946653366089,
-      "normalized_rank_desc": 261,
-      "patch_col": 12,
-      "patch_id": 324,
-      "patch_row": 13,
-      "rank": 9,
-      "raw_attention": 0.000957489013671875,
-      "raw_rank_desc": 9
+      "normalized_attention": 14.821166038513184,
+      "normalized_rank_desc": 7,
+      "patch_col": 13,
+      "patch_id": 253,
+      "patch_row": 10,
+      "rank": 7,
+      "raw_attention": 0.0016326904296875,
+      "raw_rank_desc": 3,
+      "readout_available_from_static_012": true
     },
     {
       "jlens_top_texts": [
@@ -330,9 +207,36 @@
       "patch_col": 11,
       "patch_id": 539,
       "patch_row": 22,
-      "rank": 10,
+      "rank": 8,
       "raw_attention": 0.000946044921875,
-      "raw_rank_desc": 10
+      "raw_rank_desc": 10,
+      "readout_available_from_static_012": true
+    },
+    {
+      "jlens_top_texts": [],
+      "logit_lens_top_texts": [],
+      "normalized_attention": 12.682317733764648,
+      "normalized_rank_desc": 9,
+      "patch_col": 10,
+      "patch_id": 370,
+      "patch_row": 15,
+      "rank": 9,
+      "raw_attention": 0.0002193450927734375,
+      "raw_rank_desc": 116,
+      "readout_available_from_static_012": false
+    },
+    {
+      "jlens_top_texts": [],
+      "logit_lens_top_texts": [],
+      "normalized_attention": 12.665881156921387,
+      "normalized_rank_desc": 10,
+      "patch_col": 12,
+      "patch_id": 420,
+      "patch_row": 17,
+      "rank": 10,
+      "raw_attention": 0.0001201629638671875,
+      "raw_rank_desc": 201,
+      "readout_available_from_static_012": false
     }
   ]
 }

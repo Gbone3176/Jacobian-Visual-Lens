@@ -18,13 +18,16 @@
         930
       ],
       "metadata_json": "examples/showcase/coco_umbrella_layer16/metadata.json",
-      "overview_bytes": 289309,
+      "overview_bytes": 289383,
       "overview_png": "examples/showcase/coco_umbrella_layer16/overview.png",
       "prompt": "What color is the umbrella? Answer the question using a single word or phrase.",
       "q_type": "attribute",
+      "rank1_normalized_attention": 85.32469177246094,
+      "rank1_patch_id": 206,
+      "readout_available_top10_count": 4,
       "sample_type": "COCO natural image",
       "slug": "coco_umbrella_layer16",
-      "top_patch_rank_source": "raw_attention"
+      "top_patch_rank_source": "normalized_attention"
     },
     {
       "attention_value_source": "normalized_attention",
@@ -36,13 +39,16 @@
         930
       ],
       "metadata_json": "examples/showcase/dermoscopy_skin_lesion_layer16/metadata.json",
-      "overview_bytes": 344270,
+      "overview_bytes": 344828,
       "overview_png": "examples/showcase/dermoscopy_skin_lesion_layer16/overview.png",
       "prompt": "Does the skin lesion show uniform or varied coloration within its area? Answer the question using a single word or phrase.",
       "q_type": "attribute",
+      "rank1_normalized_attention": 23.298357009887695,
+      "rank1_patch_id": 490,
+      "readout_available_top10_count": 4,
       "sample_type": "Dermoscopy / skin lesion",
       "slug": "dermoscopy_skin_lesion_layer16",
-      "top_patch_rank_source": "raw_attention"
+      "top_patch_rank_source": "normalized_attention"
     },
     {
       "attention_value_source": "normalized_attention",
@@ -54,17 +60,20 @@
         930
       ],
       "metadata_json": "examples/showcase/colorectal_endoscopy_polyp_layer16/metadata.json",
-      "overview_bytes": 253152,
+      "overview_bytes": 252948,
       "overview_png": "examples/showcase/colorectal_endoscopy_polyp_layer16/overview.png",
       "prompt": "What is the shape of the polyp? Answer the question using a single word or phrase.",
       "q_type": "attribute",
+      "rank1_normalized_attention": 48.46585464477539,
+      "rank1_patch_id": 275,
+      "readout_available_top10_count": 3,
       "sample_type": "Colorectal-Endoscopy / polyp",
       "slug": "colorectal_endoscopy_polyp_layer16",
-      "top_patch_rank_source": "raw_attention"
+      "top_patch_rank_source": "normalized_attention"
     }
   ],
   "schema": "jvlens_showcase_index_v1",
   "source_layer": 16,
   "target_layer": 27,
-  "top_patch_rank_source": "raw_attention"
+  "top_patch_rank_source": "normalized_attention"
 }

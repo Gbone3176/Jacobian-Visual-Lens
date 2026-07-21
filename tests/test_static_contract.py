@@ -37,9 +37,25 @@ def main() -> int:
     f1_help = run([sys.executable, "scripts/eval/huatuo_single_sample_f1.py", "--help"])
     assert_ok(f1_help.returncode == 0, f1_help.stderr)
 
-    validation = run([sys.executable, "run_jvlens.py", "validate-output", "--out-dir", "examples/fixture_demo"])
-    assert_ok(validation.returncode == 0, validation.stdout + validation.stderr)
-    assert_ok('"status": "PASS"' in validation.stdout, validation.stdout)
+    fixture_outputs = [
+        ROOT / "examples/fixture_demo/validation_summary.json",
+        ROOT / "examples/fixture_demo/static_share.zip",
+    ]
+    preserved_fixture_outputs = {
+        path: path.read_bytes() if path.exists() else None
+        for path in fixture_outputs
+    }
+    try:
+        validation = run([sys.executable, "run_jvlens.py", "validate-output", "--out-dir", "examples/fixture_demo"])
+        assert_ok(validation.returncode == 0, validation.stdout + validation.stderr)
+        assert_ok('"status": "PASS"' in validation.stdout, validation.stdout)
+    finally:
+        for path, data in preserved_fixture_outputs.items():
+            if data is None:
+                if path.exists():
+                    path.unlink()
+            else:
+                path.write_bytes(data)
 
     cli_source = (ROOT / "src/jvlens_cli.py").read_text(encoding="utf-8")
     guard_pos = cli_source.index("if not args.allow_model_run:")
@@ -69,6 +85,8 @@ def main() -> int:
     assert_ok(showcase_index.get("attention_value_source") == "normalized_attention", "showcase index must use normalized_attention")
     assert_ok(showcase_index.get("heatmap_value_source") == "normalized_attention", "showcase heatmap must use normalized_attention")
     assert_ok(showcase_index.get("colorbar_value_source") == "normalized_attention", "showcase colorbar must use normalized_attention")
+    assert_ok(showcase_index.get("top_patch_rank_source") == "normalized_attention", "showcase top patches must be normalized_attention-ranked")
+    assert_ok("top raw-ranked attribute patches" not in readme, "README must not mention raw-ranked showcase patches")
     expected_showcase_types = {"COCO natural image", "Dermoscopy / skin lesion", "Colorectal-Endoscopy / polyp"}
     assert_ok({sample.get("sample_type") for sample in showcase_samples} == expected_showcase_types, "unexpected showcase sample types")
     for sample in showcase_samples:
@@ -91,13 +109,23 @@ def main() -> int:
         assert_ok(metadata.get("attention_value_source") == "normalized_attention", f"showcase metadata must use normalized attention: {metadata_rel}")
         assert_ok(metadata.get("heatmap_value_source") == "normalized_attention", f"showcase heatmap must use normalized attention: {metadata_rel}")
         assert_ok(metadata.get("colorbar_value_source") == "normalized_attention", f"showcase colorbar must use normalized attention: {metadata_rel}")
+        assert_ok(metadata.get("top_patch_rank_source") == "normalized_attention", f"showcase top patches must be normalized-ranked: {metadata_rel}")
         assert_ok(metadata.get("source_layer") == 16, f"showcase source layer mismatch: {metadata_rel}")
         assert_ok(metadata.get("target_layer") == 27, f"showcase target layer mismatch: {metadata_rel}")
         assert_ok(metadata.get("lens") == "prefix_n50", f"showcase lens mismatch: {metadata_rel}")
         assert_ok(metadata.get("raw_source_files_copied") is False, f"showcase should not copy raw source files: {metadata_rel}")
-        assert_ok(len(metadata.get("top_patches", [])) == 10, f"showcase top patch count mismatch: {metadata_rel}")
-        for patch in metadata.get("top_patches", []):
+        top_patches = metadata.get("top_patches", [])
+        assert_ok(len(top_patches) == 10, f"showcase top patch count mismatch: {metadata_rel}")
+        assert_ok(top_patches[0]["normalized_attention"] == metadata.get("heatmap_display_max"), f"rank1 patch must equal heatmap max: {metadata_rel}")
+        previous_norm = None
+        for index, patch in enumerate(top_patches, start=1):
             assert_ok("raw_attention" in patch and "normalized_attention" in patch, f"showcase patch must keep raw and normalized values: {metadata_rel}")
+            assert_ok(patch.get("rank") == index, f"showcase rank sequence mismatch: {metadata_rel}")
+            if "normalized_rank_desc" in patch:
+                assert_ok(patch["normalized_rank_desc"] == index, f"showcase normalized rank mismatch: {metadata_rel}")
+            if previous_norm is not None:
+                assert_ok(previous_norm >= patch["normalized_attention"], f"showcase normalized attention must be descending: {metadata_rel}")
+            previous_norm = patch["normalized_attention"]
 
     forbidden = [
         "/" + "cpfs01",
