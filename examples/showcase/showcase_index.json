@@ -31,7 +31,7 @@
       "prompt": "What color is the umbrella? Answer the question using a single word or phrase.",
       "overview_png": "examples/showcase/coco_umbrella_layer16/overview.png",
       "metadata_json": "examples/showcase/coco_umbrella_layer16/metadata.json",
-      "overview_bytes": 319994,
+      "overview_bytes": 357747,
       "image_size": [
         640,
         425
@@ -47,7 +47,7 @@
       "heatmap_display_max": 0.052001953125,
       "heatmap_display_max_patch_id": 230,
       "readout_available_top10_count": 10,
-      "overview_layout_version": "showcase_layout_v5_right_heatmap_bbox_only",
+      "overview_layout_version": "showcase_layout_v6_cjk_font_bbox_only",
       "overview_canvas_size": [
         1500,
         1120
@@ -55,12 +55,31 @@
       "overview_table_visible_rows": 10,
       "overview_rank_label_style": "blue_badge_white_text_cyan_outline",
       "overview_panel_note_layout": "short_non_overlapping_panel_notes",
-      "overview_png_sha256": "9881aca34f44e5feaaa638e9ea6b34483354ee3c671c989ec2e3437d8685c899",
+      "overview_png_sha256": "4c2b26cbc0b797e607051f49655d7e43caddd36967b2cf722d09f3fcdffc1724",
       "right_heatmap_patch_annotations": false,
       "right_heatmap_rank_labels": false,
       "right_heatmap_bbox_overlay": true,
       "right_heatmap_annotation_contract": "right heatmap shows raw_attention + bbox only; top patch ranks are shown on source image and table",
-      "vg_attention_mode": "attribute_raw"
+      "vg_attention_mode": "attribute_raw",
+      "overview_font_family": "SimHei",
+      "overview_font_style": "Regular",
+      "overview_font_source": "external_cjk_font",
+      "overview_font_path": "<external>",
+      "overview_font_basename": "SimHei.ttf",
+      "overview_cjk_font_fallback": true,
+      "overview_cjk_render_check": true,
+      "overview_cjk_probe_text": "中文测试 皮肤镜 结直肠",
+      "overview_cjk_probe_bbox": [
+        3,
+        0,
+        306,
+        27
+      ],
+      "overview_cjk_probe_sha256": "5b7fa2ef26e1488a6890f8fba6240302cda622f6946b7ba69df28eb8a011320a",
+      "overview_cjk_source_string_issues": {
+        "replacement_char_count": 0,
+        "replacement_char_fields": []
+      }
     },
     {
       "slug": "dermoscopy_skin_lesion_layer16",
@@ -69,7 +88,7 @@
       "prompt": "Does the skin lesion show uniform or varied coloration within its area? Answer the question using a single word or phrase.",
       "overview_png": "examples/showcase/dermoscopy_skin_lesion_layer16/overview.png",
       "metadata_json": "examples/showcase/dermoscopy_skin_lesion_layer16/metadata.json",
-      "overview_bytes": 374508,
+      "overview_bytes": 425360,
       "image_size": [
         4288,
         2848
@@ -85,7 +104,7 @@
       "heatmap_display_max": 0.0029754638671875,
       "heatmap_display_max_patch_id": 252,
       "readout_available_top10_count": 10,
-      "overview_layout_version": "showcase_layout_v5_right_heatmap_bbox_only",
+      "overview_layout_version": "showcase_layout_v6_cjk_font_bbox_only",
       "overview_canvas_size": [
         1500,
         1120
@@ -98,12 +117,31 @@
         539
       ],
       "overview_panel_note_layout": "short_non_overlapping_panel_notes",
-      "overview_png_sha256": "11a0ea8051820625e03ef06ed481c5bcdfebcc1ad57156770a376874e6d7e8a9",
+      "overview_png_sha256": "36bec8bb6fbd0eba1764531057e97c4616515a78c9f9761eada6ea652d7d908e",
       "right_heatmap_patch_annotations": false,
       "right_heatmap_rank_labels": false,
       "right_heatmap_bbox_overlay": true,
       "right_heatmap_annotation_contract": "right heatmap shows raw_attention + bbox only; top patch ranks are shown on source image and table",
-      "vg_attention_mode": "attribute_raw"
+      "vg_attention_mode": "attribute_raw",
+      "overview_font_family": "SimHei",
+      "overview_font_style": "Regular",
+      "overview_font_source": "external_cjk_font",
+      "overview_font_path": "<external>",
+      "overview_font_basename": "SimHei.ttf",
+      "overview_cjk_font_fallback": true,
+      "overview_cjk_render_check": true,
+      "overview_cjk_probe_text": "中文测试 皮肤镜 结直肠",
+      "overview_cjk_probe_bbox": [
+        3,
+        0,
+        306,
+        27
+      ],
+      "overview_cjk_probe_sha256": "5b7fa2ef26e1488a6890f8fba6240302cda622f6946b7ba69df28eb8a011320a",
+      "overview_cjk_source_string_issues": {
+        "replacement_char_count": 0,
+        "replacement_char_fields": []
+      }
     },
     {
       "slug": "colorectal_endoscopy_polyp_layer16",
@@ -112,7 +150,7 @@
       "prompt": "What is the shape of the polyp? Answer the question using a single word or phrase.",
       "overview_png": "examples/showcase/colorectal_endoscopy_polyp_layer16/overview.png",
       "metadata_json": "examples/showcase/colorectal_endoscopy_polyp_layer16/metadata.json",
-      "overview_bytes": 284213,
+      "overview_bytes": 312885,
       "image_size": [
         384,
         288
@@ -128,7 +166,7 @@
       "heatmap_display_max": 0.0030517578125,
       "heatmap_display_max_patch_id": 398,
       "readout_available_top10_count": 10,
-      "overview_layout_version": "showcase_layout_v5_right_heatmap_bbox_only",
+      "overview_layout_version": "showcase_layout_v6_cjk_font_bbox_only",
       "overview_canvas_size": [
         1500,
         1120
@@ -136,15 +174,34 @@
       "overview_table_visible_rows": 10,
       "overview_rank_label_style": "blue_badge_white_text_cyan_outline",
       "overview_panel_note_layout": "short_non_overlapping_panel_notes",
-      "overview_png_sha256": "f39289be931ef7b8f283b671ac904436345fb7e6a6b887a3e1a69de3129397ed",
+      "overview_png_sha256": "add50162783eb8cb9d82a1762e672f9c5faa5d72b2005403826df29f1b966a11",
       "right_heatmap_patch_annotations": false,
       "right_heatmap_rank_labels": false,
       "right_heatmap_bbox_overlay": true,
       "right_heatmap_annotation_contract": "right heatmap shows raw_attention + bbox only; top patch ranks are shown on source image and table",
-      "vg_attention_mode": "attribute_raw"
+      "vg_attention_mode": "attribute_raw",
+      "overview_font_family": "SimHei",
+      "overview_font_style": "Regular",
+      "overview_font_source": "external_cjk_font",
+      "overview_font_path": "<external>",
+      "overview_font_basename": "SimHei.ttf",
+      "overview_cjk_font_fallback": true,
+      "overview_cjk_render_check": true,
+      "overview_cjk_probe_text": "中文测试 皮肤镜 结直肠",
+      "overview_cjk_probe_bbox": [
+        3,
+        0,
+        306,
+        27
+      ],
+      "overview_cjk_probe_sha256": "5b7fa2ef26e1488a6890f8fba6240302cda622f6946b7ba69df28eb8a011320a",
+      "overview_cjk_source_string_issues": {
+        "replacement_char_count": 0,
+        "replacement_char_fields": []
+      }
     }
   ],
-  "overview_layout_version": "showcase_layout_v5_right_heatmap_bbox_only",
+  "overview_layout_version": "showcase_layout_v6_cjk_font_bbox_only",
   "overview_canvas_size": [
     1500,
     1120
@@ -173,5 +230,20 @@
       "q_type": "localization",
       "value_source": "normalized_attention"
     }
-  }
+  },
+  "overview_font_family": "SimHei",
+  "overview_font_style": "Regular",
+  "overview_font_source": "external_cjk_font",
+  "overview_font_path": "<external>",
+  "overview_font_basename": "SimHei.ttf",
+  "overview_cjk_font_fallback": true,
+  "overview_cjk_render_check": true,
+  "overview_cjk_probe_text": "中文测试 皮肤镜 结直肠",
+  "overview_cjk_probe_bbox": [
+    3,
+    0,
+    306,
+    27
+  ],
+  "overview_cjk_probe_sha256": "5b7fa2ef26e1488a6890f8fba6240302cda622f6946b7ba69df28eb8a011320a"
 }

@@ -26,6 +26,22 @@ def assert_ok(condition: bool, message: str) -> None:
         raise AssertionError(message)
 
 
+def assert_cjk_font_evidence(payload: dict, label: str) -> None:
+    assert_ok(payload.get("overview_font_family"), f"missing CJK overview font family: {label}")
+    assert_ok(payload.get("overview_font_source") == "external_cjk_font", f"unexpected CJK font source: {label}")
+    assert_ok(payload.get("overview_font_path") == "<external>", f"CJK font path must be sanitized: {label}")
+    assert_ok(payload.get("overview_font_basename"), f"missing CJK font basename: {label}")
+    assert_ok("/" not in str(payload.get("overview_font_basename")), f"CJK font basename must not contain a path: {label}")
+    assert_ok(payload.get("overview_cjk_font_fallback") is True, f"CJK fallback must be enabled: {label}")
+    assert_ok(payload.get("overview_cjk_render_check") is True, f"CJK render check must pass: {label}")
+    assert_ok(payload.get("overview_cjk_probe_text") == "中文测试 皮肤镜 结直肠", f"CJK probe text mismatch: {label}")
+    probe_bbox = payload.get("overview_cjk_probe_bbox")
+    assert_ok(isinstance(probe_bbox, list) and len(probe_bbox) == 4, f"CJK probe bbox missing: {label}")
+    assert_ok(probe_bbox[2] > probe_bbox[0] and probe_bbox[3] > probe_bbox[1], f"CJK probe bbox is empty: {label}")
+    probe_sha = payload.get("overview_cjk_probe_sha256", "")
+    assert_ok(isinstance(probe_sha, str) and len(probe_sha) == 64, f"CJK probe hash missing: {label}")
+
+
 def main() -> int:
     help_result = run([sys.executable, "run_jvlens.py", "--help"])
     assert_ok(help_result.returncode == 0, help_result.stderr)
@@ -106,6 +122,12 @@ def main() -> int:
     assert_ok("raw_attention attribute maps" in readme, "README must describe raw_attention showcase maps")
     assert_ok("blue badges" in readme, "README must describe non-yellow rank badges")
     assert_ok("right heatmap shows raw_attention + bbox only" in readme, "README must state right heatmap annotation contract")
+    assert_ok("CJK-capable fallback font" in readme, "README must state CJK-capable preview font fallback")
+    readme_zh = (ROOT / "README.zh-CN.md").read_text(encoding="utf-8")
+    assert_ok("支持 CJK 的 fallback 字体" in readme_zh, "Chinese README must state CJK preview font fallback")
+    renderer_source = (ROOT / "scripts/render_showcase_overviews.py").read_text(encoding="utf-8")
+    assert_ok("JVLENS_CJK_FONT_PATH" in renderer_source, "showcase renderer must support JVLENS_CJK_FONT_PATH")
+    assert_ok("/" + "cpfs01" not in renderer_source, "showcase renderer must not embed internal font paths")
     showcase_index_path = ROOT / "examples/showcase/showcase_index.json"
     assert_ok(showcase_index_path.is_file(), "missing showcase index")
     showcase_index = json.loads(showcase_index_path.read_text(encoding="utf-8"))
@@ -128,6 +150,7 @@ def main() -> int:
     assert_ok(showcase_index.get("right_heatmap_patch_annotations") is False, "right heatmap must not draw patch annotations")
     assert_ok(showcase_index.get("right_heatmap_rank_labels") is False, "right heatmap must not draw rank labels")
     assert_ok(showcase_index.get("right_heatmap_bbox_overlay") is True, "right heatmap must keep bbox overlay")
+    assert_cjk_font_evidence(showcase_index, "showcase index")
     index_transform = showcase_index.get("attention_map_transform", {})
     assert_ok(index_transform.get("patch_id_formula") == "patch_id = patch_row * 24 + patch_col", "showcase index patch id formula mismatch")
     assert_ok(index_transform.get("origin") == "top_left", "showcase index origin mismatch")
@@ -150,6 +173,7 @@ def main() -> int:
         assert_ok(sample.get("right_heatmap_patch_annotations") is False, f"right heatmap must not draw patch annotations: {sample.get('slug')}")
         assert_ok(sample.get("right_heatmap_rank_labels") is False, f"right heatmap must not draw rank labels: {sample.get('slug')}")
         assert_ok(sample.get("right_heatmap_bbox_overlay") is True, f"right heatmap must keep bbox overlay: {sample.get('slug')}")
+        assert_cjk_font_evidence(sample, f"showcase index sample {sample.get('slug')}")
         assert_ok(sample.get("overview_panel_note_layout") == "short_non_overlapping_panel_notes", f"showcase sample panel notes should be short: {sample.get('slug')}")
         overview_rel = sample["overview_png"]
         metadata_rel = sample["metadata_json"]
@@ -162,6 +186,10 @@ def main() -> int:
             assert_ok(image.size == (1500, 1120), f"showcase image size mismatch: {overview_rel}")
             assert_ok(image.format == "PNG", f"showcase image must be PNG: {overview_rel}")
         metadata = json.loads(metadata_path.read_text(encoding="utf-8"))
+        assert_cjk_font_evidence(metadata, metadata_rel)
+        source_issues = metadata.get("overview_cjk_source_string_issues", {})
+        assert_ok(source_issues.get("replacement_char_count") == 0, f"unexpected replacement chars in showcase strings: {metadata_rel}")
+        assert_ok(source_issues.get("replacement_char_fields") == [], f"unexpected replacement char fields: {metadata_rel}")
         assert_ok(metadata.get("overview_table_visible_rows") == 10, f"showcase table must expose 10 rows: {metadata_rel}")
         assert_ok(metadata.get("overview_table_no_clipping") is True, f"showcase table must not clip rows: {metadata_rel}")
         assert_ok(

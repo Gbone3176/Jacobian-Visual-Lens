@@ -1140,9 +1140,9 @@
       "readout_available": true
     }
   ],
-  "overview_png_sha256": "11a0ea8051820625e03ef06ed481c5bcdfebcc1ad57156770a376874e6d7e8a9",
-  "overview_bytes": 374508,
-  "overview_layout_version": "showcase_layout_v5_right_heatmap_bbox_only",
+  "overview_png_sha256": "36bec8bb6fbd0eba1764531057e97c4616515a78c9f9761eada6ea652d7d908e",
+  "overview_bytes": 425360,
+  "overview_layout_version": "showcase_layout_v6_cjk_font_bbox_only",
   "overview_canvas_size": [
     1500,
     1120
@@ -1220,5 +1220,24 @@
       "q_type": "localization",
       "value_source": "normalized_attention"
     }
+  },
+  "overview_font_family": "SimHei",
+  "overview_font_style": "Regular",
+  "overview_font_source": "external_cjk_font",
+  "overview_font_path": "<external>",
+  "overview_font_basename": "SimHei.ttf",
+  "overview_cjk_font_fallback": true,
+  "overview_cjk_render_check": true,
+  "overview_cjk_probe_text": "中文测试 皮肤镜 结直肠",
+  "overview_cjk_probe_bbox": [
+    3,
+    0,
+    306,
+    27
+  ],
+  "overview_cjk_probe_sha256": "5b7fa2ef26e1488a6890f8fba6240302cda622f6946b7ba69df28eb8a011320a",
+  "overview_cjk_source_string_issues": {
+    "replacement_char_count": 0,
+    "replacement_char_fields": []
   }
 }
