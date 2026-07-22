@@ -59,7 +59,8 @@
       "right_heatmap_patch_annotations": false,
       "right_heatmap_rank_labels": false,
       "right_heatmap_bbox_overlay": true,
-      "right_heatmap_annotation_contract": "right heatmap shows raw_attention + bbox only; top patch ranks are shown on source image and table"
+      "right_heatmap_annotation_contract": "right heatmap shows raw_attention + bbox only; top patch ranks are shown on source image and table",
+      "vg_attention_mode": "attribute_raw"
     },
     {
       "slug": "dermoscopy_skin_lesion_layer16",
@@ -101,7 +102,8 @@
       "right_heatmap_patch_annotations": false,
       "right_heatmap_rank_labels": false,
       "right_heatmap_bbox_overlay": true,
-      "right_heatmap_annotation_contract": "right heatmap shows raw_attention + bbox only; top patch ranks are shown on source image and table"
+      "right_heatmap_annotation_contract": "right heatmap shows raw_attention + bbox only; top patch ranks are shown on source image and table",
+      "vg_attention_mode": "attribute_raw"
     },
     {
       "slug": "colorectal_endoscopy_polyp_layer16",
@@ -138,7 +140,8 @@
       "right_heatmap_patch_annotations": false,
       "right_heatmap_rank_labels": false,
       "right_heatmap_bbox_overlay": true,
-      "right_heatmap_annotation_contract": "right heatmap shows raw_attention + bbox only; top patch ranks are shown on source image and table"
+      "right_heatmap_annotation_contract": "right heatmap shows raw_attention + bbox only; top patch ranks are shown on source image and table",
+      "vg_attention_mode": "attribute_raw"
     }
   ],
   "overview_layout_version": "showcase_layout_v5_right_heatmap_bbox_only",
@@ -151,5 +154,24 @@
   "right_heatmap_patch_annotations": false,
   "right_heatmap_rank_labels": false,
   "right_heatmap_bbox_overlay": true,
-  "right_heatmap_annotation_contract": "right heatmap shows raw_attention + bbox only; top patch ranks are shown on source image and table"
+  "right_heatmap_annotation_contract": "right heatmap shows raw_attention + bbox only; top patch ranks are shown on source image and table",
+  "vg_attention_mode": "attribute_raw",
+  "vg_attention_mode_contract": {
+    "attribute_raw": {
+      "q_type": "attribute",
+      "value_source": "raw_attention"
+    },
+    "attribute_normalized": {
+      "q_type": "attribute",
+      "value_source": "normalized_attention"
+    },
+    "localization_raw": {
+      "q_type": "localization",
+      "value_source": "raw_attention"
+    },
+    "localization_normalized": {
+      "q_type": "localization",
+      "value_source": "normalized_attention"
+    }
+  }
 }

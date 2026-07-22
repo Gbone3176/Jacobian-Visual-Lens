@@ -6,6 +6,8 @@ source_layer: 16
 target_layer: 27
 top_k_patches: 10
 top_k_tokens: 10
-q_type: custom
+vg_attention_mode: attribute_raw
+q_type: attribute
+attention_value_source: raw_attention
 device: cuda:0
 allow_model_run_required: true

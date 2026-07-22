@@ -35,6 +35,58 @@ DEFAULT_LENS_SHA256 = "702c9a99d54e19d3b759e9238edcabc7696f7e07246c018a39c0035cb
 DEFAULT_MODEL_PATH = "/path/to/HuatuoGPT-Vision-7B"
 DEFAULT_SUPPORT_REPO = JVLENS_ROOT / "third_party/HuatuoGPT-Vision"
 DEFAULT_RUNTIME_ROOT = JVLENS_ROOT / "runtime_adapters/HuatuoGPT-Vision"
+DEFAULT_VG_ATTENTION_MODE = "attribute_raw"
+VG_ATTENTION_MODE_MAP = {
+    "attribute_raw": {"q_type": "attribute", "value_source": "raw_attention"},
+    "attribute_normalized": {"q_type": "attribute", "value_source": "normalized_attention"},
+    "localization_raw": {"q_type": "localization", "value_source": "raw_attention"},
+    "localization_normalized": {"q_type": "localization", "value_source": "normalized_attention"},
+}
+VG_ATTENTION_MODE_CHOICES = tuple(VG_ATTENTION_MODE_MAP)
+
+
+def resolve_vg_attention_mode(vg_attention_mode: str | None, legacy_q_type: str | None = None) -> dict[str, str]:
+    if vg_attention_mode is None:
+        if legacy_q_type == "localization":
+            mode = "localization_raw"
+        else:
+            mode = DEFAULT_VG_ATTENTION_MODE
+    else:
+        mode = vg_attention_mode
+    if mode not in VG_ATTENTION_MODE_MAP:
+        allowed = ", ".join(VG_ATTENTION_MODE_CHOICES)
+        raise ValueError(f"invalid vg attention mode {mode!r}; expected one of: {allowed}")
+    contract = {"vg_attention_mode": mode, **VG_ATTENTION_MODE_MAP[mode]}
+    if legacy_q_type in {"attribute", "localization"} and legacy_q_type != contract["q_type"]:
+        raise ValueError(
+            f"--q-type={legacy_q_type} conflicts with --vg-attention-mode={mode} "
+            f"(q_type={contract['q_type']})"
+        )
+    return contract
+
+
+def apply_vg_attention_contract(args: argparse.Namespace) -> dict[str, str]:
+    contract = resolve_vg_attention_mode(
+        getattr(args, "vg_attention_mode", None),
+        getattr(args, "q_type", None),
+    )
+    args.vg_attention_mode = contract["vg_attention_mode"]
+    args.q_type = contract["q_type"]
+    args.attention_value_source = contract["value_source"]
+    return contract
+
+
+def attention_values_for_source(raw_attention: np.ndarray, value_source: str) -> np.ndarray:
+    if value_source == "raw_attention":
+        return np.asarray(raw_attention, dtype=np.float32)
+    if value_source == "normalized_attention":
+        return minmax01(raw_attention)[0]
+    raise ValueError(f"unsupported attention value source: {value_source}")
+
+
+def attention_map_filename(value_source: str) -> str:
+    label = "raw" if value_source == "raw_attention" else "normalized"
+    return f"attention_{label}_patchgrid_image_aspect.png"
 
 
 def now_utc() -> str:
@@ -212,14 +264,24 @@ def patch_blocks_independent(path: Path, image_size: list[int], xs: list[int], y
     return True, "PASS"
 
 
-def top_patch_rows(attention: np.ndarray, image_size: list[int], top_k: int) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
+def top_patch_rows(
+    attention: np.ndarray,
+    image_size: list[int],
+    top_k: int,
+    value_source: str = "raw_attention",
+) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
     arr = np.asarray(attention, dtype=np.float32)
     arr01, _ = minmax01(arr)
-    order = sorted(range(576), key=lambda idx: (-float(arr.reshape(-1)[idx]), idx))
-    raw_rank = {idx: rank + 1 for rank, idx in enumerate(order)}
+    raw_order = sorted(range(576), key=lambda idx: (-float(arr.reshape(-1)[idx]), idx))
+    normalized_order = sorted(range(576), key=lambda idx: (-float(arr01.reshape(-1)[idx]), idx))
+    selected_values = arr if value_source == "raw_attention" else arr01
+    selected_order = sorted(range(576), key=lambda idx: (-float(selected_values.reshape(-1)[idx]), idx))
+    raw_rank = {idx: rank + 1 for rank, idx in enumerate(raw_order)}
+    normalized_rank = {idx: rank + 1 for rank, idx in enumerate(normalized_order)}
     rows: list[dict[str, Any]] = []
     for patch_id in range(576):
         row, col = divmod(patch_id, 24)
+        heatmap_value = float(selected_values[row, col])
         rows.append(
             {
                 "patch_id": patch_id,
@@ -229,11 +291,13 @@ def top_patch_rows(attention: np.ndarray, image_size: list[int], top_k: int) -> 
                 "image_patch_xyxy": patch_xyxy(row, col, int(image_size[0]), int(image_size[1])),
                 "raw_attention": float(arr[row, col]),
                 "normalized_attention": float(arr01[row, col]),
+                "heatmap_value": heatmap_value,
+                "heatmap_value_source": value_source,
                 "raw_rank_desc": raw_rank[patch_id],
-                "normalized_rank_desc": raw_rank[patch_id],
+                "normalized_rank_desc": normalized_rank[patch_id],
             }
         )
-    top_rows = [dict(rows[idx], rank=rank + 1) for rank, idx in enumerate(order[:top_k])]
+    top_rows = [dict(rows[idx], rank=rank + 1) for rank, idx in enumerate(selected_order[:top_k])]
     return rows, top_rows
 
 
@@ -527,6 +591,7 @@ def create_fixture_image(path: Path, size: list[int]) -> None:
 
 
 def make_fixture_demo(args: argparse.Namespace) -> int:
+    contract = apply_vg_attention_contract(args)
     run_id = args.run_id or "fixture_demo_" + time.strftime("%Y%m%d_%H%M%S", time.gmtime())
     out_dir = Path(args.out_dir) if args.out_dir else JVLENS_ROOT / "experiment" / run_id
     ensure_clean_out_dir(out_dir, args.overwrite)
@@ -545,13 +610,14 @@ def make_fixture_demo(args: argparse.Namespace) -> int:
     image_path = images_dir / "fixture_input.png"
     create_fixture_image(image_path, image_size)
     attention = synthetic_attention()
-    patch_rows, top_rows = top_patch_rows(attention, image_size, args.top_k_patches)
+    attention_values = attention_values_for_source(attention, args.attention_value_source)
+    patch_rows, top_rows = top_patch_rows(attention, image_size, args.top_k_patches, args.attention_value_source)
     record_id = safe_slug(f"fixture__{args.q_type}__layer{args.source_layer}")
     record_dir = out_dir / "records" / record_id
     record_dir.mkdir(parents=True, exist_ok=True)
     bbox = [320.0, 85.0, 560.0, 300.0] if args.include_bbox else None
-    attention_image, attention_stats = image_aspect_attention_map(attention, image_size)
-    attention_map_path = record_dir / "attention_raw_patchgrid_image_aspect.png"
+    attention_image, attention_stats = image_aspect_attention_map(attention_values, image_size)
+    attention_map_path = record_dir / attention_map_filename(args.attention_value_source)
     attention_image.save(attention_map_path)
     attention_ok, attention_reason = patch_blocks_independent(
         attention_map_path,
@@ -570,6 +636,10 @@ def make_fixture_demo(args: argparse.Namespace) -> int:
                 "record_id": record_id,
                 "sample_id": "fixture_sample_001",
                 "q_type": args.q_type,
+                "vg_attention_mode": args.vg_attention_mode,
+                "attention_value_source": args.attention_value_source,
+                "heatmap_value_source": args.attention_value_source,
+                "colorbar_value_source": args.attention_value_source,
                 "prompt": args.prompt,
                 "source_layer": args.source_layer,
                 "target_layer": 27,
@@ -581,7 +651,13 @@ def make_fixture_demo(args: argparse.Namespace) -> int:
         )
     attention_sidecar = {
         "schema": "jvlens_attention_map_v1",
-        "attention_map_source": "fixture synthetic raw_attention array",
+        "vg_attention_mode": args.vg_attention_mode,
+        "vg_attention_mode_contract": contract,
+        "attention_value_source": args.attention_value_source,
+        "heatmap_value_source": args.attention_value_source,
+        "colorbar_value_source": args.attention_value_source,
+        "top_patch_rank_source": args.attention_value_source,
+        "attention_map_source": f"fixture synthetic {args.attention_value_source} array",
         "attention_map_alignment": "q_type_aligned",
         "attention_map_raw_path": "arrays/fixture_attention_raw.npy",
         "attention_map_source_q_type": args.q_type,
@@ -614,6 +690,11 @@ def make_fixture_demo(args: argparse.Namespace) -> int:
         "record_id": record_id,
         "sample_id": "fixture_sample_001",
         "q_type": args.q_type,
+        "vg_attention_mode": args.vg_attention_mode,
+        "attention_value_source": args.attention_value_source,
+        "heatmap_value_source": args.attention_value_source,
+        "colorbar_value_source": args.attention_value_source,
+        "top_patch_rank_source": args.attention_value_source,
         "prompt": args.prompt,
         "source_layer": args.source_layer,
         "image_path": str(image_path),
@@ -632,6 +713,12 @@ def make_fixture_demo(args: argparse.Namespace) -> int:
         "sample_id": "fixture_sample_001",
         "prompt": args.prompt,
         "q_type": args.q_type,
+        "vg_attention_mode": args.vg_attention_mode,
+        "vg_attention_mode_contract": contract,
+        "attention_value_source": args.attention_value_source,
+        "heatmap_value_source": args.attention_value_source,
+        "colorbar_value_source": args.attention_value_source,
+        "top_patch_rank_source": args.attention_value_source,
         "source_layer": args.source_layer,
         "target_layer": 27,
         "lens_path": str(Path(args.lens_path)),
@@ -640,7 +727,7 @@ def make_fixture_demo(args: argparse.Namespace) -> int:
         "lens_n_prompts": 50,
         "image_copy": "../../images/fixture_input.png",
         "image_size": image_size,
-        "attention_map": "attention_raw_patchgrid_image_aspect.png",
+        "attention_map": attention_map_path.name,
         "attention_map_display_mode": "patch_grid_image_aspect",
         "attention_map_token_interpolation": False,
         "attention_map_patch_blocks_independent": True,
@@ -669,6 +756,13 @@ def make_fixture_demo(args: argparse.Namespace) -> int:
         "patch_value_rows": len(patch_rows),
         "mapping_rows": len(mapping_rows),
         "attention_map_display_mode": "patch_grid_image_aspect",
+        "vg_attention_mode": args.vg_attention_mode,
+        "vg_attention_mode_contract": contract,
+        "q_type": args.q_type,
+        "attention_value_source": args.attention_value_source,
+        "heatmap_value_source": args.attention_value_source,
+        "colorbar_value_source": args.attention_value_source,
+        "top_patch_rank_source": args.attention_value_source,
         "attention_map_token_interpolation": False,
         "attention_map_patch_blocks_independent": True,
         "logical_patch_grid": [24, 24],
@@ -686,6 +780,8 @@ def make_fixture_demo(args: argparse.Namespace) -> int:
                 "run_meta": f"records/{record_id}/run_meta.json",
                 "prompt": args.prompt,
                 "q_type": args.q_type,
+                "vg_attention_mode": args.vg_attention_mode,
+                "attention_value_source": args.attention_value_source,
             }
         ],
     }
@@ -701,6 +797,13 @@ def make_fixture_demo(args: argparse.Namespace) -> int:
             "record_count": 1,
             "patch_value_rows": len(patch_rows),
             "mapping_rows": len(mapping_rows),
+            "vg_attention_mode": args.vg_attention_mode,
+            "vg_attention_mode_contract": contract,
+            "q_type": args.q_type,
+            "attention_value_source": args.attention_value_source,
+            "heatmap_value_source": args.attention_value_source,
+            "colorbar_value_source": args.attention_value_source,
+            "top_patch_rank_source": args.attention_value_source,
             "source_layer": args.source_layer,
             "target_layer": 27,
             "lens_path": str(Path(args.lens_path)),
@@ -791,7 +894,11 @@ def validate_output(run_root: Path, *, write_summary: bool, sync_zip: bool) -> d
         errors.append("patch_id coverage is not 0..575")
     if any(row.get("patch_id") != int(row.get("patch_row", -1)) * 24 + int(row.get("patch_col", -1)) for row in patch_rows):
         errors.append("patch_id != row*24+col for at least one patch")
-    expected_top = sorted(patch_rows, key=lambda row: (-float(row["raw_attention"]), int(row["patch_id"])))[:10]
+    top_patch_rank_source = overview.get("top_patch_rank_source") or "raw_attention"
+    if top_patch_rank_source not in {"raw_attention", "normalized_attention"}:
+        errors.append(f"unsupported top_patch_rank_source: {top_patch_rank_source}")
+        top_patch_rank_source = "raw_attention"
+    expected_top = sorted(patch_rows, key=lambda row: (-float(row[top_patch_rank_source]), int(row["patch_id"])))[:10]
     expected_top_ids = [int(row["patch_id"]) for row in expected_top]
     mapping_ids = [int(row["patch_id"]) for row in mapping_rows]
     if mapping_ids != expected_top_ids:
@@ -822,7 +929,7 @@ def validate_output(run_root: Path, *, write_summary: bool, sync_zip: bool) -> d
             html_text = html_path.read_text(encoding="utf-8")
             if "JLens top tokens" not in html_text or "logit-lens top tokens" not in html_text:
                 errors.append(f"{rec.get('record_id')}: HTML missing token table")
-            if "attention_raw_patchgrid_image_aspect.png" not in html_text:
+            if "patchgrid_image_aspect.png" not in html_text:
                 errors.append(f"{rec.get('record_id')}: HTML missing image-aspect attention map")
             if any(term in html_text for term in html_old_terms):
                 errors.append(f"{rec.get('record_id')}: HTML contains misleading stale layer/Qwen text")
@@ -898,6 +1005,12 @@ def validate_output(run_root: Path, *, write_summary: bool, sync_zip: bool) -> d
         "top10_patch_ids_match_raw_sort": mapping_ids == expected_top_ids,
         "html_record_pages": html_count,
         "attention_map_display_mode": overview.get("attention_map_display_mode"),
+        "vg_attention_mode": overview.get("vg_attention_mode"),
+        "q_type": overview.get("q_type"),
+        "attention_value_source": overview.get("attention_value_source"),
+        "heatmap_value_source": overview.get("heatmap_value_source"),
+        "colorbar_value_source": overview.get("colorbar_value_source"),
+        "top_patch_rank_source": overview.get("top_patch_rank_source"),
         "attention_map_token_interpolation": overview.get("attention_map_token_interpolation"),
         "attention_map_patch_blocks_independent": overview.get("attention_map_patch_blocks_independent"),
         "attention_map_image_aspect_pages": map_ok,
@@ -936,12 +1049,13 @@ def write_real_single_output(
     record_dir.mkdir(parents=True, exist_ok=True)
 
     raw_attention = np.asarray(bridge_result["raw_attention"], dtype=np.float32)
+    attention_values = attention_values_for_source(raw_attention, args.attention_value_source)
     arrays_dir = out_dir / "arrays"
     arrays_dir.mkdir(parents=True, exist_ok=True)
     raw_path = arrays_dir / f"{record_id}__raw_attention.npy"
     np.save(raw_path, raw_attention)
 
-    patch_rows, top_rows = top_patch_rows(raw_attention, image_size, int(args.top_k_patches))
+    patch_rows, top_rows = top_patch_rows(raw_attention, image_size, int(args.top_k_patches), args.attention_value_source)
     readout_by_patch = {int(row["patch_id"]): row for row in bridge_result["patch_readouts"]}
     mapping_rows: list[dict[str, Any]] = []
     for row in top_rows:
@@ -955,6 +1069,10 @@ def write_real_single_output(
                 "record_id": record_id,
                 "sample_id": sample_id,
                 "q_type": args.q_type,
+                "vg_attention_mode": args.vg_attention_mode,
+                "attention_value_source": args.attention_value_source,
+                "heatmap_value_source": args.attention_value_source,
+                "colorbar_value_source": args.attention_value_source,
                 "prompt": prompt,
                 "source_layer": int(args.source_layer),
                 "target_layer": 27,
@@ -965,8 +1083,8 @@ def write_real_single_output(
             }
         )
 
-    attention_image, attention_stats = image_aspect_attention_map(raw_attention, image_size)
-    attention_map_path = record_dir / "attention_raw_patchgrid_image_aspect.png"
+    attention_image, attention_stats = image_aspect_attention_map(attention_values, image_size)
+    attention_map_path = record_dir / attention_map_filename(args.attention_value_source)
     attention_image.save(attention_map_path)
     attention_ok, attention_reason = patch_blocks_independent(
         attention_map_path,
@@ -980,7 +1098,17 @@ def write_real_single_output(
     top_patch_ids = [int(row["patch_id"]) for row in top_rows]
     attention_sidecar = {
         "schema": "jvlens_attention_map_v1",
-        "attention_map_source": "Huatuo run-single q_type raw_attention from one model forward",
+        "vg_attention_mode": args.vg_attention_mode,
+        "vg_attention_mode_contract": {
+            "vg_attention_mode": args.vg_attention_mode,
+            "q_type": args.q_type,
+            "value_source": args.attention_value_source,
+        },
+        "attention_value_source": args.attention_value_source,
+        "heatmap_value_source": args.attention_value_source,
+        "colorbar_value_source": args.attention_value_source,
+        "top_patch_rank_source": args.attention_value_source,
+        "attention_map_source": f"Huatuo run-single q_type {args.attention_value_source} from one model forward",
         "attention_map_alignment": "q_type_aligned",
         "attention_map_raw_path": str(raw_path),
         "attention_map_source_sample_id": sample_id,
@@ -1015,6 +1143,11 @@ def write_real_single_output(
         "sample_id": sample_id,
         "sample_layer_id": record_id,
         "q_type": args.q_type,
+        "vg_attention_mode": args.vg_attention_mode,
+        "attention_value_source": args.attention_value_source,
+        "heatmap_value_source": args.attention_value_source,
+        "colorbar_value_source": args.attention_value_source,
+        "top_patch_rank_source": args.attention_value_source,
         "prompt": prompt,
         "target_prompt": prompt,
         "layer_index": int(args.source_layer),
@@ -1041,6 +1174,16 @@ def write_real_single_output(
         "sample_id": sample_id,
         "prompt": prompt,
         "q_type": args.q_type,
+        "vg_attention_mode": args.vg_attention_mode,
+        "vg_attention_mode_contract": {
+            "vg_attention_mode": args.vg_attention_mode,
+            "q_type": args.q_type,
+            "value_source": args.attention_value_source,
+        },
+        "attention_value_source": args.attention_value_source,
+        "heatmap_value_source": args.attention_value_source,
+        "colorbar_value_source": args.attention_value_source,
+        "top_patch_rank_source": args.attention_value_source,
         "readout_path": readout_path_text(int(args.source_layer)),
         "source_layer": int(args.source_layer),
         "target_layer": 27,
@@ -1063,7 +1206,7 @@ def write_real_single_output(
         "placeholder_count": prepared["placeholder_count"],
         "raw_prompt_len": prepared["raw_prompt_len"],
         "expanded_seq_len": prepared["expanded_seq_len"],
-        "attention_map": "attention_raw_patchgrid_image_aspect.png",
+        "attention_map": attention_map_path.name,
         "attention_map_source": attention_sidecar["attention_map_source"],
         "attention_map_alignment": "q_type_aligned",
         "attention_map_source_q_type": args.q_type,
@@ -1109,6 +1252,17 @@ def write_real_single_output(
         "patch_value_rows": len(patch_rows),
         "mapping_rows": len(mapping_rows),
         "attention_map_display_mode": "patch_grid_image_aspect",
+        "vg_attention_mode": args.vg_attention_mode,
+        "vg_attention_mode_contract": {
+            "vg_attention_mode": args.vg_attention_mode,
+            "q_type": args.q_type,
+            "value_source": args.attention_value_source,
+        },
+        "q_type": args.q_type,
+        "attention_value_source": args.attention_value_source,
+        "heatmap_value_source": args.attention_value_source,
+        "colorbar_value_source": args.attention_value_source,
+        "top_patch_rank_source": args.attention_value_source,
         "attention_map_token_interpolation": False,
         "attention_map_patch_blocks_independent": True,
         "logical_patch_grid": [24, 24],
@@ -1128,6 +1282,8 @@ def write_real_single_output(
                 "run_meta": f"records/{record_id}/run_meta.json",
                 "prompt": prompt,
                 "q_type": args.q_type,
+                "vg_attention_mode": args.vg_attention_mode,
+                "attention_value_source": args.attention_value_source,
             }
         ],
     }
@@ -1157,6 +1313,16 @@ def write_real_single_output(
             "image_sha256": image_sha256,
             "prompt": prompt,
             "q_type": args.q_type,
+            "vg_attention_mode": args.vg_attention_mode,
+            "vg_attention_mode_contract": {
+                "vg_attention_mode": args.vg_attention_mode,
+                "q_type": args.q_type,
+                "value_source": args.attention_value_source,
+            },
+            "attention_value_source": args.attention_value_source,
+            "heatmap_value_source": args.attention_value_source,
+            "colorbar_value_source": args.attention_value_source,
+            "top_patch_rank_source": args.attention_value_source,
             "bbox_original_xyxy": [bbox] if bbox else [],
             "allow_model_run": bool(args.allow_model_run),
             "runtime_contract": bridge_result["runtime_contract"],
@@ -1180,6 +1346,7 @@ def write_real_single_output(
 
 
 def dry_run(args: argparse.Namespace) -> int:
+    contract = apply_vg_attention_contract(args)
     lens_info = validate_lens_contract(Path(args.lens_path))
     out_dir = Path(args.out_dir) if args.out_dir else JVLENS_ROOT / "experiment" / "dry_run_placeholder"
     result = {
@@ -1189,7 +1356,13 @@ def dry_run(args: argparse.Namespace) -> int:
         "no_gpu_required": True,
         "image": str(args.image) if args.image else None,
         "prompt_count": len(args.prompt or []),
+        "vg_attention_mode": args.vg_attention_mode,
+        "vg_attention_mode_contract": contract,
         "q_type": args.q_type,
+        "attention_value_source": args.attention_value_source,
+        "heatmap_value_source": args.attention_value_source,
+        "colorbar_value_source": args.attention_value_source,
+        "top_patch_rank_source": args.attention_value_source,
         "out_dir": str(out_dir),
         "model_path": str(args.model_path),
         "processor_path": str(args.processor_path) if getattr(args, "processor_path", None) else None,
@@ -1208,6 +1381,7 @@ def dry_run(args: argparse.Namespace) -> int:
 
 
 def run_single(args: argparse.Namespace) -> int:
+    contract = apply_vg_attention_contract(args)
     image_path = Path(args.image).expanduser().resolve()
     model_path = Path(args.model_path).expanduser().resolve()
     support_repo = Path(args.support_repo).expanduser().resolve()
@@ -1245,7 +1419,13 @@ def run_single(args: argparse.Namespace) -> int:
         "mode": "run-single",
         "image": str(image_path),
         "prompt": args.prompt,
+        "vg_attention_mode": args.vg_attention_mode,
+        "vg_attention_mode_contract": contract,
         "q_type": args.q_type,
+        "attention_value_source": args.attention_value_source,
+        "heatmap_value_source": args.attention_value_source,
+        "colorbar_value_source": args.attention_value_source,
+        "top_patch_rank_source": args.attention_value_source,
         "out_dir": str(out_dir),
         "model_path": str(model_path),
         "processor_path": str(processor_path) if processor_path else None,
@@ -1305,6 +1485,7 @@ def run_single(args: argparse.Namespace) -> int:
                     "event": "run_single_start",
                     "started_at_utc": started_at,
                     "source_layer": int(args.source_layer),
+                    "vg_attention_mode": args.vg_attention_mode,
                     "device": args.device,
                     "single_forward_bridge": True,
                 },
@@ -1372,7 +1553,8 @@ def build_parser() -> argparse.ArgumentParser:
     dry = sub.add_parser("dry-run", help="check paths/config without loading model or using GPU")
     dry.add_argument("--image")
     dry.add_argument("--prompt", action="append", default=[])
-    dry.add_argument("--q-type", choices=["localization", "attribute", "custom"], default="custom")
+    dry.add_argument("--vg-attention-mode", choices=VG_ATTENTION_MODE_CHOICES, default=DEFAULT_VG_ATTENTION_MODE)
+    dry.add_argument("--q-type", choices=["localization", "attribute", "custom"], help="legacy alias; use --vg-attention-mode for new runs")
     dry.add_argument("--out-dir")
     dry.add_argument("--source-layer", type=int, default=16)
     dry.add_argument("--lens-path", default=str(DEFAULT_LENS_PATH))
@@ -1386,7 +1568,8 @@ def build_parser() -> argparse.ArgumentParser:
     run = sub.add_parser("run-single", help="real single-image entry guarded by --allow-model-run")
     run.add_argument("--image", required=True)
     run.add_argument("--prompt", required=True)
-    run.add_argument("--q-type", choices=["localization", "attribute", "custom"], default="custom")
+    run.add_argument("--vg-attention-mode", choices=VG_ATTENTION_MODE_CHOICES, default=DEFAULT_VG_ATTENTION_MODE)
+    run.add_argument("--q-type", choices=["localization", "attribute", "custom"], help="legacy alias; use --vg-attention-mode for new runs")
     run.add_argument("--out-dir")
     run.add_argument("--source-layer", type=int, default=16)
     run.add_argument("--lens-path", default=str(DEFAULT_LENS_PATH))
@@ -1410,7 +1593,8 @@ def build_parser() -> argparse.ArgumentParser:
     fixture.add_argument("--out-dir")
     fixture.add_argument("--run-id")
     fixture.add_argument("--prompt", default="Fixture prompt: identify the highlighted visual evidence.")
-    fixture.add_argument("--q-type", choices=["localization", "attribute", "custom"], default="custom")
+    fixture.add_argument("--vg-attention-mode", choices=VG_ATTENTION_MODE_CHOICES, default=DEFAULT_VG_ATTENTION_MODE)
+    fixture.add_argument("--q-type", choices=["localization", "attribute", "custom"], help="legacy alias; use --vg-attention-mode for new runs")
     fixture.add_argument("--source-layer", type=int, default=16)
     fixture.add_argument("--lens-path", default=str(DEFAULT_LENS_PATH))
     fixture.add_argument("--top-k-patches", type=int, default=10)

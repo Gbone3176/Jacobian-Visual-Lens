@@ -2,6 +2,21 @@
 
 The attention map is not a smooth heatmap. It is a patch-level view of a 24x24 image-token grid.
 
+Default VG mode:
+
+- `vg_attention_mode = attribute_raw`
+- `q_type = attribute`
+- `value_source = raw_attention`
+
+Allowed VG modes:
+
+| mode | q_type | value_source |
+| --- | --- | --- |
+| `attribute_raw` | `attribute` | `raw_attention` |
+| `attribute_normalized` | `attribute` | `normalized_attention` |
+| `localization_raw` | `localization` | `raw_attention` |
+| `localization_normalized` | `localization` | `normalized_attention` |
+
 Contract:
 
 - `attention_map_display_mode = patch_grid_image_aspect`

@@ -29,6 +29,8 @@ def assert_ok(condition: bool, message: str) -> None:
 def main() -> int:
     help_result = run([sys.executable, "run_jvlens.py", "--help"])
     assert_ok(help_result.returncode == 0, help_result.stderr)
+    dry_help = run([sys.executable, "run_jvlens.py", "dry-run", "--help"])
+    assert_ok(dry_help.returncode == 0, dry_help.stderr)
 
     fit_help = run([sys.executable, "scripts/fit/huatuo_fit_jlens.py", "--help"])
     assert_ok(fit_help.returncode == 0, fit_help.stderr)
@@ -36,6 +38,32 @@ def main() -> int:
     assert_ok(eval_help.returncode == 0, eval_help.stderr)
     f1_help = run([sys.executable, "scripts/eval/huatuo_single_sample_f1.py", "--help"])
     assert_ok(f1_help.returncode == 0, f1_help.stderr)
+    assert_ok("--vg-attention-mode" in dry_help.stdout, "CLI help must expose --vg-attention-mode")
+
+    expected_modes = {
+        "attribute_raw": ("attribute", "raw_attention"),
+        "attribute_normalized": ("attribute", "normalized_attention"),
+        "localization_raw": ("localization", "raw_attention"),
+        "localization_normalized": ("localization", "normalized_attention"),
+    }
+    default_dry_run = run([sys.executable, "run_jvlens.py", "dry-run"])
+    assert_ok(default_dry_run.returncode == 0, default_dry_run.stderr)
+    default_payload = json.loads(default_dry_run.stdout)
+    assert_ok(default_payload.get("vg_attention_mode") == "attribute_raw", "default VG attention mode must be attribute_raw")
+    assert_ok(default_payload.get("q_type") == "attribute", "default VG mode q_type must be attribute")
+    assert_ok(default_payload.get("attention_value_source") == "raw_attention", "default VG mode value source must be raw_attention")
+    for mode, (q_type, value_source) in expected_modes.items():
+        mode_result = run([sys.executable, "run_jvlens.py", "dry-run", "--vg-attention-mode", mode])
+        assert_ok(mode_result.returncode == 0, mode_result.stderr)
+        payload = json.loads(mode_result.stdout)
+        assert_ok(payload.get("vg_attention_mode") == mode, f"dry-run mode mismatch for {mode}")
+        assert_ok(payload.get("q_type") == q_type, f"dry-run q_type mismatch for {mode}")
+        assert_ok(payload.get("attention_value_source") == value_source, f"dry-run value source mismatch for {mode}")
+        assert_ok(payload.get("heatmap_value_source") == value_source, f"dry-run heatmap source mismatch for {mode}")
+        assert_ok(payload.get("colorbar_value_source") == value_source, f"dry-run colorbar source mismatch for {mode}")
+    invalid_mode = run([sys.executable, "run_jvlens.py", "dry-run", "--vg-attention-mode", "bad_mode"])
+    assert_ok(invalid_mode.returncode != 0, "invalid VG attention mode must fail")
+    assert_ok("invalid choice" in invalid_mode.stderr, "invalid VG attention mode must emit argparse choice error")
 
     fixture_outputs = [
         ROOT / "examples/fixture_demo/validation_summary.json",
@@ -89,6 +117,7 @@ def main() -> int:
         "showcase index rank labels must avoid yellow/viridis-high styling",
     )
     assert_ok(showcase_index.get("attention_prompt_type") == "attribute", "showcase index must use attribute prompts")
+    assert_ok(showcase_index.get("vg_attention_mode") == "attribute_raw", "showcase index must use attribute_raw")
     assert_ok(showcase_index.get("attention_value_source") == "raw_attention", "showcase index must use raw_attention")
     assert_ok(showcase_index.get("heatmap_value_source") == "raw_attention", "showcase heatmap must use raw_attention")
     assert_ok(showcase_index.get("colorbar_value_source") == "raw_attention", "showcase colorbar must use raw_attention")
@@ -111,6 +140,7 @@ def main() -> int:
     assert_ok({sample.get("sample_type") for sample in showcase_samples} == expected_showcase_types, "unexpected showcase sample types")
     for sample in showcase_samples:
         assert_ok(sample.get("q_type") == "attribute", f"showcase index sample must be attribute: {sample.get('slug')}")
+        assert_ok(sample.get("vg_attention_mode") == "attribute_raw", f"showcase sample must use attribute_raw: {sample.get('slug')}")
         assert_ok(sample.get("attention_value_source") == "raw_attention", f"showcase sample must use raw attention: {sample.get('slug')}")
         assert_ok(sample.get("heatmap_value_source") == "raw_attention", f"showcase heatmap must use raw attention: {sample.get('slug')}")
         assert_ok(sample.get("colorbar_value_source") == "raw_attention", f"showcase colorbar must use raw attention: {sample.get('slug')}")
@@ -142,6 +172,7 @@ def main() -> int:
         assert_ok(metadata.get("right_heatmap_rank_labels") is False, f"right heatmap must not draw rank labels: {metadata_rel}")
         assert_ok(metadata.get("right_heatmap_bbox_overlay") is True, f"right heatmap must keep bbox overlay: {metadata_rel}")
         assert_ok(metadata.get("q_type") == "attribute", f"showcase metadata must be attribute: {metadata_rel}")
+        assert_ok(metadata.get("vg_attention_mode") == "attribute_raw", f"showcase metadata must use attribute_raw: {metadata_rel}")
         assert_ok("__attribute__layer16" in metadata.get("sample_layer_id", ""), f"showcase sample_layer_id must be attribute: {metadata_rel}")
         assert_ok(metadata.get("attention_value_source") == "raw_attention", f"showcase metadata must use raw attention: {metadata_rel}")
         assert_ok(metadata.get("heatmap_value_source") == "raw_attention", f"showcase heatmap must use raw attention: {metadata_rel}")

@@ -71,7 +71,7 @@ Real execution is guarded. Without `--allow-model-run`, `run-single` fails fast 
 PYTHONDONTWRITEBYTECODE=1 python run_jvlens.py run-single \
   --image /path/to/image.png \
   --prompt "What visual evidence supports the answer?" \
-  --q-type custom \
+  --vg-attention-mode attribute_raw \
   --model-path /path/to/HuatuoGPT-Vision-7B \
   --support-repo /path/to/HuatuoGPT-Vision \
   --runtime-root /path/to/runtime-adapters \
@@ -106,6 +106,13 @@ These scripts are provided for reproducibility review. They do not include model
 See `docs/fitting.md` and `configs/fit_huatuogpt_v7b_layer16_n50.yaml` for command templates and field contracts.
 
 ## Visualization Contract
+
+The default VG attention mode is `attribute_raw`. Use `--vg-attention-mode` to choose one of four fixed modes:
+
+- `attribute_raw`: `q_type=attribute`, `value_source=raw_attention`
+- `attribute_normalized`: `q_type=attribute`, `value_source=normalized_attention`
+- `localization_raw`: `q_type=localization`, `value_source=raw_attention`
+- `localization_normalized`: `q_type=localization`, `value_source=normalized_attention`
 
 The attention map is q_type-aligned and rendered as image-aspect patch blocks:
 

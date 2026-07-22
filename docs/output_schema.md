@@ -13,6 +13,17 @@ Each run directory contains:
 - `validation_summary.json`: machine-readable validation result.
 - `static_share.zip`: portable static report.
 
+VG attention mode fields:
+
+- `vg_attention_mode`: default `attribute_raw`;
+- `q_type`: resolved from the mode;
+- `attention_value_source`, `heatmap_value_source`, `colorbar_value_source`, and `top_patch_rank_source`: `raw_attention` or `normalized_attention`;
+- `vg_attention_mode_contract`: the four allowed mappings:
+  `attribute_raw -> attribute/raw_attention`,
+  `attribute_normalized -> attribute/normalized_attention`,
+  `localization_raw -> localization/raw_attention`,
+  `localization_normalized -> localization/normalized_attention`.
+
 Required validation invariants:
 
 - one 24x24 token grid per image record;
