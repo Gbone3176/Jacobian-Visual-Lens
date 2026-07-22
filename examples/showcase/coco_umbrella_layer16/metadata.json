@@ -1,5 +1,5 @@
 {
-  "schema": "jvlens_showcase_metadata_v3",
+  "schema": "jvlens_showcase_metadata_v4",
   "slug": "coco_umbrella_layer16",
   "sample_type": "COCO natural image",
   "sample_id": "coco_000000219525__row0",
@@ -1140,6 +1140,40 @@
       "readout_available": true
     }
   ],
-  "overview_png_sha256": "5786cb1fd0f8d8330240a4cc53123ee5234f3424026e7c47c70bfba0d05eb503",
-  "overview_bytes": 306967
+  "overview_png_sha256": "dd8086ac54a2c1e3fe3d422dc7366d4d443339d8eb4fc8858589e1e61a001564",
+  "overview_bytes": 319774,
+  "overview_layout_version": "showcase_layout_v4_full_table_blue_rank_badges",
+  "overview_canvas_size": [
+    1500,
+    1120
+  ],
+  "overview_table_visible_rows": 10,
+  "overview_table_rows_available": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "overview_table_patch_ids_available": [
+    230,
+    254,
+    183,
+    203,
+    206,
+    205,
+    184,
+    182,
+    319,
+    259
+  ],
+  "overview_table_no_clipping": true,
+  "overview_rank_label_style": "blue_badge_white_text_cyan_outline",
+  "overview_rank_label_color_contract": "blue badge with white text and cyan outline; rank labels are intentionally not yellow so they do not mimic viridis high-attention colors",
+  "overview_panel_note_layout": "short_non_overlapping_panel_notes"
 }

@@ -76,16 +76,25 @@ def main() -> int:
 
     readme = (ROOT / "README.md").read_text(encoding="utf-8")
     assert_ok("raw_attention attribute maps" in readme, "README must describe raw_attention showcase maps")
+    assert_ok("blue badges" in readme, "README must describe non-yellow rank badges")
     showcase_index_path = ROOT / "examples/showcase/showcase_index.json"
     assert_ok(showcase_index_path.is_file(), "missing showcase index")
     showcase_index = json.loads(showcase_index_path.read_text(encoding="utf-8"))
     showcase_samples = showcase_index.get("samples", [])
     assert_ok(len(showcase_samples) == 3, "expected exactly three showcase samples")
+    assert_ok(showcase_index.get("overview_table_visible_rows") == 10, "showcase index must expose all 10 table rows")
+    assert_ok(
+        showcase_index.get("overview_rank_label_style") == "blue_badge_white_text_cyan_outline",
+        "showcase index rank labels must avoid yellow/viridis-high styling",
+    )
     assert_ok(showcase_index.get("attention_prompt_type") == "attribute", "showcase index must use attribute prompts")
     assert_ok(showcase_index.get("attention_value_source") == "raw_attention", "showcase index must use raw_attention")
     assert_ok(showcase_index.get("heatmap_value_source") == "raw_attention", "showcase heatmap must use raw_attention")
     assert_ok(showcase_index.get("colorbar_value_source") == "raw_attention", "showcase colorbar must use raw_attention")
     assert_ok(showcase_index.get("top_patch_rank_source") == "raw_attention", "showcase top patches must preserve raw_attention-ranked image patches")
+    assert_ok(showcase_index.get("overview_canvas_size") == [1500, 1120], "showcase overview canvas must be tall enough for all table rows")
+    assert_ok(showcase_index.get("overview_table_visible_rows") == 10, "showcase overview must expose all 10 table rows")
+    assert_ok(showcase_index.get("overview_rank_label_style") == "blue_badge_white_text_cyan_outline", "showcase rank labels must not use yellow badges")
     index_transform = showcase_index.get("attention_map_transform", {})
     assert_ok(index_transform.get("patch_id_formula") == "patch_id = patch_row * 24 + patch_col", "showcase index patch id formula mismatch")
     assert_ok(index_transform.get("origin") == "top_left", "showcase index origin mismatch")
@@ -101,6 +110,10 @@ def main() -> int:
         assert_ok(sample.get("attention_value_source") == "raw_attention", f"showcase sample must use raw attention: {sample.get('slug')}")
         assert_ok(sample.get("heatmap_value_source") == "raw_attention", f"showcase heatmap must use raw attention: {sample.get('slug')}")
         assert_ok(sample.get("colorbar_value_source") == "raw_attention", f"showcase colorbar must use raw attention: {sample.get('slug')}")
+        assert_ok(sample.get("overview_canvas_size") == [1500, 1120], f"showcase sample canvas mismatch: {sample.get('slug')}")
+        assert_ok(sample.get("overview_table_visible_rows") == 10, f"showcase sample must expose all 10 table rows: {sample.get('slug')}")
+        assert_ok(sample.get("overview_rank_label_style") == "blue_badge_white_text_cyan_outline", f"showcase sample rank label style mismatch: {sample.get('slug')}")
+        assert_ok(sample.get("overview_panel_note_layout") == "short_non_overlapping_panel_notes", f"showcase sample panel notes should be short: {sample.get('slug')}")
         overview_rel = sample["overview_png"]
         metadata_rel = sample["metadata_json"]
         assert_ok(overview_rel in readme, f"README does not reference {overview_rel}")
@@ -109,9 +122,15 @@ def main() -> int:
         assert_ok(overview_path.is_file(), f"missing showcase image {overview_rel}")
         assert_ok(metadata_path.is_file(), f"missing showcase metadata {metadata_rel}")
         with Image.open(overview_path) as image:
-            assert_ok(image.size[0] >= 900 and image.size[1] >= 600, f"showcase image too small: {overview_rel}")
+            assert_ok(image.size == (1500, 1120), f"showcase image size mismatch: {overview_rel}")
             assert_ok(image.format == "PNG", f"showcase image must be PNG: {overview_rel}")
         metadata = json.loads(metadata_path.read_text(encoding="utf-8"))
+        assert_ok(metadata.get("overview_table_visible_rows") == 10, f"showcase table must expose 10 rows: {metadata_rel}")
+        assert_ok(metadata.get("overview_table_no_clipping") is True, f"showcase table must not clip rows: {metadata_rel}")
+        assert_ok(
+            metadata.get("overview_rank_label_style") == "blue_badge_white_text_cyan_outline",
+            f"showcase rank labels must avoid yellow/viridis-high styling: {metadata_rel}",
+        )
         assert_ok(metadata.get("q_type") == "attribute", f"showcase metadata must be attribute: {metadata_rel}")
         assert_ok("__attribute__layer16" in metadata.get("sample_layer_id", ""), f"showcase sample_layer_id must be attribute: {metadata_rel}")
         assert_ok(metadata.get("attention_value_source") == "raw_attention", f"showcase metadata must use raw attention: {metadata_rel}")
@@ -122,6 +141,13 @@ def main() -> int:
         assert_ok(metadata.get("target_layer") == 27, f"showcase target layer mismatch: {metadata_rel}")
         assert_ok(metadata.get("lens") == "prefix_n50", f"showcase lens mismatch: {metadata_rel}")
         assert_ok(metadata.get("raw_source_files_copied") is False, f"showcase should not copy raw source files: {metadata_rel}")
+        assert_ok(metadata.get("overview_canvas_size") == [1500, 1120], f"showcase metadata canvas mismatch: {metadata_rel}")
+        assert_ok(metadata.get("overview_table_visible_rows") == 10, f"showcase metadata must expose all table rows: {metadata_rel}")
+        assert_ok(metadata.get("overview_table_rows_available") == list(range(1, 11)), f"showcase metadata table rows mismatch: {metadata_rel}")
+        assert_ok(len(metadata.get("overview_table_patch_ids_available", [])) == 10, f"showcase metadata table patch count mismatch: {metadata_rel}")
+        assert_ok(metadata.get("overview_table_no_clipping") is True, f"showcase metadata must mark table as unclipped: {metadata_rel}")
+        assert_ok(metadata.get("overview_rank_label_style") == "blue_badge_white_text_cyan_outline", f"showcase rank label style mismatch: {metadata_rel}")
+        assert_ok(metadata.get("overview_panel_note_layout") == "short_non_overlapping_panel_notes", f"showcase panel note layout mismatch: {metadata_rel}")
         transform = metadata.get("attention_map_transform", {})
         assert_ok(transform.get("patch_id_formula") == "patch_id = patch_row * 24 + patch_col", f"showcase patch id formula mismatch: {metadata_rel}")
         assert_ok(transform.get("origin") == "top_left", f"showcase heatmap origin mismatch: {metadata_rel}")
@@ -135,6 +161,25 @@ def main() -> int:
         assert_ok(all(isinstance(row, list) and len(row) == 24 for row in heatmap_matrix), f"showcase heatmap matrix must be 24x24: {metadata_rel}")
         top_patches = metadata.get("top_patches", [])
         assert_ok(len(top_patches) == 10, f"showcase top patch count mismatch: {metadata_rel}")
+        assert_ok(
+            metadata.get("overview_table_patch_ids_available") == [patch["patch_id"] for patch in top_patches],
+            f"showcase visible table patch ids must match top patch list: {metadata_rel}",
+        )
+        matrix_top10 = sorted(
+            (
+                {
+                    "patch_id": row_idx * 24 + col_idx,
+                    "raw_attention": value,
+                }
+                for row_idx, row in enumerate(heatmap_matrix)
+                for col_idx, value in enumerate(row)
+            ),
+            key=lambda item: (-float(item["raw_attention"]), int(item["patch_id"])),
+        )[:10]
+        assert_ok(
+            [item["patch_id"] for item in matrix_top10] == [patch["patch_id"] for patch in top_patches],
+            f"showcase raw top10 must equal matrix global top10: {metadata_rel}",
+        )
         assert_ok(abs(top_patches[0]["raw_attention"] - metadata.get("heatmap_display_max")) < 1e-12, f"raw rank1 patch must equal raw heatmap max: {metadata_rel}")
         assert_ok(top_patches[0]["patch_id"] == metadata.get("heatmap_display_max_patch_id"), f"raw rank1 patch id must equal raw heatmap max patch id: {metadata_rel}")
         previous_raw = None
@@ -156,6 +201,21 @@ def main() -> int:
             if previous_raw is not None:
                 assert_ok(previous_raw >= patch["raw_attention"], f"showcase raw attention must be descending: {metadata_rel}")
             previous_raw = patch["raw_attention"]
+        if sample.get("slug") == "dermoscopy_skin_lesion_layer16":
+            dermoscopy_patch_ids = [patch["patch_id"] for patch in top_patches]
+            assert_ok(dermoscopy_patch_ids == [252, 275, 253, 323, 322, 375, 299, 484, 324, 539], "dermoscopy raw top10 patch ids changed")
+            assert_ok(484 in metadata.get("overview_table_patch_ids_available", []), "dermoscopy rank8 patch484 must be table-visible")
+            assert_ok(539 in metadata.get("overview_table_patch_ids_available", []), "dermoscopy rank10 patch539 must be table-visible")
+            dermoscopy_fix = metadata.get("dermoscopy_layout_fix_evidence", {})
+            assert_ok(dermoscopy_fix.get("raw_top10_complete") is True, "dermoscopy fix must state raw top10 completeness")
+            assert_ok(dermoscopy_fix.get("rank8_patch", {}).get("patch_id") == 484, "dermoscopy rank8 patch must remain 484")
+            assert_ok(dermoscopy_fix.get("rank8_patch", {}).get("patch_row") == 20, "dermoscopy rank8 row must remain 20")
+            assert_ok(dermoscopy_fix.get("rank8_patch", {}).get("patch_col") == 4, "dermoscopy rank8 col must remain 4")
+            assert_ok(abs(dermoscopy_fix.get("rank8_patch", {}).get("raw_attention") - 0.001220703125) < 1e-12, "dermoscopy rank8 raw attention mismatch")
+            assert_ok(dermoscopy_fix.get("rank10_patch", {}).get("patch_id") == 539, "dermoscopy rank10 patch must remain 539")
+            assert_ok(dermoscopy_fix.get("rank10_patch", {}).get("patch_row") == 22, "dermoscopy rank10 row must remain 22")
+            assert_ok(dermoscopy_fix.get("rank10_patch", {}).get("patch_col") == 11, "dermoscopy rank10 col must remain 11")
+            assert_ok(abs(dermoscopy_fix.get("rank10_patch", {}).get("raw_attention") - 0.000946044921875) < 1e-12, "dermoscopy rank10 raw attention mismatch")
 
     forbidden = [
         "/" + "cpfs01",

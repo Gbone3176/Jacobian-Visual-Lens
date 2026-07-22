@@ -31,7 +31,7 @@
       "prompt": "What color is the umbrella? Answer the question using a single word or phrase.",
       "overview_png": "examples/showcase/coco_umbrella_layer16/overview.png",
       "metadata_json": "examples/showcase/coco_umbrella_layer16/metadata.json",
-      "overview_bytes": 306967,
+      "overview_bytes": 319774,
       "image_size": [
         640,
         425
@@ -46,7 +46,15 @@
       "heatmap_display_min": 3.248453140258789e-06,
       "heatmap_display_max": 0.052001953125,
       "heatmap_display_max_patch_id": 230,
-      "readout_available_top10_count": 10
+      "readout_available_top10_count": 10,
+      "overview_layout_version": "showcase_layout_v4_full_table_blue_rank_badges",
+      "overview_canvas_size": [
+        1500,
+        1120
+      ],
+      "overview_table_visible_rows": 10,
+      "overview_rank_label_style": "blue_badge_white_text_cyan_outline",
+      "overview_panel_note_layout": "short_non_overlapping_panel_notes"
     },
     {
       "slug": "dermoscopy_skin_lesion_layer16",
@@ -55,7 +63,7 @@
       "prompt": "Does the skin lesion show uniform or varied coloration within its area? Answer the question using a single word or phrase.",
       "overview_png": "examples/showcase/dermoscopy_skin_lesion_layer16/overview.png",
       "metadata_json": "examples/showcase/dermoscopy_skin_lesion_layer16/metadata.json",
-      "overview_bytes": 358628,
+      "overview_bytes": 374327,
       "image_size": [
         4288,
         2848
@@ -70,7 +78,20 @@
       "heatmap_display_min": 2.5033950805664062e-06,
       "heatmap_display_max": 0.0029754638671875,
       "heatmap_display_max_patch_id": 252,
-      "readout_available_top10_count": 10
+      "readout_available_top10_count": 10,
+      "overview_layout_version": "showcase_layout_v4_full_table_blue_rank_badges",
+      "overview_canvas_size": [
+        1500,
+        1120
+      ],
+      "overview_table_visible_rows": 10,
+      "overview_rank_label_style": "blue_badge_white_text_cyan_outline",
+      "dermoscopy_required_visible_patch_ids": [
+        252,
+        484,
+        539
+      ],
+      "overview_panel_note_layout": "short_non_overlapping_panel_notes"
     },
     {
       "slug": "colorectal_endoscopy_polyp_layer16",
@@ -79,7 +100,7 @@
       "prompt": "What is the shape of the polyp? Answer the question using a single word or phrase.",
       "overview_png": "examples/showcase/colorectal_endoscopy_polyp_layer16/overview.png",
       "metadata_json": "examples/showcase/colorectal_endoscopy_polyp_layer16/metadata.json",
-      "overview_bytes": 266156,
+      "overview_bytes": 283718,
       "image_size": [
         384,
         288
@@ -94,7 +115,22 @@
       "heatmap_display_min": 2.130866050720215e-06,
       "heatmap_display_max": 0.0030517578125,
       "heatmap_display_max_patch_id": 398,
-      "readout_available_top10_count": 10
+      "readout_available_top10_count": 10,
+      "overview_layout_version": "showcase_layout_v4_full_table_blue_rank_badges",
+      "overview_canvas_size": [
+        1500,
+        1120
+      ],
+      "overview_table_visible_rows": 10,
+      "overview_rank_label_style": "blue_badge_white_text_cyan_outline",
+      "overview_panel_note_layout": "short_non_overlapping_panel_notes"
     }
-  ]
+  ],
+  "overview_layout_version": "showcase_layout_v4_full_table_blue_rank_badges",
+  "overview_canvas_size": [
+    1500,
+    1120
+  ],
+  "overview_table_visible_rows": 10,
+  "overview_rank_label_style": "blue_badge_white_text_cyan_outline"
 }

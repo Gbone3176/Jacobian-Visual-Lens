@@ -1,5 +1,5 @@
 {
-  "schema": "jvlens_showcase_metadata_v3",
+  "schema": "jvlens_showcase_metadata_v4",
   "slug": "colorectal_endoscopy_polyp_layer16",
   "sample_type": "Colorectal-Endoscopy / polyp",
   "sample_id": "endoscopy__row7914",
@@ -1140,6 +1140,40 @@
       "readout_available": true
     }
   ],
-  "overview_png_sha256": "e543b68eb6529fb6a99b1495538f3ce95494acaebe38aff173c6e62e5a955a6f",
-  "overview_bytes": 266156
+  "overview_png_sha256": "626d217b9edabcc1869ddf272bbf75da4b9a5b994ac0830fbf4b671919dc9d54",
+  "overview_bytes": 283718,
+  "overview_layout_version": "showcase_layout_v4_full_table_blue_rank_badges",
+  "overview_canvas_size": [
+    1500,
+    1120
+  ],
+  "overview_table_visible_rows": 10,
+  "overview_table_rows_available": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "overview_table_patch_ids_available": [
+    398,
+    399,
+    374,
+    397,
+    443,
+    406,
+    319,
+    456,
+    395,
+    275
+  ],
+  "overview_table_no_clipping": true,
+  "overview_rank_label_style": "blue_badge_white_text_cyan_outline",
+  "overview_rank_label_color_contract": "blue badge with white text and cyan outline; rank labels are intentionally not yellow so they do not mimic viridis high-attention colors",
+  "overview_panel_note_layout": "short_non_overlapping_panel_notes"
 }

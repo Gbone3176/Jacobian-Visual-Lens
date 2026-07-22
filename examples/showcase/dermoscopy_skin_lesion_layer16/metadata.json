@@ -1,5 +1,5 @@
 {
-  "schema": "jvlens_showcase_metadata_v3",
+  "schema": "jvlens_showcase_metadata_v4",
   "slug": "dermoscopy_skin_lesion_layer16",
   "sample_type": "Dermoscopy / skin lesion",
   "sample_id": "dermoscopy__row10253",
@@ -1140,6 +1140,62 @@
       "readout_available": true
     }
   ],
-  "overview_png_sha256": "2b53eaed0a7297fc0464a163cc5bdebbab8244fae94533ba3d188bcef431997c",
-  "overview_bytes": 358628
+  "overview_png_sha256": "98fb1c1543513310c98f19d20e8adf6bb7048706cbb1abff18e8442e532c43b8",
+  "overview_bytes": 374327,
+  "overview_layout_version": "showcase_layout_v4_full_table_blue_rank_badges",
+  "overview_canvas_size": [
+    1500,
+    1120
+  ],
+  "overview_table_visible_rows": 10,
+  "overview_table_rows_available": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "overview_table_patch_ids_available": [
+    252,
+    275,
+    253,
+    323,
+    322,
+    375,
+    299,
+    484,
+    324,
+    539
+  ],
+  "overview_table_no_clipping": true,
+  "overview_rank_label_style": "blue_badge_white_text_cyan_outline",
+  "overview_rank_label_color_contract": "blue badge with white text and cyan outline; rank labels are intentionally not yellow so they do not mimic viridis high-attention colors",
+  "dermoscopy_layout_fix_evidence": {
+    "rank1_patch": {
+      "patch_id": 252,
+      "patch_row": 10,
+      "patch_col": 12,
+      "raw_attention": 0.0029754638671875
+    },
+    "rank8_patch": {
+      "patch_id": 484,
+      "patch_row": 20,
+      "patch_col": 4,
+      "raw_attention": 0.001220703125
+    },
+    "rank10_patch": {
+      "patch_id": 539,
+      "patch_row": 22,
+      "patch_col": 11,
+      "raw_attention": 0.000946044921875
+    },
+    "raw_top10_complete": true,
+    "previous_issue": "overview table crop made ranks 8-10 hard to see; raw sorting did not omit them"
+  },
+  "overview_panel_note_layout": "short_non_overlapping_panel_notes"
 }
