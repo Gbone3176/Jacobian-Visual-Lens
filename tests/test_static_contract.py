@@ -75,16 +75,16 @@ def main() -> int:
     assert_ok("--out-dir" in fit_source and "required=True" in fit_source, "fit script must require explicit --out-dir")
 
     readme = (ROOT / "README.md").read_text(encoding="utf-8")
-    assert_ok("normalized_attention" in readme or "normalized attention" in readme, "README must describe normalized attention showcase maps")
+    assert_ok("raw_attention attribute maps" in readme, "README must describe raw_attention showcase maps")
     showcase_index_path = ROOT / "examples/showcase/showcase_index.json"
     assert_ok(showcase_index_path.is_file(), "missing showcase index")
     showcase_index = json.loads(showcase_index_path.read_text(encoding="utf-8"))
     showcase_samples = showcase_index.get("samples", [])
     assert_ok(len(showcase_samples) == 3, "expected exactly three showcase samples")
     assert_ok(showcase_index.get("attention_prompt_type") == "attribute", "showcase index must use attribute prompts")
-    assert_ok(showcase_index.get("attention_value_source") == "normalized_attention", "showcase index must use normalized_attention")
-    assert_ok(showcase_index.get("heatmap_value_source") == "normalized_attention", "showcase heatmap must use normalized_attention")
-    assert_ok(showcase_index.get("colorbar_value_source") == "normalized_attention", "showcase colorbar must use normalized_attention")
+    assert_ok(showcase_index.get("attention_value_source") == "raw_attention", "showcase index must use raw_attention")
+    assert_ok(showcase_index.get("heatmap_value_source") == "raw_attention", "showcase heatmap must use raw_attention")
+    assert_ok(showcase_index.get("colorbar_value_source") == "raw_attention", "showcase colorbar must use raw_attention")
     assert_ok(showcase_index.get("top_patch_rank_source") == "raw_attention", "showcase top patches must preserve raw_attention-ranked image patches")
     index_transform = showcase_index.get("attention_map_transform", {})
     assert_ok(index_transform.get("patch_id_formula") == "patch_id = patch_row * 24 + patch_col", "showcase index patch id formula mismatch")
@@ -98,8 +98,9 @@ def main() -> int:
     assert_ok({sample.get("sample_type") for sample in showcase_samples} == expected_showcase_types, "unexpected showcase sample types")
     for sample in showcase_samples:
         assert_ok(sample.get("q_type") == "attribute", f"showcase index sample must be attribute: {sample.get('slug')}")
-        assert_ok(sample.get("attention_value_source") == "normalized_attention", f"showcase sample must use normalized attention: {sample.get('slug')}")
-        assert_ok(sample.get("heatmap_value_source") == "normalized_attention", f"showcase heatmap must use normalized attention: {sample.get('slug')}")
+        assert_ok(sample.get("attention_value_source") == "raw_attention", f"showcase sample must use raw attention: {sample.get('slug')}")
+        assert_ok(sample.get("heatmap_value_source") == "raw_attention", f"showcase heatmap must use raw attention: {sample.get('slug')}")
+        assert_ok(sample.get("colorbar_value_source") == "raw_attention", f"showcase colorbar must use raw attention: {sample.get('slug')}")
         overview_rel = sample["overview_png"]
         metadata_rel = sample["metadata_json"]
         assert_ok(overview_rel in readme, f"README does not reference {overview_rel}")
@@ -113,9 +114,9 @@ def main() -> int:
         metadata = json.loads(metadata_path.read_text(encoding="utf-8"))
         assert_ok(metadata.get("q_type") == "attribute", f"showcase metadata must be attribute: {metadata_rel}")
         assert_ok("__attribute__layer16" in metadata.get("sample_layer_id", ""), f"showcase sample_layer_id must be attribute: {metadata_rel}")
-        assert_ok(metadata.get("attention_value_source") == "normalized_attention", f"showcase metadata must use normalized attention: {metadata_rel}")
-        assert_ok(metadata.get("heatmap_value_source") == "normalized_attention", f"showcase heatmap must use normalized attention: {metadata_rel}")
-        assert_ok(metadata.get("colorbar_value_source") == "normalized_attention", f"showcase colorbar must use normalized attention: {metadata_rel}")
+        assert_ok(metadata.get("attention_value_source") == "raw_attention", f"showcase metadata must use raw attention: {metadata_rel}")
+        assert_ok(metadata.get("heatmap_value_source") == "raw_attention", f"showcase heatmap must use raw attention: {metadata_rel}")
+        assert_ok(metadata.get("colorbar_value_source") == "raw_attention", f"showcase colorbar must use raw attention: {metadata_rel}")
         assert_ok(metadata.get("top_patch_rank_source") == "raw_attention", f"showcase top patches must preserve raw_attention rank: {metadata_rel}")
         assert_ok(metadata.get("source_layer") == 16, f"showcase source layer mismatch: {metadata_rel}")
         assert_ok(metadata.get("target_layer") == 27, f"showcase target layer mismatch: {metadata_rel}")
@@ -134,6 +135,8 @@ def main() -> int:
         assert_ok(all(isinstance(row, list) and len(row) == 24 for row in heatmap_matrix), f"showcase heatmap matrix must be 24x24: {metadata_rel}")
         top_patches = metadata.get("top_patches", [])
         assert_ok(len(top_patches) == 10, f"showcase top patch count mismatch: {metadata_rel}")
+        assert_ok(abs(top_patches[0]["raw_attention"] - metadata.get("heatmap_display_max")) < 1e-12, f"raw rank1 patch must equal raw heatmap max: {metadata_rel}")
+        assert_ok(top_patches[0]["patch_id"] == metadata.get("heatmap_display_max_patch_id"), f"raw rank1 patch id must equal raw heatmap max patch id: {metadata_rel}")
         previous_raw = None
         for index, patch in enumerate(top_patches, start=1):
             assert_ok("raw_attention" in patch and "normalized_attention" in patch, f"showcase patch must keep raw and normalized values: {metadata_rel}")
