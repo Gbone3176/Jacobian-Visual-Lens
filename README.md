@@ -1,5 +1,7 @@
 # JVLens Open-Source Staging Candidate
 
+[中文文档](README.zh-CN.md)
+
 JVLens is a single-image visualization utility that joins two views in one static report:
 
 - VG-style raw attention over a 24x24 image-token grid.
