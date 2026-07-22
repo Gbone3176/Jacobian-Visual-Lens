@@ -77,6 +77,7 @@ def main() -> int:
     readme = (ROOT / "README.md").read_text(encoding="utf-8")
     assert_ok("raw_attention attribute maps" in readme, "README must describe raw_attention showcase maps")
     assert_ok("blue badges" in readme, "README must describe non-yellow rank badges")
+    assert_ok("right heatmap shows raw_attention + bbox only" in readme, "README must state right heatmap annotation contract")
     showcase_index_path = ROOT / "examples/showcase/showcase_index.json"
     assert_ok(showcase_index_path.is_file(), "missing showcase index")
     showcase_index = json.loads(showcase_index_path.read_text(encoding="utf-8"))
@@ -95,6 +96,9 @@ def main() -> int:
     assert_ok(showcase_index.get("overview_canvas_size") == [1500, 1120], "showcase overview canvas must be tall enough for all table rows")
     assert_ok(showcase_index.get("overview_table_visible_rows") == 10, "showcase overview must expose all 10 table rows")
     assert_ok(showcase_index.get("overview_rank_label_style") == "blue_badge_white_text_cyan_outline", "showcase rank labels must not use yellow badges")
+    assert_ok(showcase_index.get("right_heatmap_patch_annotations") is False, "right heatmap must not draw patch annotations")
+    assert_ok(showcase_index.get("right_heatmap_rank_labels") is False, "right heatmap must not draw rank labels")
+    assert_ok(showcase_index.get("right_heatmap_bbox_overlay") is True, "right heatmap must keep bbox overlay")
     index_transform = showcase_index.get("attention_map_transform", {})
     assert_ok(index_transform.get("patch_id_formula") == "patch_id = patch_row * 24 + patch_col", "showcase index patch id formula mismatch")
     assert_ok(index_transform.get("origin") == "top_left", "showcase index origin mismatch")
@@ -113,6 +117,9 @@ def main() -> int:
         assert_ok(sample.get("overview_canvas_size") == [1500, 1120], f"showcase sample canvas mismatch: {sample.get('slug')}")
         assert_ok(sample.get("overview_table_visible_rows") == 10, f"showcase sample must expose all 10 table rows: {sample.get('slug')}")
         assert_ok(sample.get("overview_rank_label_style") == "blue_badge_white_text_cyan_outline", f"showcase sample rank label style mismatch: {sample.get('slug')}")
+        assert_ok(sample.get("right_heatmap_patch_annotations") is False, f"right heatmap must not draw patch annotations: {sample.get('slug')}")
+        assert_ok(sample.get("right_heatmap_rank_labels") is False, f"right heatmap must not draw rank labels: {sample.get('slug')}")
+        assert_ok(sample.get("right_heatmap_bbox_overlay") is True, f"right heatmap must keep bbox overlay: {sample.get('slug')}")
         assert_ok(sample.get("overview_panel_note_layout") == "short_non_overlapping_panel_notes", f"showcase sample panel notes should be short: {sample.get('slug')}")
         overview_rel = sample["overview_png"]
         metadata_rel = sample["metadata_json"]
@@ -131,6 +138,9 @@ def main() -> int:
             metadata.get("overview_rank_label_style") == "blue_badge_white_text_cyan_outline",
             f"showcase rank labels must avoid yellow/viridis-high styling: {metadata_rel}",
         )
+        assert_ok(metadata.get("right_heatmap_patch_annotations") is False, f"right heatmap must not draw patch annotations: {metadata_rel}")
+        assert_ok(metadata.get("right_heatmap_rank_labels") is False, f"right heatmap must not draw rank labels: {metadata_rel}")
+        assert_ok(metadata.get("right_heatmap_bbox_overlay") is True, f"right heatmap must keep bbox overlay: {metadata_rel}")
         assert_ok(metadata.get("q_type") == "attribute", f"showcase metadata must be attribute: {metadata_rel}")
         assert_ok("__attribute__layer16" in metadata.get("sample_layer_id", ""), f"showcase sample_layer_id must be attribute: {metadata_rel}")
         assert_ok(metadata.get("attention_value_source") == "raw_attention", f"showcase metadata must use raw attention: {metadata_rel}")
@@ -147,6 +157,9 @@ def main() -> int:
         assert_ok(len(metadata.get("overview_table_patch_ids_available", [])) == 10, f"showcase metadata table patch count mismatch: {metadata_rel}")
         assert_ok(metadata.get("overview_table_no_clipping") is True, f"showcase metadata must mark table as unclipped: {metadata_rel}")
         assert_ok(metadata.get("overview_rank_label_style") == "blue_badge_white_text_cyan_outline", f"showcase rank label style mismatch: {metadata_rel}")
+        assert_ok(metadata.get("right_heatmap_patch_annotations") is False, f"showcase right heatmap patch annotation contract mismatch: {metadata_rel}")
+        assert_ok(metadata.get("right_heatmap_rank_labels") is False, f"showcase right heatmap rank label contract mismatch: {metadata_rel}")
+        assert_ok(metadata.get("right_heatmap_bbox_overlay") is True, f"showcase right heatmap bbox overlay contract mismatch: {metadata_rel}")
         assert_ok(metadata.get("overview_panel_note_layout") == "short_non_overlapping_panel_notes", f"showcase panel note layout mismatch: {metadata_rel}")
         transform = metadata.get("attention_map_transform", {})
         assert_ok(transform.get("patch_id_formula") == "patch_id = patch_row * 24 + patch_col", f"showcase patch id formula mismatch: {metadata_rel}")

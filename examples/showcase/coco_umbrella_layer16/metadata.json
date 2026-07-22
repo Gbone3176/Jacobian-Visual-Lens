@@ -653,7 +653,7 @@
     ]
   ],
   "top_patch_rank_source": "raw_attention",
-  "top_patch_selection": "raw_attention desc, patch_id asc over all 576 patches; left overlay, table, and right heatmap use the same raw_attention patch coordinate system",
+  "top_patch_selection": "raw_attention desc, patch_id asc over all 576 patches; left overlay and table use raw_attention-ranked patch coordinates; right heatmap uses raw_attention + bbox only without top patch annotations",
   "attention_map_coordinate_system": "patch_id=row*24+col; origin top-left; row axis y; col axis x",
   "attention_map_transform": {
     "patch_id_formula": "patch_id = patch_row * 24 + patch_col",
@@ -1140,9 +1140,9 @@
       "readout_available": true
     }
   ],
-  "overview_png_sha256": "dd8086ac54a2c1e3fe3d422dc7366d4d443339d8eb4fc8858589e1e61a001564",
-  "overview_bytes": 319774,
-  "overview_layout_version": "showcase_layout_v4_full_table_blue_rank_badges",
+  "overview_png_sha256": "9881aca34f44e5feaaa638e9ea6b34483354ee3c671c989ec2e3437d8685c899",
+  "overview_bytes": 319994,
+  "overview_layout_version": "showcase_layout_v5_right_heatmap_bbox_only",
   "overview_canvas_size": [
     1500,
     1120
@@ -1175,5 +1175,9 @@
   "overview_table_no_clipping": true,
   "overview_rank_label_style": "blue_badge_white_text_cyan_outline",
   "overview_rank_label_color_contract": "blue badge with white text and cyan outline; rank labels are intentionally not yellow so they do not mimic viridis high-attention colors",
-  "overview_panel_note_layout": "short_non_overlapping_panel_notes"
+  "overview_panel_note_layout": "short_non_overlapping_panel_notes",
+  "right_heatmap_patch_annotations": false,
+  "right_heatmap_rank_labels": false,
+  "right_heatmap_bbox_overlay": true,
+  "right_heatmap_annotation_contract": "right heatmap shows raw_attention + bbox only; top patch ranks are shown on source image and table"
 }

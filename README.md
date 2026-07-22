@@ -9,7 +9,7 @@ This staging package is prepared for review. It contains source code, documentat
 
 ## Showcase Examples
 
-These review images are sanitized static overviews copied from validated layer16 VG/JLens alignment outputs. They use attribute prompts, raw_attention attribute maps, and raw_attention-ranked top patches rendered in the same patch coordinate system; they embed only a small screenshot-style PNG per case, not standalone source images or datasets. The numbered patch ranks use blue badges so they are visually distinct from the viridis attention colors.
+These review images are sanitized static overviews copied from validated layer16 VG/JLens alignment outputs. They use attribute prompts, raw_attention attribute maps, and raw_attention-ranked top patches rendered in the same patch coordinate system; they embed only a small screenshot-style PNG per case, not standalone source images or datasets. The numbered patch ranks use blue badges on the source image and table so they are visually distinct from the viridis attention colors. The right heatmap shows raw_attention + bbox only; top patch ranks are not drawn on that panel.
 
 ### COCO
 

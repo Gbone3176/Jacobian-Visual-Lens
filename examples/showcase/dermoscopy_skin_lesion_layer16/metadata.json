@@ -653,7 +653,7 @@
     ]
   ],
   "top_patch_rank_source": "raw_attention",
-  "top_patch_selection": "raw_attention desc, patch_id asc over all 576 patches; left overlay, table, and right heatmap use the same raw_attention patch coordinate system",
+  "top_patch_selection": "raw_attention desc, patch_id asc over all 576 patches; left overlay and table use raw_attention-ranked patch coordinates; right heatmap uses raw_attention + bbox only without top patch annotations",
   "attention_map_coordinate_system": "patch_id=row*24+col; origin top-left; row axis y; col axis x",
   "attention_map_transform": {
     "patch_id_formula": "patch_id = patch_row * 24 + patch_col",
@@ -1140,9 +1140,9 @@
       "readout_available": true
     }
   ],
-  "overview_png_sha256": "98fb1c1543513310c98f19d20e8adf6bb7048706cbb1abff18e8442e532c43b8",
-  "overview_bytes": 374327,
-  "overview_layout_version": "showcase_layout_v4_full_table_blue_rank_badges",
+  "overview_png_sha256": "11a0ea8051820625e03ef06ed481c5bcdfebcc1ad57156770a376874e6d7e8a9",
+  "overview_bytes": 374508,
+  "overview_layout_version": "showcase_layout_v5_right_heatmap_bbox_only",
   "overview_canvas_size": [
     1500,
     1120
@@ -1197,5 +1197,9 @@
     "raw_top10_complete": true,
     "previous_issue": "overview table crop made ranks 8-10 hard to see; raw sorting did not omit them"
   },
-  "overview_panel_note_layout": "short_non_overlapping_panel_notes"
+  "overview_panel_note_layout": "short_non_overlapping_panel_notes",
+  "right_heatmap_patch_annotations": false,
+  "right_heatmap_rank_labels": false,
+  "right_heatmap_bbox_overlay": true,
+  "right_heatmap_annotation_contract": "right heatmap shows raw_attention + bbox only; top patch ranks are shown on source image and table"
 }

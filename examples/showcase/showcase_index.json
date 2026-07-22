@@ -1,5 +1,5 @@
 {
-  "schema": "jvlens_showcase_index_v3",
+  "schema": "jvlens_showcase_index_v4",
   "sample_count": 3,
   "attention_prompt_type": "attribute",
   "attention_value_source": "raw_attention",
@@ -31,7 +31,7 @@
       "prompt": "What color is the umbrella? Answer the question using a single word or phrase.",
       "overview_png": "examples/showcase/coco_umbrella_layer16/overview.png",
       "metadata_json": "examples/showcase/coco_umbrella_layer16/metadata.json",
-      "overview_bytes": 319774,
+      "overview_bytes": 319994,
       "image_size": [
         640,
         425
@@ -47,14 +47,19 @@
       "heatmap_display_max": 0.052001953125,
       "heatmap_display_max_patch_id": 230,
       "readout_available_top10_count": 10,
-      "overview_layout_version": "showcase_layout_v4_full_table_blue_rank_badges",
+      "overview_layout_version": "showcase_layout_v5_right_heatmap_bbox_only",
       "overview_canvas_size": [
         1500,
         1120
       ],
       "overview_table_visible_rows": 10,
       "overview_rank_label_style": "blue_badge_white_text_cyan_outline",
-      "overview_panel_note_layout": "short_non_overlapping_panel_notes"
+      "overview_panel_note_layout": "short_non_overlapping_panel_notes",
+      "overview_png_sha256": "9881aca34f44e5feaaa638e9ea6b34483354ee3c671c989ec2e3437d8685c899",
+      "right_heatmap_patch_annotations": false,
+      "right_heatmap_rank_labels": false,
+      "right_heatmap_bbox_overlay": true,
+      "right_heatmap_annotation_contract": "right heatmap shows raw_attention + bbox only; top patch ranks are shown on source image and table"
     },
     {
       "slug": "dermoscopy_skin_lesion_layer16",
@@ -63,7 +68,7 @@
       "prompt": "Does the skin lesion show uniform or varied coloration within its area? Answer the question using a single word or phrase.",
       "overview_png": "examples/showcase/dermoscopy_skin_lesion_layer16/overview.png",
       "metadata_json": "examples/showcase/dermoscopy_skin_lesion_layer16/metadata.json",
-      "overview_bytes": 374327,
+      "overview_bytes": 374508,
       "image_size": [
         4288,
         2848
@@ -79,7 +84,7 @@
       "heatmap_display_max": 0.0029754638671875,
       "heatmap_display_max_patch_id": 252,
       "readout_available_top10_count": 10,
-      "overview_layout_version": "showcase_layout_v4_full_table_blue_rank_badges",
+      "overview_layout_version": "showcase_layout_v5_right_heatmap_bbox_only",
       "overview_canvas_size": [
         1500,
         1120
@@ -91,7 +96,12 @@
         484,
         539
       ],
-      "overview_panel_note_layout": "short_non_overlapping_panel_notes"
+      "overview_panel_note_layout": "short_non_overlapping_panel_notes",
+      "overview_png_sha256": "11a0ea8051820625e03ef06ed481c5bcdfebcc1ad57156770a376874e6d7e8a9",
+      "right_heatmap_patch_annotations": false,
+      "right_heatmap_rank_labels": false,
+      "right_heatmap_bbox_overlay": true,
+      "right_heatmap_annotation_contract": "right heatmap shows raw_attention + bbox only; top patch ranks are shown on source image and table"
     },
     {
       "slug": "colorectal_endoscopy_polyp_layer16",
@@ -100,7 +110,7 @@
       "prompt": "What is the shape of the polyp? Answer the question using a single word or phrase.",
       "overview_png": "examples/showcase/colorectal_endoscopy_polyp_layer16/overview.png",
       "metadata_json": "examples/showcase/colorectal_endoscopy_polyp_layer16/metadata.json",
-      "overview_bytes": 283718,
+      "overview_bytes": 284213,
       "image_size": [
         384,
         288
@@ -116,21 +126,30 @@
       "heatmap_display_max": 0.0030517578125,
       "heatmap_display_max_patch_id": 398,
       "readout_available_top10_count": 10,
-      "overview_layout_version": "showcase_layout_v4_full_table_blue_rank_badges",
+      "overview_layout_version": "showcase_layout_v5_right_heatmap_bbox_only",
       "overview_canvas_size": [
         1500,
         1120
       ],
       "overview_table_visible_rows": 10,
       "overview_rank_label_style": "blue_badge_white_text_cyan_outline",
-      "overview_panel_note_layout": "short_non_overlapping_panel_notes"
+      "overview_panel_note_layout": "short_non_overlapping_panel_notes",
+      "overview_png_sha256": "f39289be931ef7b8f283b671ac904436345fb7e6a6b887a3e1a69de3129397ed",
+      "right_heatmap_patch_annotations": false,
+      "right_heatmap_rank_labels": false,
+      "right_heatmap_bbox_overlay": true,
+      "right_heatmap_annotation_contract": "right heatmap shows raw_attention + bbox only; top patch ranks are shown on source image and table"
     }
   ],
-  "overview_layout_version": "showcase_layout_v4_full_table_blue_rank_badges",
+  "overview_layout_version": "showcase_layout_v5_right_heatmap_bbox_only",
   "overview_canvas_size": [
     1500,
     1120
   ],
   "overview_table_visible_rows": 10,
-  "overview_rank_label_style": "blue_badge_white_text_cyan_outline"
+  "overview_rank_label_style": "blue_badge_white_text_cyan_outline",
+  "right_heatmap_patch_annotations": false,
+  "right_heatmap_rank_labels": false,
+  "right_heatmap_bbox_overlay": true,
+  "right_heatmap_annotation_contract": "right heatmap shows raw_attention + bbox only; top patch ranks are shown on source image and table"
 }
