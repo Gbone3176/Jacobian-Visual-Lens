@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""CPU-only static checks for the JVLens staging package."""
+"""No-model static checks for the JVLens staging package."""
 
 from __future__ import annotations
 
@@ -47,6 +47,15 @@ def main() -> int:
     assert_ok(help_result.returncode == 0, help_result.stderr)
     dry_help = run([sys.executable, "run_jvlens.py", "dry-run", "--help"])
     assert_ok(dry_help.returncode == 0, dry_help.stderr)
+    fixture_help = run([sys.executable, "run_jvlens.py", "make-fixture-demo", "--help"])
+    assert_ok(fixture_help.returncode == 0, fixture_help.stderr)
+    assert_ok("no-model synthetic static fixture" in fixture_help.stdout, "fixture help must use no-model static wording")
+    misleading_cpu_hyphen = "CPU" + "-only"
+    misleading_cpu_space = "CPU" + " only"
+    assert_ok(
+        misleading_cpu_hyphen not in fixture_help.stdout and misleading_cpu_space not in fixture_help.stdout,
+        "fixture help must not use misleading CPU wording",
+    )
 
     fit_help = run([sys.executable, "scripts/fit/huatuo_fit_jlens.py", "--help"])
     assert_ok(fit_help.returncode == 0, fit_help.stderr)
@@ -119,11 +128,31 @@ def main() -> int:
     assert_ok("--out-dir" in fit_source and "required=True" in fit_source, "fit script must require explicit --out-dir")
 
     readme = (ROOT / "README.md").read_text(encoding="utf-8")
+    readme_lower = readme.lower()
+    assert_ok("CPU" + "-Only Commands" not in readme, "README must not label the fixture path as CPU commands")
+    assert_ok(
+        "CPU" + "-only version" not in readme and "CPU" + "-only pipeline" not in readme,
+        "README must not imply a CPU full pipeline",
+    )
+    assert_ok("no-model static fixture" in readme_lower, "README must use no-model static fixture wording")
+    assert_ok("do not load HuatuoGPT-Vision" in readme, "README must state the fixture does not load HuatuoGPT-Vision")
+    assert_ok("run a forward pass" in readme, "README must state the fixture does not run forward")
+    assert_ok("recompute VG attention" in readme, "README must state the fixture does not recompute VG attention")
+    assert_ok("requires the model runtime path" in readme, "README must state real user-image output requires model execution")
     assert_ok("raw_attention attribute maps" in readme, "README must describe raw_attention showcase maps")
     assert_ok("blue badges" in readme, "README must describe non-yellow rank badges")
     assert_ok("right heatmap shows raw_attention + bbox only" in readme, "README must state right heatmap annotation contract")
     assert_ok("CJK-capable fallback font" in readme, "README must state CJK-capable preview font fallback")
     readme_zh = (ROOT / "README.zh-CN.md").read_text(encoding="utf-8")
+    assert_ok(
+        misleading_cpu_hyphen not in readme_zh and "CPU" + "-only版本" not in readme_zh,
+        "Chinese README must not label the fixture path with misleading CPU wording",
+    )
+    assert_ok("无模型静态 fixture" in readme_zh, "Chinese README must use no-model static fixture wording")
+    assert_ok("不会加载 HuatuoGPT-Vision" in readme_zh, "Chinese README must state the fixture does not load HuatuoGPT-Vision")
+    assert_ok("不会执行 forward" in readme_zh, "Chinese README must state the fixture does not run forward")
+    assert_ok("不会重新计算 VG attention" in readme_zh, "Chinese README must state the fixture does not recompute VG attention")
+    assert_ok("需要走模型运行路径" in readme_zh, "Chinese README must state real user-image output requires model execution")
     assert_ok("支持 CJK 的 fallback 字体" in readme_zh, "Chinese README must state CJK preview font fallback")
     renderer_source = (ROOT / "scripts/render_showcase_overviews.py").read_text(encoding="utf-8")
     assert_ok("JVLENS_CJK_FONT_PATH" in renderer_source, "showcase renderer must support JVLENS_CJK_FONT_PATH")

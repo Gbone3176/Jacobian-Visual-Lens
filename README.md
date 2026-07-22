@@ -45,7 +45,9 @@ pip install -r requirements.txt
 
 For real model execution, install the HuatuoGPT-Vision support code and any JLens runtime dependencies required by your local Huatuo adapter.
 
-## CPU-Only Commands
+## No-Model Static Fixture Commands
+
+The fixture and validation commands below are a static validation path. They do not load HuatuoGPT-Vision, run a forward pass, or recompute VG attention, and they should not be read as evidence that the full JVLens/VG pipeline runs without a model. Generating real JLens+VG outputs for a new image requires the model runtime path and an appropriate GPU-backed environment.
 
 Show CLI help:
 
@@ -53,13 +55,13 @@ Show CLI help:
 PYTHONDONTWRITEBYTECODE=1 python run_jvlens.py --help
 ```
 
-Validate the included synthetic fixture:
+Validate the included no-model synthetic fixture:
 
 ```bash
 PYTHONDONTWRITEBYTECODE=1 python run_jvlens.py validate-output --out-dir examples/fixture_demo
 ```
 
-Generate a new synthetic fixture without loading a model:
+Generate a new no-model synthetic fixture:
 
 ```bash
 PYTHONDONTWRITEBYTECODE=1 python run_jvlens.py make-fixture-demo --out-dir experiment/fixture_demo_local --overwrite
@@ -93,7 +95,7 @@ Users must provide:
 
 ## Safety Gate
 
-`run-single` requires `--allow-model-run` before importing the real runtime bridge and loading model/GPU dependencies. This is intentional: review commands and fixture validation remain CPU-only.
+`run-single` requires `--allow-model-run` before importing the real runtime bridge and loading model/GPU dependencies. This is intentional: review commands and fixture validation stay on the no-model static path, while real user-image runs require model execution.
 
 ## Optional Lens Fitting and F1 Evaluation
 

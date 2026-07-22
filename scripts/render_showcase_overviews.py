@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """Render sanitized showcase overview PNGs from checked-in metadata.
 
-The script is intentionally CPU-only and does not read model outputs beyond the
-static showcase metadata. Set JVLENS_CJK_FONT_PATH to an external CJK-capable
-font when the host does not provide one.
+The script is a no-model static renderer and does not read model outputs beyond
+the static showcase metadata. Set JVLENS_CJK_FONT_PATH to an external
+CJK-capable font when the host does not provide one.
 """
 
 from __future__ import annotations

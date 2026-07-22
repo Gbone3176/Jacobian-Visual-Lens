@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Shared CPU-only helpers for HuatuoGPT-V JLens fitting and evaluation."""
+"""Shared import-safe helpers for HuatuoGPT-V JLens fitting and evaluation."""
 
 from __future__ import annotations
 

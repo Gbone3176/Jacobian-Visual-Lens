@@ -15,4 +15,4 @@ For a real `run-single`, the intended execution path is one Huatuo forward pass:
 - compute logit-lens baseline tokens for comparison;
 - write a static report and validate it.
 
-The CPU fixture path generates synthetic attention and synthetic token rows without model loading.
+The no-model static fixture path generates synthetic attention and synthetic token rows without loading HuatuoGPT-Vision, running a forward pass, or recomputing VG attention. It is a validation path for the output contract, not a complete runtime pipeline.

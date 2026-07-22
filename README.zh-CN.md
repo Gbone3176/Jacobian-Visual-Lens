@@ -49,7 +49,9 @@ pip install -r requirements.txt
 
 如果需要运行真实模型，还需要安装 HuatuoGPT-Vision 支持代码，以及本地 Huatuo adapter 所需的 JLens runtime 依赖。
 
-## CPU-only 命令
+## 无模型静态 fixture 命令
+
+下面的 fixture 和校验命令只是静态校验路径。它们不会加载 HuatuoGPT-Vision，不会执行 forward，也不会重新计算 VG attention，因此不能表示完整 JLens/VG pipeline 可以在无模型环境中运行。对用户新输入图像生成真实 JLens+VG 结果，需要走模型运行路径，并使用合适的 GPU 环境。
 
 查看 CLI 帮助：
 
@@ -57,13 +59,13 @@ pip install -r requirements.txt
 PYTHONDONTWRITEBYTECODE=1 python run_jvlens.py --help
 ```
 
-验证内置合成 fixture：
+验证内置无模型合成 fixture：
 
 ```bash
 PYTHONDONTWRITEBYTECODE=1 python run_jvlens.py validate-output --out-dir examples/fixture_demo
 ```
 
-生成一个不加载模型的合成 fixture：
+生成一个无模型合成 fixture：
 
 ```bash
 PYTHONDONTWRITEBYTECODE=1 python run_jvlens.py make-fixture-demo --out-dir experiment/fixture_demo_local --overwrite
@@ -97,7 +99,7 @@ PYTHONDONTWRITEBYTECODE=1 python run_jvlens.py run-single \
 
 ## 安全开关
 
-`run-single` 必须显式提供 `--allow-model-run` 才会导入真实 runtime bridge 并加载模型/GPU 依赖。这样可以保证文档审查、fixture 校验等命令保持 CPU-only。
+`run-single` 必须显式提供 `--allow-model-run` 才会导入真实 runtime bridge 并加载模型/GPU 依赖。这样可以保证文档审查、fixture 校验等命令停留在无模型静态路径；真实用户图像运行仍需要模型执行。
 
 ## 可选拟合与 F1 评估
 

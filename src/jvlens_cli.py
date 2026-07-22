@@ -490,8 +490,9 @@ def render_root_index(overview: dict[str, Any]) -> str:
     if overview.get("fixture"):
         title = "JVLens fixture report"
         note = (
-            "Synthetic CPU-only fixture. It exercises VG-style attention values, top10 patch overlay, "
-            "image-aspect no-interpolation attention blocks, and JLens/logit-lens token tables without model loading."
+            "Synthetic no-model static fixture. It exercises VG-style attention values, top10 patch overlay, "
+            "image-aspect no-interpolation attention blocks, and JLens/logit-lens token tables without loading "
+            "HuatuoGPT-Vision, running a forward pass, or recomputing attention."
         )
     else:
         title = "JVLens single-image report"
@@ -824,7 +825,7 @@ def make_fixture_demo(args: argparse.Namespace) -> int:
                 "command=" + " ".join(sys.argv),
                 f"run_root={out_dir}",
                 "mode=make-fixture-demo",
-                "note=CPU-only fixture; no model/GPU/JLens lens loading.",
+                "note=no-model static fixture; no Huatuo model load, forward pass, attention recompute, or JLens lens loading.",
                 "",
             ]
         ),
@@ -1589,7 +1590,11 @@ def build_parser() -> argparse.ArgumentParser:
     val.add_argument("--out-dir", required=True)
     val.set_defaults(func=cmd_validate)
 
-    fixture = sub.add_parser("make-fixture-demo", help="generate a CPU-only synthetic static demo")
+    fixture = sub.add_parser(
+        "make-fixture-demo",
+        help="generate a no-model synthetic static fixture",
+        description="Generate a no-model synthetic static fixture without loading HuatuoGPT-Vision or running a forward pass.",
+    )
     fixture.add_argument("--out-dir")
     fixture.add_argument("--run-id")
     fixture.add_argument("--prompt", default="Fixture prompt: identify the highlighted visual evidence.")
